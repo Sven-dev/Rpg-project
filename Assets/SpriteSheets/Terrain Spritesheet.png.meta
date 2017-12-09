@@ -1,0 +1,1534 @@
+fileFormatVersion: 2
+guid: a27e8a17e44925742b50dbf75e9a89f2
+timeCreated: 1498828370
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Forest_Ground_01
+    21300002: Forest_Ground_02
+    21300004: Forest_Ground_03
+    21300006: Forest_Road_01
+    21300008: Forest_Road_02
+    21300010: Forest_Road_03
+    21300012: Forest_TreeSingle_01
+    21300014: Forest_TreeSingle_02
+    21300016: Forest_TreeMulti_01
+    21300018: Forest_TreeMulti_02
+    21300020: Forest_TreeMulti_03
+    21300022: Forest_TreeMulti_04
+    21300024: Forest_TreeMulti_05
+    21300026: Forest_TreeMulti_06
+    21300028: Forest_TreeMulti_07
+    21300030: Forest_TreeMulti_08
+    21300032: Forest_TreeMulti_09
+    21300034: Forest_TreeStump_01
+    21300036: Forest_TreeBig_01
+    21300038: Forest_TreeBig_02
+    21300040: Forest_SlideTop_01
+    21300042: Forest_SlideTop_02
+    21300044: Forest_SlideTop_03
+    21300046: Forest_SlideTop_04
+    21300048: Forest_SlideTop_05
+    21300050: Forest_SlideMain_01
+    21300052: Forest_SlideMain_02
+    21300054: Forest_SlideMain_03
+    21300056: Forest_SlideMain_04
+    21300058: Forest_SlideMain_05
+    21300060: Forest_SlideEnd_01
+    21300062: Forest_SlideEnd_02
+    21300064: Forest_SlideEnd_03
+    21300066: Forest_SlideEnd_04
+    21300068: Forest_SlideEnd_05
+    21300070: Forest_SlideFinish_01
+    21300072: Forest_SlideFinish_02
+    21300074: Forest_SlideFinish_03
+    21300076: Forest_SlideFinish_04
+    21300078: Forest_SlideFinish_05
+    21300080: Forest_SlideObstacle_01
+    21300082: Forest_Road_04
+    21300084: Forest_Altar_01
+    21300086: Forest_Altar_02
+    21300088: Forest_Altar_03
+    21300090: Forest_Altar_04
+    21300092: Forest_Altar_05
+    21300094: Forest_Cave_02
+    21300096: Forest_Cave_03
+    21300098: Forest_Cave_01
+    21300100: Forest_Altar_06
+    21300102: Forest_TreeMulti_10
+    21300104: Forest_RollingLog_01
+    21300106: Forest_RollingLog_02
+    21300108: Forest_LogSpawner_01
+    21300110: Forest_LogSpawner_02
+    21300112: Forest_Lever_01
+    21300114: Forest_Lever_02
+    21300116: Forest_Pit_Dark_00
+    21300118: Forest_Pit_Light_00
+    21300120: Forest_Pit_Dark_01
+    21300122: Forest_Pit_Dark_02
+    21300124: Forest_Pit_Dark_03
+    21300126: Forest_Pit_Dark_04
+    21300128: Forest_Pit_Dark_05
+    21300130: Forest_Pit_Dark_06
+    21300132: Forest_Pit_Dark_07
+    21300134: Forest_Pit_Dark_08
+    21300136: Forest_Pit_Dark_09
+    21300138: Forest_Pit_Dark_10
+    21300140: Forest_Pit_Light_01
+    21300142: Forest_Pit_Light_02
+    21300144: Forest_Pit_Light_03
+    21300146: Forest_Pit_Light_04
+    21300148: Forest_Pit_Light_10
+    21300150: Forest_Pit_Light_05
+    21300152: Forest_Pit_Light_06
+    21300154: Forest_Pit_Light_07
+    21300156: Forest_Pit_Light_08
+    21300158: Forest_Pit_Light_09
+    21300160: Forest_Pit_Dark_11
+    21300162: Forest_Pit_Dark_12
+    21300164: Forest_Pit_Light_11
+    21300166: Forest_Pit_Light_12
+    21300168: Forest_DoorIdle_1
+    21300170: Forest_DoorIdle_2
+    21300172: Forest_DoorClose_1
+    21300174: Forest_DoorClose_2
+    21300176: Forest_DoorClose_3
+    21300178: Forest_DoorClose_4
+    21300180: Forest_DoorClose_5
+    21300182: Forest_DoorClose_6
+    21300184: Forest_DoorIdle_3
+    21300186: Forest_DoorIdle_4
+    21300188: Forest_DoorOpen_1
+    21300190: Forest_DoorOpen_2
+    21300192: Forest_DoorOpen_3
+    21300194: Forest_DoorOpen_4
+    21300196: Forest_DoorOpen_5
+    21300198: Forest_DoorOpen_6
+    21300200: Forest_Button_1
+    21300202: Forest_Button_2
+    21300204: Terrain Spritesheet_0
+    21300206: Terrain Spritesheet_1
+    21300208: Forest_TrialDoor_Floor
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Standalone
+    maxTextureSize: 8192
+    textureFormat: -3
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Forest_Ground_01
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Ground_02
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 264
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Ground_03
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 528
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Road_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Road_02
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 264
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Road_03
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 528
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeSingle_01
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 264
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeSingle_02
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 528
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeMulti_01
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeMulti_02
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 264
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeMulti_03
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 528
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeMulti_04
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeMulti_05
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 264
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeMulti_06
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 528
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeMulti_07
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeMulti_08
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 264
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeMulti_09
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 528
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeStump_01
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeBig_01
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeBig_02
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideTop_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1320
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideTop_02
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1320
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideTop_03
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1320
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideTop_04
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1056
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideTop_05
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideMain_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1056
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideMain_02
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1056
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideMain_03
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1321
+        width: 256
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideMain_04
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1056
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideMain_05
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideEnd_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideEnd_02
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideEnd_03
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1320
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideEnd_04
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1056
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideEnd_05
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideFinish_01
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1056
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideFinish_02
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1056
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideFinish_03
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideFinish_04
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 528
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideFinish_05
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 264
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_SlideObstacle_01
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1320
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Road_04
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 264
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Altar_01
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Altar_02
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 264
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Altar_03
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 528
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Altar_04
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Altar_05
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 1056
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Cave_02
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 528
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Cave_03
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Cave_01
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 1056
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Altar_06
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 1320
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TreeMulti_10
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1320
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_RollingLog_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1616
+        width: 256
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_RollingLog_02
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1616
+        width: 256
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_LogSpawner_01
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1848
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_LogSpawner_02
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1848
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Lever_01
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1848
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Lever_02
+      rect:
+        serializedVersion: 2
+        x: 1321
+        y: 1584
+        width: 255
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_00
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 2112
+        width: 257
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_00
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 2904
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_01
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 2112
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_02
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 2112
+        width: 257
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_03
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1848
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_04
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 2112
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_05
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 2376
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_06
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1848
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_07
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1848
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_08
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 2376
+        width: 257
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_09
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 2376
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_10
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 2640
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_01
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 2904
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_02
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 2904
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_03
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 2640
+        width: 255
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_04
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 2904
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_10
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 2376
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_05
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 3168
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_06
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 2640
+        width: 256
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_07
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 2640
+        width: 256
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_08
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 3168
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_09
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 3168
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_11
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1584
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Dark_12
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1584
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_11
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 3432
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Pit_Light_12
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 3432
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorIdle_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2112
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorIdle_2
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 2112
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorClose_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4128
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorClose_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3792
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorClose_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3456
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorClose_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3120
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorClose_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2784
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorClose_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2448
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorIdle_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 4464
+        width: 56
+        height: 436
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorIdle_4
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 4464
+        width: 56
+        height: 436
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorOpen_1
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 2448
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorOpen_2
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 2784
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorOpen_3
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 3120
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorOpen_4
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 3456
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorOpen_5
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 3792
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_DoorOpen_6
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 4128
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Button_1
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1584
+        width: 56
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_Button_2
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 1584
+        width: 56
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Terrain Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 1712
+        y: 1584
+        width: 32
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Terrain Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1848
+        width: 256
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Forest_TrialDoor_Floor
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 4463
+        width: 144
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
