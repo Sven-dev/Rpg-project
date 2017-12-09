@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-class DoorTrigger : Trigger
+public class DoorTrigger : Trigger
 {
     #region Variables
     public string scene;

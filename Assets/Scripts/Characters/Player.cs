@@ -130,12 +130,11 @@ public class Player : MonoBehaviour {
             Interactable Object = hit.transform.gameObject.GetComponent<Interactable>();
             if (Object != null)
             {
+                Controls_OFF();
                 Object.Interact();
             }
         }
     }
-
-
     #endregion
 
     #region Trigger detection
@@ -146,23 +145,10 @@ public class Player : MonoBehaviour {
 
         if (T != null)
         {
+            Controls_OFF();
             T.ExecuteTrigger();
         }
     }
-
-            /*
-            RaycastHit hit;
-            Vector3 pos = transform.position;
-
-            if (Physics.Raycast(pos, dir, out hit, dis))
-            {
-                Interactable Object = hit.transform.gameObject.GetComponent<Interactable>();
-                if (Object != null)
-                {
-                    Object.Interact();
-                }
-            }
-            */
     #endregion
 
     #region Toggle Movement

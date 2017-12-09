@@ -8,16 +8,22 @@ public class ObjectText : Interactable
 
     public override void Interact()
     {
+        StartCoroutine(interaction());
+    }
+
+    IEnumerator interaction()
+    {
         Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
         p.Controls_OFF();
 
-        if (dialogue != null)
+        yield return new WaitForEndOfFrame();
+        dialogue.StartProcess();
+
+        while (dialogue.Active)
         {
-            dialogue.StartProcess();
+            yield return new WaitForEndOfFrame();
         }
-        else
-        {
-            p.Controls_ON();
-        }
+
+        p.Controls_ON();
     }
 }

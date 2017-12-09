@@ -24,18 +24,23 @@ public class Npc : Interactable {
 
     public override void Interact()
     {
+        StartCoroutine(interaction());
+    }
+
+    IEnumerator interaction()
+    {
         Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
-        p.Controls_OFF();
         TurnToPlayer(p);
 
-        if (dialogue != null)
+        yield return new WaitForEndOfFrame();
+        dialogue.StartProcess();
+
+        while (dialogue.Active)
         {
-            dialogue.StartProcess();
+            yield return new WaitForEndOfFrame();
         }
-        else
-        {
-            p.Controls_ON();
-        }    
+        Debug.Log("controls on");
+        p.Controls_ON();
     }
 
     //Makes the npc turn to the player when talked to
@@ -63,6 +68,7 @@ public class Npc : Interactable {
         anim.Play(dir + "_Idle");
     }
 
+    //Lets an NPC walk to a position, as long as it is a straight line, and there's no object in between.
     void MoveTo(Vector2 pos)
     {
 

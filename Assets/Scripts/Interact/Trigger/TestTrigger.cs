@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-class TestTrigger : Trigger
+public class TestTrigger : Trigger
 {
 
 	// Use this for initialization
@@ -16,6 +16,6 @@ class TestTrigger : Trigger
 
     public override void ExecuteTrigger()
     {
-        Debug.Log("overridden trigger");
+        Debug.Log("overritten trigger");
     }
 }

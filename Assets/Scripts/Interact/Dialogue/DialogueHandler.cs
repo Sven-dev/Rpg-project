@@ -2,15 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DialogueHandler : InteractObject
+public class DialogueHandler: Action
 {
     #region Fields
     public List<Dialogue> DialogueList;
 
     private int Startindex;
     private int Currentindex;
-
-    private bool Active;
     #endregion
 
     // Use this for initialization
@@ -18,7 +16,6 @@ public class DialogueHandler : InteractObject
     {
         Startindex = 0;
         Currentindex = 0;
-        Active = false;
     }
 
     // Update is called once per frame
@@ -141,12 +138,6 @@ public class DialogueHandler : InteractObject
         SpawnDialogueBox();
         DialogueList[Currentindex].StartDialogue();
 
-        StartCoroutine(Wait());
-    }
-
-    IEnumerator Wait()
-    {
-        yield return new WaitForEndOfFrame();
         Active = true;
     }
 
@@ -158,9 +149,6 @@ public class DialogueHandler : InteractObject
         ResetDialogue();
 
         Active = false;
-
-        Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
-        p.Controls_ON();
 
         //TO DO: is supposed to return a positive or negative result of the dialogue
         //return 0;
