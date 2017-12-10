@@ -18,8 +18,7 @@ public class DoorTrigger : Trigger
     private GameObject BBClone2;
     private SpriteRenderer BBAlpha;
 
-    private GameObject Player;
-    private Player pscript;
+    private GameObject player;
 
     // Use this for initialization
     void Start ()
@@ -28,6 +27,8 @@ public class DoorTrigger : Trigger
 
         FadeAlpha = 0;
         FadeTimer = 0.01f;
+
+        player = GameObject.FindWithTag("Player");
     }
 
     //Timer for fading in BlackBox
@@ -65,13 +66,6 @@ public class DoorTrigger : Trigger
     {
         Debug.Log("trigger found: " + scene);
 
-        //Gets the player gameobject and script
-        Player = GameObject.FindWithTag("Player");
-        pscript = Player.GetComponent<Player>();
-
-        //lock player controls
-        pscript.ControlsToggle();
-
         //spawn blackbox (0% opacity)
         SpawnBlackBox();
 
@@ -87,7 +81,7 @@ public class DoorTrigger : Trigger
 
     void SpawnBlackBox()
     {
-        Vector3 playerpos = Player.transform.position;
+        Vector3 playerpos = player.transform.position;
         BBClone = GameObject.Instantiate(BlackBox, playerpos, new Quaternion(0, 0, 0, 0)) as GameObject;
 
         //DontDestroyOnLoad() blackbox
@@ -102,7 +96,7 @@ public class DoorTrigger : Trigger
     {
         SceneManager.LoadScene(scene);
 
-        Player.transform.position = position;
+        player.transform.position = position;
         BBClone.transform.position = position;
 
         StartCoroutine(Fade_Out());
@@ -110,7 +104,10 @@ public class DoorTrigger : Trigger
 
     void FinishSwitch()
     {
-        pscript.ControlsToggle();
+        //Gets the player gameobject and script
+        Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
+
+        p.Controls_ON();
 
         Destroy(BBClone);
         Destroy(this.gameObject);
