@@ -13,10 +13,6 @@ public class ObjectText : Interactable
 
     IEnumerator interaction()
     {
-        Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
-        p.Controls_OFF();
-
-        yield return new WaitForEndOfFrame();
         dialogue.StartProcess();
 
         while (dialogue.Active)
@@ -24,6 +20,7 @@ public class ObjectText : Interactable
             yield return new WaitForEndOfFrame();
         }
 
+        Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
         p.Controls_ON();
     }
 }

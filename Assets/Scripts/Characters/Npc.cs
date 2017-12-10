@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Npc : Interactable {
 
-    public float Speed;
+    private Vector3 Deltaposition;
     private string Direction;
-    public DialogueHandler dialogue;
+
+    public List<Action> ActionList;
+
+    private bool active;
+    private int currentIndex;
 
     private Animator anim;
 
@@ -13,15 +18,24 @@ public class Npc : Interactable {
     void Start()
     {
         anim = GetComponent<Animator>();
+        Deltaposition = transform.position;
         anim.Play("D_Idle");
     }
-	
-	// Update is called once per frame
-	void Update()
-    {
-	
-	}
 
+    void Update()
+    {
+        if (Deltaposition != transform.position)
+        {
+            SetDirection();
+        }
+        else
+        {
+            anim.Play(Direction + "_Idle");
+        }
+
+        Deltaposition = transform.position;
+    }
+	
     public override void Interact()
     {
         StartCoroutine(interaction());
@@ -32,56 +46,82 @@ public class Npc : Interactable {
         Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
         TurnToPlayer(p);
 
-        yield return new WaitForEndOfFrame();
-        dialogue.StartProcess();
+        //Starts the first action in the list
+        this.active = true;
+        ActionList[0].StartProcess();
 
-        while (dialogue.Active)
+        while (active)
         {
+            if (ActionList[currentIndex].Active == false)
+            {
+                nextaction();
+            }
             yield return new WaitForEndOfFrame();
         }
-        Debug.Log("controls on");
+
         p.Controls_ON();
     }
 
     //Makes the npc turn to the player when talked to
     void TurnToPlayer(Player p)
     {
-        string dir = p.GetDirection();
+        string playerdir = p.GetDirection();
 
-        if(dir == "W")
+        if(playerdir == "W")
         {
-            dir = "S";
+            Direction = "S";
         }
-        else if (dir == "A")
+        else if (playerdir == "A")
         {
-            dir = "D";
+            Direction = "D";
         }
-        else if (dir == "S")
+        else if (playerdir == "S")
         {
-            dir = "W";
+            Direction = "W";
         }
         else //if (dir == "D")
         {
-            dir = "A";
+            Direction = "A";
         }
 
-        anim.Play(dir + "_Idle");
+        anim.Play(Direction + "_Idle");
     }
 
-    //Lets an NPC walk to a position, as long as it is a straight line, and there's no object in between.
-    void MoveTo(Vector2 pos)
+    void SetDirection()
     {
+        if (Deltaposition.y < transform.position.y) //move up
+        {
+            Direction = "W";
+        }
 
+        if (Deltaposition.y > transform.position.y) //move down
+        {
+            Direction = "S";
+        }
+
+        if (Deltaposition.x > transform.position.x) //move left
+        {
+            Direction = "A";
+        }
+
+        if (Deltaposition.x < transform.position.x) //move right
+        {
+            Direction = "D";
+        }
+
+        anim.Play(Direction + "_Walk");
     }
 
-    //Makes the npc move
-    void Move(Vector3 direction)
+    void nextaction()
     {
-        transform.position += (direction * Speed) * Time.fixedDeltaTime;
-        //SetSortingLayer();
+        if (currentIndex < ActionList.Count - 1)
+        {
+            currentIndex++;
+            ActionList[currentIndex].StartProcess();
+        }
+        else
+        {
+            this.active = false;
+        }
     }
-
-    //direction
-    //Movement
-    //talking
 }

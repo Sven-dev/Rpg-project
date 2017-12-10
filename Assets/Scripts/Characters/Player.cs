@@ -4,12 +4,11 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
     #region Fields
-    public float Speed;
     private string Direction;
     private bool ControlsLocked;
 
     private Animator anim;
-    private SpriteRenderer renderer;
+    private Movement mover;
     #endregion
 
     #region Unity Logic
@@ -18,9 +17,7 @@ public class Player : MonoBehaviour {
         //Makes sure the object doesn't unload when switching scenes
         DontDestroyOnLoad(transform.gameObject);
 
-        //Gets the spriterender and sets the sorting layer
-        renderer = GetComponent<SpriteRenderer>();
-        SetSortingLayer();
+        mover = GetComponent<Movement>();
 
         //Gets the animator and sets a default animation and direction
         anim = GetComponent<Animator>();
@@ -34,8 +31,6 @@ public class Player : MonoBehaviour {
     void Update()
     {
         CheckForInteract();
-
-        SetSortingLayer();
     }
 
     void FixedUpdate()
@@ -51,32 +46,32 @@ public class Player : MonoBehaviour {
         {
             if (!ControlsLocked)
             {
-                //move right (W)
+                //move up (W)
                 if (Input.GetKey(KeyCode.W))
                 {
                     Direction = "W";
-                    Move(GetDirectionVector());
+                    mover.Move(GetDirectionVector());
                 }
 
-                //move left (S)
+                //move down (S)
                 if (Input.GetKey(KeyCode.S))
                 {
                     Direction = "S";
-                    Move(GetDirectionVector());
+                    mover.Move(GetDirectionVector());
                 }
 
                 //move left (A)
                 if (Input.GetKey(KeyCode.A))
                 {
                     Direction = "A";
-                    Move(GetDirectionVector());
+                    mover.Move(GetDirectionVector());
                 }
 
                 //move right (D)
                 if (Input.GetKey(KeyCode.D))
                 {
                     Direction = "D";
-                    Move(GetDirectionVector());
+                    mover.Move(GetDirectionVector());
                 }
 
                 anim.Play(Direction + "_Walk");
@@ -87,13 +82,6 @@ public class Player : MonoBehaviour {
         {
             anim.Play(Direction + "_Idle");
         }
-    }
-
-    //Makes the player move
-    void Move(Vector3 direction)
-    {
-        transform.position += (direction * Speed) * Time.fixedDeltaTime;
-        SetSortingLayer();
     }
     #endregion
 
@@ -169,13 +157,6 @@ public class Player : MonoBehaviour {
     #endregion
 
     #region Misc.
-    //Sets the objects sorting layer to be the same as the objects y-coördinate, allowing walking behind other objects
-    void SetSortingLayer()
-    {
-        float objHeight = renderer.bounds.size.y * 0.8f;
-
-        renderer.sortingOrder = (int)((transform.position.y - objHeight) * -10);
-    }
 
     //Takes a direction (W, A, S, D) and returns a vector3
     Vector3 GetDirectionVector()
