@@ -28,7 +28,6 @@ public class Movement : MonoBehaviour {
 
     public void MoveTo(Vector2 target)
     {
-        Debug.Log("Times moved");
         transform.position = Vector2.MoveTowards(transform.position, target, Speed * Time.fixedDeltaTime);
         SetSortingLayer();
     }

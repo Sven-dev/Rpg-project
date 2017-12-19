@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public abstract class Dialogue : MonoBehaviour {
 
     #region Fields
-    public GameObject DialogueBoxPrefab;
     protected GameObject DialogueBoxClone;
 
     public string Text;
@@ -91,18 +90,30 @@ public abstract class Dialogue : MonoBehaviour {
     //Spawns the proper dialoguebox on the position of the camera
     public virtual void SpawnDialogueBox()
     {
-        //Gets the cameraposition, and changes the y to get the DialogueBox spawn coöridinates
-        Vector3 camerapos = Camera.main.gameObject.transform.position;
-        camerapos.y -= 3.25f;
-        camerapos.z = 1;
+        DialogueBoxClone = GameObject.Find("Main Camera");
 
-        //Spawns the DialogueBox
-        DialogueBoxClone = GameObject.Instantiate
-            (
-            DialogueBoxPrefab,
-            camerapos,
-            new Quaternion(0, 0, 0, 0)
-            ) as GameObject;
+        if (this is CharLog)
+        {
+            DialogueBoxClone = DialogueBoxClone.transform.GetChild(0).gameObject;
+        }
+        else if (this is CharChoice)
+        {
+            DialogueBoxClone = DialogueBoxClone.transform.GetChild(1).gameObject;
+        }
+        else if (this is DescLog)
+        {
+            DialogueBoxClone = DialogueBoxClone.transform.GetChild(2).gameObject;
+        }
+        else if (this is DescChoice)
+        {
+            DialogueBoxClone = DialogueBoxClone.transform.GetChild(3).gameObject;
+        }
+        else
+        {
+            throw new System.NotImplementedException("Dialogue box was not defined!");
+        }
+
+        DialogueBoxClone.transform.GetChild(0).gameObject.SetActive(true);
 
         //Gets the text component, and assigns it to a variable
         Text TB = DialogueBoxClone.transform.Find("Canvas/Text").GetComponent<Text>();
@@ -116,7 +127,7 @@ public abstract class Dialogue : MonoBehaviour {
     //Destroys the dialoguebox when the dialogue is done
     public virtual void DestroyDialogueBox()
     {
-        Destroy(DialogueBoxClone);
+        DialogueBoxClone.transform.GetChild(0).gameObject.SetActive(false);
     }
     #endregion
 }

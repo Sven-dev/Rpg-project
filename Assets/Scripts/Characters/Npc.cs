@@ -19,6 +19,7 @@ public class Npc : Interactable {
     {
         anim = GetComponent<Animator>();
         Deltaposition = transform.position;
+        Direction = "D";
         anim.Play("D_Idle");
     }
 
