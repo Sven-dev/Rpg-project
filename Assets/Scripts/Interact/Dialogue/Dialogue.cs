@@ -27,19 +27,20 @@ public abstract class Dialogue : MonoBehaviour {
         TextSpeed = 1f;
 	}
 
-    // Update is called once per frame
-    void Update()
+    #region Writing
+    IEnumerator writing()
     {
-        if (Active)
+        while (Active)
         {
             if (!IsWriteDone())
-            {              
+            {
                 Write();
             }
+
+            yield return null;
         }
     }
 
-    #region Writing
     //Checks the progress of the textwriting, returns true if finished
     public virtual bool IsWriteDone()
     {
@@ -76,6 +77,7 @@ public abstract class Dialogue : MonoBehaviour {
     public void StartDialogue()
     {
         Active = true;
+        StartCoroutine(writing());
     }
 
     //sets the dialogue back to its original state, allowing it to be used again.

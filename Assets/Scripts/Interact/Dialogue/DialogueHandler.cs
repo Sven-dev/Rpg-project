@@ -18,15 +18,6 @@ public class DialogueHandler: Action
         Currentindex = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Active)
-        {
-            CheckKeys();
-        }
-    }
-
     #region KeyChecks
     //Checks if the current dialogue is a log or a choice, and calls the correct CheckKey method
     void CheckKeys()
@@ -90,13 +81,16 @@ public class DialogueHandler: Action
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (currentdialogue.IsWriteDone())
         {
-            currentdialogue.UpdateSelectedIndex(-1);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            currentdialogue.UpdateSelectedIndex(1);
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                currentdialogue.UpdateSelectedIndex(-1);
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                currentdialogue.UpdateSelectedIndex(1);
+            }
         }
     }
     #endregion
@@ -139,6 +133,17 @@ public class DialogueHandler: Action
         DialogueList[Currentindex].StartDialogue();
 
         Active = true;
+        StartCoroutine(activate());
+    }
+
+    IEnumerator activate()
+    {
+        yield return new WaitForEndOfFrame();
+        while (Active)
+        {
+            CheckKeys();
+            yield return null;
+        }
     }
 
     //Ends the dialogue, resets the handler, and unlocks player controls
