@@ -11,11 +11,11 @@ public abstract class Choice : Dialogue {
     public List<int> ChoiceIndexList;
 
     protected int SelectedChoice;
-    #endregion
 
-    #region UnityFields
-    public GameObject CursorPrefab;
-    protected GameObject CursorClone;
+    private Text A;
+    private Text B;
+    private Image ACursor;
+    private Image BCursor;
     #endregion
 
     #region Writing
@@ -43,25 +43,16 @@ public abstract class Choice : Dialogue {
     //Spawns the choice, and the cursor, so the player can choose
     protected virtual void SpawnChoice()
     {
+        //Add data to option A
+        A = DialogueBoxClone.transform.Find("Canvas/Choice/A").GetComponent<Text>();
+        A.text = ChoiceList[0];
+        ACursor = A.transform.Find("Cursor").GetComponent<Image>();
 
-
-        Text CTA = DialogueBoxClone.transform.Find("Canvas/Choice/A").GetComponent<Text>();
-
-        if (CTA != null)
-        {
-            CTA.text = ChoiceList[0];
-        }
-
-        Text CTB = DialogueBoxClone.transform.Find("Canvas/Choice/B").GetComponent<Text>();
-
-        if (CTB != null)
-        {
-            CTB.text = ChoiceList[1];
-        }
-
-        CTB.transform.GetChild(0).GetComponent<Image>().color = Color.white;
-
-        CursorClone.transform.parent = DialogueBoxClone.transform;
+        //Add data to option B
+        B = DialogueBoxClone.transform.Find("Canvas/Choice/B").GetComponent<Text>();
+        B.text = ChoiceList[1];
+        BCursor = B.transform.Find("Cursor").GetComponent<Image>();
+   
         UpdateCursor();
     }
 
@@ -78,23 +69,18 @@ public abstract class Choice : Dialogue {
     //Updates the position of the cursor
     protected virtual void UpdateCursor()
     {
-        Transform TF;
-        Vector3 POS;
-
+        //Change the alpha value of the selected choice to 1 
+        //and the other to 0 (makes the option in visible)
         if (SelectedChoice == 0)
         {
-            TF = DialogueBoxClone.transform.Find("Canvas/ChoiceA");
+            ACursor.color = new Color(1, 1, 1, 1);
+            BCursor.color = new Color(1, 1, 1, 0);
         }
         else //(SelectedChoice == 1)
         {
-            TF = DialogueBoxClone.transform.Find("Canvas/ChoiceB");
+            ACursor.color = new Color(1, 1, 1, 0);
+            BCursor.color = new Color(1, 1, 1, 1);
         }
-
-        POS = TF.transform.position;
-        POS.x -= 0.23f * ChoiceList[SelectedChoice].Length / 2 + 0.6f;
-        POS.y += 0.13f;
-
-        CursorClone.transform.position = POS;
     }
 
     //Returns the index of the selected choice.
@@ -112,6 +98,11 @@ public abstract class Choice : Dialogue {
         base.ResetDialogue();
 
         SelectedChoice = 0;
+        A.text = "";
+        B.text = "";
+
+        ACursor.color = new Color(1, 1, 1, 0);
+        BCursor.color = new Color(1, 1, 1, 0);
     }
     #endregion
 }

@@ -35,9 +35,9 @@ public class MenuChoice : Choice
             CTD.text = ChoiceList[3];
         }
 
-        CursorClone = Instantiate(CursorPrefab);
+        //CursorClone = Instantiate(CursorPrefab);
 
-        CursorClone.transform.parent = DialogueBoxClone.transform;
+        //CursorClone.transform.parent = DialogueBoxClone.transform;
         UpdateCursor();
     }
 
@@ -63,6 +63,6 @@ public class MenuChoice : Choice
         POS.x -= 0.23f * ChoiceList[SelectedChoice].Length / 2 + 0.6f;
         POS.y += 0.05f;
 
-        CursorClone.transform.position = POS;
+        //CursorClone.transform.position = POS;
     }
 }

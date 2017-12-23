@@ -82,6 +82,7 @@ public abstract class Dialogue : MonoBehaviour {
     public virtual void ResetDialogue()
     {
         Active = false;
+        DialogueText.text = "";
         CurrentLetter = 0;
     }
     #endregion
@@ -90,23 +91,23 @@ public abstract class Dialogue : MonoBehaviour {
     //Spawns the proper dialoguebox on the position of the camera
     public virtual void SpawnDialogueBox()
     {
-        DialogueBoxClone = GameObject.Find("Main Camera");
+        GameObject cam = GameObject.Find("Main Camera");
 
         if (this is CharLog)
         {
-            DialogueBoxClone = DialogueBoxClone.transform.GetChild(0).gameObject;
+            DialogueBoxClone = cam.transform.GetChild(0).gameObject;
         }
         else if (this is CharChoice)
         {
-            DialogueBoxClone = DialogueBoxClone.transform.GetChild(1).gameObject;
+            DialogueBoxClone = cam.transform.GetChild(1).gameObject;
         }
         else if (this is DescLog)
         {
-            DialogueBoxClone = DialogueBoxClone.transform.GetChild(2).gameObject;
+            DialogueBoxClone = cam.transform.GetChild(2).gameObject;
         }
         else if (this is DescChoice)
         {
-            DialogueBoxClone = DialogueBoxClone.transform.GetChild(3).gameObject;
+            DialogueBoxClone = cam.transform.GetChild(3).gameObject;
         }
         else
         {
