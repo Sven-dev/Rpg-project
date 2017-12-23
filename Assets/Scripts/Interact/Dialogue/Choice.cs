@@ -7,6 +7,7 @@ public abstract class Choice : Dialogue {
 
     #region Fields
     public List<string> ChoiceList;
+    
     public List<int> ChoiceIndexList;
 
     protected int SelectedChoice;
@@ -42,21 +43,23 @@ public abstract class Choice : Dialogue {
     //Spawns the choice, and the cursor, so the player can choose
     protected virtual void SpawnChoice()
     {
-        Text CTA = DialogueBoxClone.transform.Find("Canvas/ChoiceA").GetComponent<Text>();
+
+
+        Text CTA = DialogueBoxClone.transform.Find("Canvas/Choice/A").GetComponent<Text>();
 
         if (CTA != null)
         {
             CTA.text = ChoiceList[0];
         }
 
-        Text CTB = DialogueBoxClone.transform.Find("Canvas/ChoiceB").GetComponent<Text>();
+        Text CTB = DialogueBoxClone.transform.Find("Canvas/Choice/B").GetComponent<Text>();
 
         if (CTB != null)
         {
             CTB.text = ChoiceList[1];
         }
 
-        CursorClone = Instantiate(CursorPrefab);
+        CTB.transform.GetChild(0).GetComponent<Image>().color = Color.white;
 
         CursorClone.transform.parent = DialogueBoxClone.transform;
         UpdateCursor();
