@@ -35,7 +35,10 @@ public class CameraMover : MonoBehaviour {
     // Update camera position
     void UpdateCameraPos()
     {
-        transform.position = Vector2.Lerp(transform.position, Target.transform.position, Speed);
+        if (Target != null)
+        {
+            transform.position = Vector2.Lerp(transform.position, Target.transform.position, Speed);
+        }
     }
 
     //function that ensures the camera stays within the bounds of the map

@@ -13,11 +13,6 @@ public class Movement : MonoBehaviour {
         renderer = GetComponent<SpriteRenderer>();
         SetSortingLayer();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     //Makes the player move
     public void Move(Vector3 direction)

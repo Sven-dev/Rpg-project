@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
 
     #region Fields
     private string Direction;
+    private Vector3 Deltaposition;
     private bool ControlsLocked;
 
     private Animator anim;
@@ -42,9 +43,9 @@ public class Player : MonoBehaviour {
     #region Movement
     void CheckForMovement()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        if (!ControlsLocked)
         {
-            if (!ControlsLocked)
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
             {
                 //move up (W)
                 if (Input.GetKey(KeyCode.W))
@@ -75,12 +76,13 @@ public class Player : MonoBehaviour {
                 }
 
                 anim.Play(Direction + "_Walk");
-            }
-        }
 
-        else //idle
-        {
-            anim.Play(Direction + "_Idle");
+            }
+            else
+            {
+                anim.Play(Direction + "_Idle");
+                Deltaposition = transform.position;
+            }
         }
     }
     #endregion
