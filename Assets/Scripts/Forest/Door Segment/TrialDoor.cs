@@ -5,9 +5,6 @@ public class TrialDoor : MonoBehaviour
 {
     public bool State;
 
-    public Sprite On;
-    public Sprite Off;
-
     public AnimationClip Open_anim;
     public AnimationClip Close_anim;
 
@@ -24,8 +21,6 @@ public class TrialDoor : MonoBehaviour
         head = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         doorCollider = GetComponent<BoxCollider>();
         anim = GetComponent<Animator>();
-
-        UpdateStart();
     }
 
     //Opens or closes the door
@@ -48,41 +43,21 @@ public class TrialDoor : MonoBehaviour
     }
 
     //Updates the sprite and collision of the Door
-    void UpdateSprite()
+    public void UpdateSprite()
     {
+        Debug.Log("Updating");
         if (State == true)
         {
-            if (Open_anim != null)
-            {
-                anim.Play(Open_anim.name);
-            }
-
+            anim.Play(Open_anim.name);
             head.sprite = HeadOn;
+
             doorCollider.enabled = false;
         }
         else
         {
-            if (Close_anim != null)
-            {
-                anim.Play(Close_anim.name);
-            }
-            
+            anim.Play(Close_anim.name);
             head.sprite = HeadOff;
-            doorCollider.enabled = true;
-        }
-    }
 
-    //Updates the sprite and collision of the Door for on start, without the animations
-    void UpdateStart()
-    {
-        if (State == true)
-        {
-            head.sprite = HeadOn;
-            doorCollider.enabled = false;
-        }
-        else
-        {
-            head.sprite = HeadOff;
             doorCollider.enabled = true;
         }
     }

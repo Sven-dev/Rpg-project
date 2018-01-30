@@ -44,9 +44,5 @@ public class Button : Interactable {
     public void TurnOff()
     {
         sr.sprite = Off;
-        foreach (TrialDoor Door in DoorList)
-        {
-            Door.Close();
-        }
     }
 }
