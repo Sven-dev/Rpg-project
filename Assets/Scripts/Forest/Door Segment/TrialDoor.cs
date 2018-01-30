@@ -16,18 +16,18 @@ public class TrialDoor : MonoBehaviour
 
     private SpriteRenderer head;
     public BoxCollider doorCollider;
-    private Animator an;
+    private Animator anim;
 
     // Use this for initialization
     void Start()
     {
         head = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         doorCollider = GetComponent<BoxCollider>();
-        an = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
 
         UpdateStart();
     }
-	
+
     //Opens or closes the door
     public void Toggle()
     {
@@ -51,14 +51,22 @@ public class TrialDoor : MonoBehaviour
     void UpdateSprite()
     {
         if (State == true)
-        {   
-            an.Play(Open_anim.name);
+        {
+            if (Open_anim != null)
+            {
+                anim.Play(Open_anim.name);
+            }
+
             head.sprite = HeadOn;
             doorCollider.enabled = false;
         }
         else
         {
-            an.Play(Close_anim.name);
+            if (Close_anim != null)
+            {
+                anim.Play(Close_anim.name);
+            }
+            
             head.sprite = HeadOff;
             doorCollider.enabled = true;
         }

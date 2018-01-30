@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ad53eab2e80fdf84f9f235957d3cf262
-timeCreated: 1517015740
+timeCreated: 1517267154
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -57,6 +57,9 @@ TextureImporter:
     21300100: Bridge_05
     21300102: Bridge_06
     21300104: Bridge_07
+    21300106: Gate_side
+    21300108: GateSide_Head_Closed
+    21300110: GateSide_Head_Open
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -402,7 +405,7 @@ TextureImporter:
         x: 2048
         y: 672
         width: 256
-        height: 136
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -880,7 +883,49 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gate_side
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 904
+        width: 56
+        height: 412
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GateSide_Head_Closed
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 904
+        width: 56
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GateSide_Head_Open
+      rect:
+        serializedVersion: 2
+        x: 2504
+        y: 904
+        width: 56
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

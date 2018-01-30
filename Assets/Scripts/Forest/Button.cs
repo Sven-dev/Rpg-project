@@ -1,55 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Button : Interactable {
 
     public Sprite On;
     public Sprite Off;
 
-    public int OnTime;
-    private int CurrentTime;
-
-    public GameObject Controller;
-    private Controller ControllerScript;
+    public List<TrialDoor> DoorList;
+    public Controller ControllerScript;
 
     private SpriteRenderer sr;
 
     // Use this for initialization
     void Start ()
     {
-        ControllerScript = Controller.GetComponent<Controller>();
         sr = GetComponent<SpriteRenderer>();
-
-        CurrentTime = -1;
     }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        //If there is 1 second left on the timer, change the sprite to off
-        if (CurrentTime == 0)
-        {
-            sr.sprite = Off;
-        }
-
-        //If the timer is going, make sure it counts down (per frame)
-	    if (CurrentTime >= 0)
-        {
-            CurrentTime--;
-        }
-	}
 
     //Methods for objects to interact with the lever
     public override void Interact()
     {
-        ToggleState();
+        Press();
     }
 
     //Turns on the button, Changes the sprite and starts a timer for changing it back
-    void ToggleState()
+    void Press()
     {
-        ControllerScript.CheckLogic();
-        sr.sprite = On;
-        CurrentTime = OnTime;
+        if (sr.sprite != On)
+        {
+            sr.sprite = On;
+            if (ControllerScript is DoorController)
+            {
+                DoorController logic = ControllerScript as DoorController;
+                logic.CurrentButton = this;
+                ControllerScript.CheckLogic();
+            }
+        }
+
+        GameObject.FindWithTag("Player").GetComponent<Player>().Controls_ON();
+    }
+
+    public void TurnOff()
+    {
+        sr.sprite = Off;
+        foreach (TrialDoor Door in DoorList)
+        {
+            Door.Close();
+        }
     }
 }
