@@ -5,40 +5,95 @@ using System.Linq;
 
 public class DoorController : Controller
 {
-    private Button LastButton;
+    [HideInInspector]
     public Button CurrentButton;
+    private Button LastButton;
+
+    private void Start()
+    {
+        //foreach button in scene, check if enabled, if so, put it as lastbutton
+        List<GameObject> Buttons = GameObject.FindGameObjectsWithTag("Button").ToList();
+        foreach (GameObject G in Buttons)
+        {
+            Button B = G.GetComponent<Button>();
+            if (B.State == true)
+            {
+                //Only checks for 1 object, since only 1 button should be pressed
+                LastButton = B;
+                break;
+            }
+        }
+    }
 
     //Toggles the door for each door connected to script
     public override void CheckLogic()
     {
         if (LastButton != null)
         {
-            List<TrialDoor> Doors = new List<TrialDoor>();
+            UpdateDoors();
 
-            foreach (TrialDoor Door in LastButton.DoorList)
-            {
-                Door.State = false;
-                Doors.Add(Door);
-            }
-            foreach (TrialDoor Door in CurrentButton.DoorList)
-            {
-                Door.State = true;
-                Doors.Add(Door);
-            }
-
-            List<TrialDoor> DistDoors = Doors.Distinct().ToList();
-
-            foreach (TrialDoor Door in DistDoors)
-            {
-                Door.UpdateSprite();
-            }
-
-            LastButton.TurnOff();
-            LastButton = CurrentButton;
         }
         else
         {
             ToggleDoors();
+        }
+    }
+
+    void UpdateDoors()
+    {
+        List<TrialDoor> AllDoors = new List<TrialDoor>();
+
+        foreach (TrialDoor Door in LastButton.DoorList)
+        {
+            Door.State = false;
+            AllDoors.Add(Door);
+        }
+
+        foreach (TrialDoor Door in CurrentButton.DoorList)
+        {
+            Door.State = true;
+            AllDoors.Add(Door);
+        }
+
+        List<TrialDoor> distinct = AllDoors.Distinct().ToList();
+
+        foreach (TrialDoor Door in distinct)
+        {
+            Door.UpdateSprite();
+        }
+
+        LastButton.TurnOff();
+        UpdateCables();
+        LastButton = CurrentButton;
+    }
+
+    void UpdateCables()
+    {
+        foreach (Transform CableBox in CurrentButton.transform)
+        {
+            foreach (Transform Cable in CableBox.transform)
+            {
+                Cable.GetComponent<CableManager>().TurnON();
+            }
+        }
+
+        foreach (Transform CableBox in LastButton.transform)
+        {
+            foreach (Transform Cable in CableBox.transform)
+            {
+                Cable.GetComponent<CableManager>().TurnOFF();
+            }
+        }
+    }
+
+    void ToggleCables()
+    {
+        foreach (Transform CableBox in CurrentButton.transform)
+        {
+            foreach (Transform Cable in CableBox.transform)
+            {
+                Cable.GetComponent<CableManager>().TurnON();
+            }
         }
     }
 
@@ -52,6 +107,7 @@ public class DoorController : Controller
             }
         }
 
+        ToggleCables();
         LastButton = CurrentButton;
     }
 }

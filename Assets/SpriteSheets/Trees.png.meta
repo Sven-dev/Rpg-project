@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ad53eab2e80fdf84f9f235957d3cf262
-timeCreated: 1517267154
+timeCreated: 1517503019
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -60,6 +60,19 @@ TextureImporter:
     21300106: Gate_side
     21300108: GateSide_Head_Closed
     21300110: GateSide_Head_Open
+    21300112: Cable_ON_01
+    21300114: Cable_OFF_01
+    21300116: Cable_OFF_03
+    21300118: Cable_ON_03
+    21300120: Cable_ON_02
+    21300122: Cable_OFF_02
+    21300124: Cable_OFF_04
+    21300126: Cable_ON_04
+    21300128: OFFCable_Vertical
+    21300130: ONCable_Vertical
+    21300132: ONCable_Horizontal
+    21300134: OFFCable_Horizontal
+    21300136: Wall_Front_Shadow
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -403,9 +416,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2048
-        y: 672
+        y: 688
         width: 256
-        height: 152
+        height: 136
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -926,6 +939,76 @@ TextureImporter:
         height: 116
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: OFFCable_Vertical
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 1048
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ONCable_Vertical
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 1048
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ONCable_Horizontal
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 1040
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: OFFCable_Horizontal
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 1040
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wall_Front_Shadow
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 672
+        width: 256
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

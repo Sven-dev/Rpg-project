@@ -7,6 +7,8 @@ public class Button : Interactable {
     public Sprite On;
     public Sprite Off;
 
+    public bool State;
+
     public List<TrialDoor> DoorList;
     public Controller ControllerScript;
 
@@ -27,9 +29,11 @@ public class Button : Interactable {
     //Turns on the button, Changes the sprite and starts a timer for changing it back
     void Press()
     {
-        if (sr.sprite != On)
+        if (State != true)
         {
+            State = true;
             sr.sprite = On;
+
             if (ControllerScript is DoorController)
             {
                 DoorController logic = ControllerScript as DoorController;
@@ -43,6 +47,7 @@ public class Button : Interactable {
 
     public void TurnOff()
     {
+        State = false;
         sr.sprite = Off;
     }
 }
