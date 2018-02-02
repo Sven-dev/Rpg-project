@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ad53eab2e80fdf84f9f235957d3cf262
-timeCreated: 1517503019
+timeCreated: 1517586012
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -73,6 +73,12 @@ TextureImporter:
     21300132: ONCable_Horizontal
     21300134: OFFCable_Horizontal
     21300136: Wall_Front_Shadow
+    21300138: Path_05
+    21300140: Path_02
+    21300142: Path_03
+    21300144: Path_04
+    21300146: Path_00
+    21300148: Path_02
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -1008,7 +1014,77 @@ TextureImporter:
         width: 256
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Path_05
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 952
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Path_02
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 952
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Path_03
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1208
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Path_04
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1208
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Path_00
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1464
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
