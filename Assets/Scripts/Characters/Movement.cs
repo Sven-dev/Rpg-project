@@ -17,8 +17,27 @@ public class Movement : MonoBehaviour {
     //Makes the player move
     public void Move(Vector3 direction)
     {
-        transform.position += (direction * Speed) * Time.fixedDeltaTime;
-        SetSortingLayer();
+        Vector3 pos = transform.position + Vector3.down;
+        bool walk = false;
+
+        RaycastHit hit;
+        if (Physics.Raycast(pos, direction, out hit, 0.5f))
+        {
+            if (hit.transform.tag == "Player")
+            {
+                walk = true;
+            }
+        }
+        else
+        {
+            walk = true;
+        }
+
+        if (walk)
+        {
+            transform.position += (direction * Speed) * Time.fixedDeltaTime;
+            SetSortingLayer();
+        }
     }
 
     public void MoveTo(Vector2 target)
