@@ -9,6 +9,7 @@ public class PitFallTrigger : Trigger
 
     public override void ExecuteTrigger()
     {
+        p.Controls_OFF();
         StartCoroutine(FallDown());
     }
 
@@ -48,6 +49,12 @@ public class PitFallTrigger : Trigger
 
         //Enable controls
         c.Target = g.transform;
+
+        if (p.Balancing)
+        {
+            p.Balancing = false;
+        }
+
         p.Controls_ON();
     }
 }

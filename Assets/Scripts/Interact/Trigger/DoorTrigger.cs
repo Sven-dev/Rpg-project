@@ -64,6 +64,7 @@ public class DoorTrigger : Trigger
 
     public override void ExecuteTrigger()
     {
+        p.Controls_OFF();
         Debug.Log("trigger found: " + scene);
 
         //spawn blackbox (0% opacity)

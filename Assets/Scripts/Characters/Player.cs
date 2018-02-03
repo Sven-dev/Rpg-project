@@ -4,9 +4,10 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
     #region Fields
+    public bool Balancing;
     private string Direction;
     private Vector3 Deltaposition;
-    private bool ControlsLocked;
+    public bool ControlsLocked;
 
     private Animator anim;
     private Movement mover;
@@ -75,13 +76,37 @@ public class Player : MonoBehaviour {
                     mover.Move(GetDirectionVector());
                 }
 
-                anim.Play(Direction + "_Walk");
+                updateSprite(true);
+            }
+            else
+            {
+                updateSprite(false);
+            }
+        }
+    }
 
+    void updateSprite(bool Walking)
+    {
+        if (Balancing)
+        {
+            if (Walking)
+            {
+                anim.Play("Balance_" + Direction + "_Walk");
+            }
+            else
+            {
+                anim.Play("Balance_" + Direction + "_Idle");
+            }
+        }
+        else // if regular walking
+        {
+            if (Walking)
+            {
+                anim.Play(Direction + "_Walk");
             }
             else
             {
                 anim.Play(Direction + "_Idle");
-                Deltaposition = transform.position;
             }
         }
     }
@@ -135,8 +160,17 @@ public class Player : MonoBehaviour {
 
         if (T != null)
         {
-            Controls_OFF();
             T.ExecuteTrigger();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Trigger T = other.GetComponent<Trigger>();
+
+        if (T != null)
+        {
+            T.ExitTrigger();
         }
     }
     #endregion

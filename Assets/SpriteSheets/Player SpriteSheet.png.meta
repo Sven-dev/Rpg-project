@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0c2542c84559beb438ef17d0e733d49c
-timeCreated: 1516977923
+timeCreated: 1517690951
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -57,6 +57,18 @@ TextureImporter:
     21300100: Farmer_D01
     21300102: Farmer_D02
     21300104: Player Fall
+    21300106: Player B_D_01
+    21300108: Player B_D_02
+    21300110: Player B_D_03
+    21300112: Player B_A_01
+    21300114: Player B_A_02
+    21300116: Player B_A_03
+    21300118: Player B_S_01
+    21300120: Player B_S_02
+    21300122: Player B_S_03
+    21300124: Player B_W_01
+    21300126: Player B_W_02
+    21300128: Player B_W_03
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -864,7 +876,175 @@ TextureImporter:
         width: 232
         height: 232
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_D_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2824
+        width: 80
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_D_02
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 2824
+        width: 88
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_D_03
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 2824
+        width: 80
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_A_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2540
+        width: 80
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_A_02
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 2540
+        width: 80
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_A_03
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 2540
+        width: 88
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_S_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1752
+        width: 232
+        height: 272
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_S_02
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 1752
+        width: 232
+        height: 272
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_S_03
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1752
+        width: 232
+        height: 272
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_W_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1480
+        width: 232
+        height: 272
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_W_02
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 1480
+        width: 232
+        height: 272
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player B_W_03
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1480
+        width: 232
+        height: 272
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

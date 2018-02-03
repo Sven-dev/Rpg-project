@@ -5,11 +5,13 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
 
     public float Speed;
+    private Player p;
     private SpriteRenderer renderer;
 
     // Use this for initialization
     void Start ()
     {
+        p = GetComponent<Player>();
         renderer = GetComponent<SpriteRenderer>();
         SetSortingLayer();
     }
@@ -35,7 +37,13 @@ public class Movement : MonoBehaviour {
 
         if (walk)
         {
-            transform.position += (direction * Speed) * Time.fixedDeltaTime;
+            float speedMultiplier = 1f;
+            if (p.Balancing)
+            {
+                speedMultiplier = 0.35f;
+            }
+
+            transform.position += direction * Speed * speedMultiplier * Time.fixedDeltaTime;
             SetSortingLayer();
         }
     }

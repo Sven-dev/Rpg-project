@@ -33,6 +33,7 @@ public class Cutscene : Trigger {
 
     public override void ExecuteTrigger()
     {
+        p.Controls_OFF();
         StartCoroutine(startqueue());
     }
 
