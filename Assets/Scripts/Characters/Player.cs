@@ -145,7 +145,6 @@ public class Player : MonoBehaviour {
             Interactable Object = hit.transform.gameObject.GetComponent<Interactable>();
             if (Object != null)
             {
-                Controls_OFF();
                 Object.Interact();
             }
         }

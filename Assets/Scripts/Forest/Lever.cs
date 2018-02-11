@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Lever : Interactable
 {
@@ -20,19 +21,16 @@ public class Lever : Interactable
 
         UpdateSprite();
     }
-	
-	// Update is called once per frame
-	void Update()
-    {   //If the levers has all variables
-        if (Controller != null)
+
+
+    IEnumerator State_ON()
+    {
+        while (State == true)
         {
-            //if the lever is turned on
-            if (State == true)
-            {
-                ControllerScript.CheckLogic();
-            }
+            ControllerScript.CheckLogic();
+            yield return null;
         }
-	}
+    }
 
     //Turns the Lever OFF or ON
     void ToggleState()
@@ -46,6 +44,7 @@ public class Lever : Interactable
         if (State == true)
         {
             sr.sprite = On;
+            StartCoroutine(State_ON());
         }
         else
         {

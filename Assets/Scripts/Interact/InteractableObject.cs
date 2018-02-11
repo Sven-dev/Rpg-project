@@ -18,6 +18,8 @@ public class InteractableObject : Interactable
 
     IEnumerator startqueue()
     {
+        p.Controls_OFF();
+
         //Starts the first action in the list
         this.active = true;
         yield return new WaitForEndOfFrame();
@@ -32,7 +34,6 @@ public class InteractableObject : Interactable
             yield return new WaitForEndOfFrame();
         }
 
-        Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
         p.Controls_ON();
     }
 
