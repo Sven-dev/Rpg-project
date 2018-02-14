@@ -3,8 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMover : Action {
+public enum MoveOptions
+{
+    Diagonal,
+    X_then_Y,
+    Y_then_X
+};
 
+public class CharacterMover : Action
+{
     //Characterlist
     public List<Movement> CharacterList;
 

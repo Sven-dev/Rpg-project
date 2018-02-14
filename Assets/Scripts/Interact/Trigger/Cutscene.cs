@@ -10,7 +10,9 @@ public class Cutscene : Trigger {
     private int currentIndex;
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+    {
+        base.Start();
         active = false;
         currentIndex = 0;
 	}

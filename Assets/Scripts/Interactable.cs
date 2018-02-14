@@ -5,7 +5,7 @@ public abstract class Interactable : MonoBehaviour {
 
     protected Player p;
 
-    private void Start()
+    protected void Start()
     {
         p = GameObject.FindWithTag("Player").GetComponent<Player>();
     }

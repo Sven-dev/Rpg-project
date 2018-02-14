@@ -18,17 +18,19 @@ public class DoorTrigger : Trigger
     private GameObject BBClone2;
     private SpriteRenderer BBAlpha;
 
-    private GameObject player;
-
     // Use this for initialization
     void Start ()
     {
+        base.Start();
         DontDestroyOnLoad(transform.gameObject);
 
         FadeAlpha = 0;
         FadeTimer = 0.01f;
+    }
 
-        player = GameObject.FindWithTag("Player");
+    void OnApplicationQuit()
+    {
+        Debug.Log("This works");
     }
 
     //Timer for fading in BlackBox
@@ -82,7 +84,7 @@ public class DoorTrigger : Trigger
 
     void SpawnBlackBox()
     {
-        Vector3 playerpos = player.transform.position;
+        Vector3 playerpos = p.transform.position;
         BBClone = GameObject.Instantiate(BlackBox, playerpos, new Quaternion(0, 0, 0, 0)) as GameObject;
 
         //DontDestroyOnLoad() blackbox
@@ -97,8 +99,9 @@ public class DoorTrigger : Trigger
     {
         SceneManager.LoadScene(scene);
 
-        player.transform.position = position;
         BBClone.transform.position = position;
+        p.transform.position = position;
+
 
         StartCoroutine(Fade_Out());
     }

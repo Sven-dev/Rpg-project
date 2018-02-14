@@ -6,7 +6,7 @@ public abstract class Trigger : MonoBehaviour
 {
     protected Player p;
 
-    private void Start()
+    protected void Start()
     {
         p = GameObject.FindWithTag("Player").GetComponent<Player>();
     }

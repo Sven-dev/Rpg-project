@@ -18,8 +18,8 @@ TextureImporter:
     21300022: Gate_Head_Open
     21300024: Gate_Head_Closed
     21300026: Gate_Floor
-    21300028: Lever_Off
-    21300030: Lever_On
+    21300028: Lever_On
+    21300030: Lever_Off
     21300032: Button_Off
     21300034: Button_On
     21300036: Wall_Front
@@ -79,6 +79,7 @@ TextureImporter:
     21300144: Path_04
     21300146: Path_00
     21300148: Path_02
+    21300150: Tree_Stump
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -371,13 +372,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Lever_Off
+      name: Lever_On
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
-        width: 256
-        height: 256
+        x: 256
+        y: 608
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -385,13 +386,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Lever_On
+      name: Lever_Off
       rect:
         serializedVersion: 2
         x: 256
-        y: 512
-        width: 256
-        height: 256
+        y: 688
+        width: 95
+        height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -450,7 +451,7 @@ TextureImporter:
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 128, z: 0, w: 8}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -1090,6 +1091,20 @@ TextureImporter:
         serializedVersion: 2
         x: 2048
         y: 1464
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tree_Stump
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
         width: 256
         height: 256
       alignment: 0

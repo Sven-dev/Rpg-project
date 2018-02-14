@@ -17,6 +17,7 @@ public class Npc : Interactable {
     // Use this for initialization
     void Start()
     {
+        base.Start();
         anim = GetComponent<Animator>();
         Deltaposition = transform.position;
         Direction = "D";
@@ -44,7 +45,7 @@ public class Npc : Interactable {
 
     IEnumerator interaction()
     {
-        Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
+        p.Controls_OFF();
         TurnToPlayer(p);
 
         //Starts the first action in the list

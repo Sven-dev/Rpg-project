@@ -17,7 +17,7 @@ public class Lever : Interactable
 	void Start()
     {
         ControllerScript = Controller.GetComponent<Controller>();
-        sr = GetComponent<SpriteRenderer>();
+        sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
         UpdateSprite();
     }

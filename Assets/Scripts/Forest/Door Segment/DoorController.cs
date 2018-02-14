@@ -31,7 +31,6 @@ public class DoorController : Controller
         if (LastButton != null)
         {
             UpdateDoors();
-
         }
         else
         {

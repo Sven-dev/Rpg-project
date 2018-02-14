@@ -27,7 +27,7 @@ public class Button : Interactable {
     }
 
     //Turns on the button, Changes the sprite and starts a timer for changing it back
-    void Press()
+    public void Press()
     {
         if (State != true)
         {

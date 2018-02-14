@@ -83,6 +83,10 @@ public class Player : MonoBehaviour {
                 updateSprite(false);
             }
         }
+        else
+        {
+            updateSprite(false);
+        }
     }
 
     void updateSprite(bool Walking)
