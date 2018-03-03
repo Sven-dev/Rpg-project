@@ -11,7 +11,7 @@ public class DoorTrialLoad : SceneLoader {
 
     public override void LoadData()
     {
-        SaveFile Save = SaveFile.data;
+        SerializableData Save = SaveFile.Instance.getData();
 
         for (int i = 0; i < Save.TrialDoorStates.Count; i++)
         {
@@ -30,18 +30,21 @@ public class DoorTrialLoad : SceneLoader {
 
     public override void SaveData()
     {
-        SaveFile.data.TrialDoorStates.Clear();
+        SerializableData Save = SaveFile.Instance.getData();
+
+        Save.TrialDoorStates.Clear();
 
         foreach (Button b in ButtonList)
         {
-            SaveFile.data.TrialDoorStates.Add(b);
+            Save.TrialDoorStates.Add(b);
         }
 
-        SaveFile.data.Save();
+        SaveFile.Instance.Save();
     }
 
     public void CompleteTrial()
     {
-        SaveFile.data.TrialDoorCompleted = true;
+        SerializableData Save = SaveFile.Instance.getData();
+        Save.TrialDoorCompleted = true;
     }
 }

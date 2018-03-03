@@ -6,26 +6,19 @@ using System.IO;
 
 public class SaveFile : MonoBehaviour {
 
-    public static SaveFile data;
-
-    public Vector3 PlayerPos;
-    public int PlayerScene;
-
-    public bool SwordInStone;
-
-    [Header("DoorTrialButtons")]
-    public List<bool> TrialDoorStates;
-    public bool TrialDoorCompleted;
+    public static SaveFile Instance;
+    private SerializableData data;
 
 	// Use this for initialization
 	void Awake ()
     {
-        if (data == null)
+        if (Instance == null)
         {
             DontDestroyOnLoad(gameObject);
-            data = this;
+            Instance = this;
+            Load();
         }
-        else if (data != this)
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
@@ -35,11 +28,8 @@ public class SaveFile : MonoBehaviour {
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/Playerinfo.dat");
-        SerializableData data = new SerializableData();
 
-        ConvertToSave();
-
-        bf.Serialize(file, data);
+        bf.Serialize(file, this.data);
         file.Close();
     }
 
@@ -49,10 +39,8 @@ public class SaveFile : MonoBehaviour {
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/Playerinfo.dat", FileMode.Open);
-            SerializableData data = (SerializableData)bf.Deserialize(file);
+            this.data = (SerializableData)bf.Deserialize(file);
             file.Close();
-
-            ConvertToGame();
         }
     }
 
@@ -61,24 +49,18 @@ public class SaveFile : MonoBehaviour {
 
     }
 
-    void ConvertToSave()
+    public SerializableData getData()
     {
-        data.SwordInStone = SwordInStone;
-        data.TrialDoorStates = TrialDoorStates;
-        data.TrialDoorCompleted = TrialDoorCompleted;
-    }
-
-    void ConvertToGame()
-    {
-        SwordInStone = data.SwordInStone;
-        TrialDoorStates = data.TrialDoorStates;
-        TrialDoorCompleted = data.TrialDoorCompleted;
+        return this.data;
     }
 }
 
 [System.Serializable]
-class SerializableData
+public class SerializableData
 {
+    public Vector3 PlayerPos;
+    public int PlayerScene;
+
     public bool SwordInStone;
 
     public List<bool> TrialDoorStates;
