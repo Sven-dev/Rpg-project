@@ -13,9 +13,9 @@ public class DoorTrialLoad : SceneLoader {
     {
         SerializableData Save = SaveFile.Instance.getData();
 
-        for (int i = 0; i < Save.TrialDoorStates.Count; i++)
+        for (int i = 0; i < ButtonList.Count; i++)
         {
-            if (Save.TrialDoorStates[i] == true)
+            if (i == Save.ActiveButton)
             {
                 ButtonList[i].Press();
             }
@@ -32,11 +32,12 @@ public class DoorTrialLoad : SceneLoader {
     {
         SerializableData Save = SaveFile.Instance.getData();
 
-        Save.TrialDoorStates.Clear();
-
-        foreach (Button b in ButtonList)
+        for (int i = 0; i < ButtonList.Count; i++)
         {
-            Save.TrialDoorStates.Add(b);
+            if (ButtonList[i].State == true)
+            {
+                Save.ActiveButton = i;
+            }
         }
 
         SaveFile.Instance.Save();
@@ -46,5 +47,6 @@ public class DoorTrialLoad : SceneLoader {
     {
         SerializableData Save = SaveFile.Instance.getData();
         Save.TrialDoorCompleted = true;
+        SaveFile.Instance.Save();
     }
 }

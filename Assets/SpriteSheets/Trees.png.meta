@@ -80,6 +80,8 @@ TextureImporter:
     21300146: Path_00
     21300148: Path_02
     21300150: Tree_Stump
+    21300152: Tree_Start_Small_Shadow
+    21300154: Tree_Start_Big_Shadow
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -196,7 +198,7 @@ TextureImporter:
         x: 256
         y: 0
         width: 512
-        height: 512
+        height: 648
       alignment: 9
       pivot: {x: 0.25, y: 0.75}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -375,8 +377,8 @@ TextureImporter:
       name: Lever_On
       rect:
         serializedVersion: 2
-        x: 256
-        y: 608
+        x: 352
+        y: 688
         width: 96
         height: 80
       alignment: 0
@@ -391,7 +393,7 @@ TextureImporter:
         serializedVersion: 2
         x: 256
         y: 688
-        width: 95
+        width: 96
         height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1107,6 +1109,34 @@ TextureImporter:
         y: 512
         width: 256
         height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tree_Start_Small_Shadow
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 608
+        width: 256
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tree_Start_Big_Shadow
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 448
+        width: 256
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -58,11 +58,22 @@ public class SaveFile : MonoBehaviour {
 [System.Serializable]
 public class SerializableData
 {
+    //Player info
     public Vector3 PlayerPos;
     public int PlayerScene;
 
     public bool SwordInStone;
 
-    public List<bool> TrialDoorStates;
+    #region Trials
+    //Trial 1
+    public int ActiveButton;
     public bool TrialDoorCompleted;
+
+    //Trial 2
+
+    //Trial 3
+
+    //Trial 4
+
+    #endregion
 }

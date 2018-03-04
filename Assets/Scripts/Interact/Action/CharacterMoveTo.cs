@@ -9,6 +9,7 @@ public class CharacterMoveTo : Action
 
     public List<GameObject> MoveLocationList;
     public List<MoveOptions> MoveOptionList;
+    public List<float> EndDistanceList;
 
     private List<bool> ActiveList;
 
@@ -16,8 +17,14 @@ public class CharacterMoveTo : Action
     void Start()
     {
         ActiveList = new List<bool>();
-        foreach (Movement m in CharacterList)
+
+        for (int i = 0; i < EndDistanceList.Count; i++)
         {
+            if (EndDistanceList[i] < 1.5f)
+            {
+                EndDistanceList[i] = 1.5f;
+            }
+
             ActiveList.Add(true);
         }
     }
@@ -47,7 +54,11 @@ public class CharacterMoveTo : Action
 
     void CheckMove(int index)
     {
-        if (CharacterList[index].transform.position != MoveLocationList[index].transform.position)
+        float dist = Vector3.Distance(
+            CharacterList[index].transform.position, 
+            MoveLocationList[index].transform.position);
+
+        if (dist >= 1.5f)
         {
             if (MoveOptionList[index] == MoveOptions.Diagonal)
             {

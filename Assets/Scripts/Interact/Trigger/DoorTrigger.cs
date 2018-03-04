@@ -8,6 +8,8 @@ public class DoorTrigger : Trigger
     public string scene;
     public Vector2 position;
 
+    public SceneLoader SaveFile;
+
     private float FadeAlpha;
     private float FadeTimer;
     #endregion
