@@ -69,6 +69,10 @@ TextureImporter:
     21300124: Player B_W_01
     21300126: Player B_W_02
     21300128: Player B_W_03
+    21300130: Player B_S_04
+    21300132: Player B_S_05
+    21300134: Player B_W_04
+    21300136: Player B_W_05
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -986,7 +990,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 1752
-        width: 232
+        width: 216
         height: 272
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -998,12 +1002,12 @@ TextureImporter:
       name: Player B_S_02
       rect:
         serializedVersion: 2
-        x: 224
+        x: 216
         y: 1752
-        width: 232
+        width: 216
         height: 272
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.57, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1012,12 +1016,12 @@ TextureImporter:
       name: Player B_S_03
       rect:
         serializedVersion: 2
-        x: 448
+        x: 432
         y: 1752
-        width: 232
+        width: 216
         height: 272
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4325, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1028,7 +1032,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 1480
-        width: 232
+        width: 216
         height: 272
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1040,9 +1044,9 @@ TextureImporter:
       name: Player B_W_02
       rect:
         serializedVersion: 2
-        x: 224
+        x: 216
         y: 1480
-        width: 232
+        width: 216
         height: 272
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1054,9 +1058,9 @@ TextureImporter:
       name: Player B_W_03
       rect:
         serializedVersion: 2
-        x: 448
+        x: 432
         y: 1480
-        width: 232
+        width: 216
         height: 272
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

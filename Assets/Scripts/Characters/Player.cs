@@ -34,61 +34,9 @@ public class Player : MonoBehaviour {
     {
         CheckForInteract();
     }
-
-    void FixedUpdate()
-    {
-        CheckForMovement();
-    }
     #endregion
 
     #region Movement
-    void CheckForMovement()
-    {
-        if (!ControlsLocked)
-        {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-            {
-                //move up (W)
-                if (Input.GetKey(KeyCode.W))
-                {
-                    Direction = "W";
-                    mover.Move(GetDirectionVector());
-                }
-
-                //move down (S)
-                if (Input.GetKey(KeyCode.S))
-                {
-                    Direction = "S";
-                    mover.Move(GetDirectionVector());
-                }
-
-                //move left (A)
-                if (Input.GetKey(KeyCode.A))
-                {
-                    Direction = "A";
-                    mover.Move(GetDirectionVector());
-                }
-
-                //move right (D)
-                if (Input.GetKey(KeyCode.D))
-                {
-                    Direction = "D";
-                    mover.Move(GetDirectionVector());
-                }
-
-                updateSprite(true);
-            }
-            else
-            {
-                updateSprite(false);
-            }
-        }
-        else
-        {
-            updateSprite(false);
-        }
-    }
-
     void updateSprite(bool Walking)
     {
         if (Balancing)

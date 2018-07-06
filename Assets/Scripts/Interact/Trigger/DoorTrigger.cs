@@ -32,7 +32,7 @@ public class DoorTrigger : Trigger
 
     void OnApplicationQuit()
     {
-        Debug.Log("This works");
+        //Debug.Log("This works");
     }
 
     //Timer for fading in BlackBox
