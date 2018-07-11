@@ -18,7 +18,7 @@ public class InteractableObject : Interactable
 
     IEnumerator startqueue()
     {
-        p.Controls_OFF();
+        //p.Controls_OFF();
 
         //Starts the first action in the list
         this.active = true;
@@ -34,7 +34,7 @@ public class InteractableObject : Interactable
             yield return new WaitForEndOfFrame();
         }
 
-        p.Controls_ON();
+        //p.Controls_ON();
     }
 
     public override void Interact()

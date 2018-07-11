@@ -68,7 +68,7 @@ public class DoorTrigger : Trigger
 
     public override void ExecuteTrigger()
     {
-        p.Controls_OFF();
+        //p.Controls_OFF();
         Debug.Log("trigger found: " + scene);
 
         //spawn blackbox (0% opacity)
@@ -113,7 +113,7 @@ public class DoorTrigger : Trigger
         //Gets the player gameobject and script
         Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
 
-        p.Controls_ON();
+        //p.Controls_ON();
 
         Destroy(BBClone);
         Destroy(this.gameObject);

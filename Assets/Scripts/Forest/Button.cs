@@ -42,7 +42,7 @@ public class Button : Interactable {
             }
         }
 
-        GameObject.FindWithTag("Player").GetComponent<Player>().Controls_ON();
+        //GameObject.FindWithTag("Player").GetComponent<Player>().Controls_ON();
     }
 
     public void TurnOff()

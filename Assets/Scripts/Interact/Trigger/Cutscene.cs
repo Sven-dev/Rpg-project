@@ -35,7 +35,7 @@ public class Cutscene : Trigger {
 
     public override void ExecuteTrigger()
     {
-        p.Controls_OFF();
+        //p.Controls_OFF();
         StartCoroutine(startqueue());
     }
 
@@ -56,7 +56,7 @@ public class Cutscene : Trigger {
             this.active = false;
 
             Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
-            p.Controls_ON();
+            //p.Controls_ON();
         }
     }
 }

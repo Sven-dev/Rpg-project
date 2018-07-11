@@ -45,7 +45,7 @@ public class Npc : Interactable {
 
     IEnumerator interaction()
     {
-        p.Controls_OFF();
+        //p.Controls_OFF();
         TurnToPlayer(p);
 
         //Starts the first action in the list
@@ -61,14 +61,14 @@ public class Npc : Interactable {
             yield return new WaitForEndOfFrame();
         }
 
-        p.Controls_ON();
+        //p.Controls_ON();
     }
 
     //Makes the npc turn to the player when talked to
     void TurnToPlayer(Player p)
     {
-        string playerdir = p.GetDirection();
-
+        //string playerdir = p.GetDirection();
+        /*
         if(playerdir == "W")
         {
             Direction = "S";
@@ -87,6 +87,7 @@ public class Npc : Interactable {
         }
 
         anim.Play(Direction + "_Idle");
+        */
     }
 
     void SetDirection()

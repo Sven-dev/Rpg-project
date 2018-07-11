@@ -5,16 +5,24 @@ using UnityEngine;
 public class KeyboardController : MonoBehaviour
 {
     Movement M;
+    InteractAttacker IA;
 
     void Start()
     {
         M = GetComponent<Movement>();
+        IA = GetComponent<InteractAttacker>();
     }
 
     void Update()
     {
+        #region Attack / Interact
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            IA.CheckForInteract();
+        }
+        #endregion
         #region moving right
-        if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
             if (Input.GetKey(KeyCode.W))
             {

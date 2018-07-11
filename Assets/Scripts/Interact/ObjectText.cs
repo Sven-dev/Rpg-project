@@ -21,6 +21,6 @@ public class ObjectText : Interactable
         }
 
         Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
-        p.Controls_ON();
+        //p.Controls_ON();
     }
 }

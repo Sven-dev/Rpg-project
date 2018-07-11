@@ -74,7 +74,7 @@ public class Movement : MonoBehaviour {
     }
 
     //Converts the Enum direction to a Vector. Used for moving around
-    Vector3 DirectionToVector()
+    public Vector3 DirectionToVector()
     {
         Vector3 direction = Vector2.zero;
         switch(Direction)
