@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Interactable : MonoBehaviour {
+public class Interactable : MonoBehaviour {
 
     protected Player p;
 
@@ -10,6 +10,9 @@ public abstract class Interactable : MonoBehaviour {
         p = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
-    public abstract void Interact();
+    public virtual void Interact()
+    {
+        print("interacted");
+    }
 
 }

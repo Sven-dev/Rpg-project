@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
 	}
 
     #region Trigger detection
-    //Checsks if the player is standing on a trigger, and activates the trigger
+    //Checks if the player is standing on a trigger, and activates the trigger
     void OnTriggerEnter(Collider other)
     {
         Trigger T = other.GetComponent<Trigger>();

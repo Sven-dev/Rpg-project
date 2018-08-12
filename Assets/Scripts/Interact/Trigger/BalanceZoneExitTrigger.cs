@@ -6,6 +6,6 @@ public class BalanceZoneExitTrigger : Trigger {
 
     public override void ExitTrigger()
     {
-        p.Balancing = false;
+        //p.Balancing = false;
     }
 }

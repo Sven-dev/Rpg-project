@@ -4,11 +4,11 @@ using System.Collections;
 //Base class for executing a trigger. Abstract: do not put on objects
 public abstract class Trigger : MonoBehaviour
 {
-    protected Player p;
+    protected GameObject Player;
 
     protected void Start()
     {
-        p = GameObject.FindWithTag("Player").GetComponent<Player>();
+        Player = GameObject.FindWithTag("Player");
     }
     //Base method for starting a trigger.
     public virtual void ExecuteTrigger() { }

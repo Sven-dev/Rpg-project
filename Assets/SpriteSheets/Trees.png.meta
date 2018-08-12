@@ -195,9 +195,9 @@ TextureImporter:
       name: Tree_Start_Big
       rect:
         serializedVersion: 2
-        x: 256
+        x: 304
         y: 0
-        width: 512
+        width: 416
         height: 648
       alignment: 9
       pivot: {x: 0.25, y: 0.75}
@@ -1119,8 +1119,8 @@ TextureImporter:
       name: Tree_Start_Small_Shadow
       rect:
         serializedVersion: 2
-        x: 768
-        y: 608
+        x: 752
+        y: 600
         width: 256
         height: 160
       alignment: 0
@@ -1133,8 +1133,8 @@ TextureImporter:
       name: Tree_Start_Big_Shadow
       rect:
         serializedVersion: 2
-        x: 768
-        y: 448
+        x: 752
+        y: 440
         width: 256
         height: 152
       alignment: 0

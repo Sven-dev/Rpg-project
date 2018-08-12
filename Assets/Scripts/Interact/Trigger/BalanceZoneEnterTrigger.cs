@@ -6,6 +6,6 @@ public class BalanceZoneEnterTrigger : Trigger {
 
     public override void ExecuteTrigger()
     {
-        p.Balancing = true;
+        //p.Balancing = true;
     }
 }

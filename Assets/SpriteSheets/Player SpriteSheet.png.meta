@@ -73,11 +73,43 @@ TextureImporter:
     21300132: Player B_S_05
     21300134: Player B_W_04
     21300136: Player B_W_05
+    21300138: Player SD_00
+    21300140: Player SA_00
+    21300142: Player WA_00
+    21300144: Player WD_00
+    21300146: Player SD_01
+    21300148: Player SD_02
+    21300150: Player SA_01
+    21300152: Player SA_02
+    21300154: Player WA_01
+    21300156: Player WA_02
+    21300158: Player WD_01
+    21300160: Player WD_002
+    21300162: Player_Attack_D_03
+    21300164: Player_Attack_D_02
+    21300166: Player_Attack_D_01
+    21300168: Player_Attack_D_04
+    21300170: Player_Attack_D_05
+    21300172: Player_Attack_A_01
+    21300174: Player_Attack_A_02
+    21300176: Player_Attack_A_03
+    21300178: Player_Attack_A_04
+    21300180: Player_Attack_A_05
+    21300182: Player_Attack_W_01
+    21300184: Player_Attack_W_02
+    21300186: Player_Attack_W_03
+    21300188: Player_Attack_W_04
+    21300190: Player_Attack_W_05
+    21300192: Player_Attack_S_01
+    21300194: Player_Attack_S_02
+    21300196: Player_Attack_S_03
+    21300198: Player_Attack_S_04
+    21300200: Player_Attack_S_05
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -155,6 +187,26 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -166,8 +218,8 @@ TextureImporter:
         y: 4176
         width: 80
         height: 264
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.55320585, y: 0.50000185}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,8 +260,8 @@ TextureImporter:
         y: 3896
         width: 80
         height: 264
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.44790205, y: 0.5017543}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -905,7 +957,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2824
+        y: 1184
         width: 80
         height: 264
       alignment: 0
@@ -919,7 +971,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 2824
+        y: 1184
         width: 88
         height: 264
       alignment: 0
@@ -933,7 +985,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 208
-        y: 2824
+        y: 1184
         width: 80
         height: 264
       alignment: 0
@@ -947,7 +999,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2540
+        y: 900
         width: 80
         height: 264
       alignment: 0
@@ -961,7 +1013,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 104
-        y: 2540
+        y: 900
         width: 80
         height: 264
       alignment: 0
@@ -975,7 +1027,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 208
-        y: 2540
+        y: 900
         width: 88
         height: 264
       alignment: 0
@@ -989,7 +1041,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1752
+        y: 1728
         width: 216
         height: 272
       alignment: 0
@@ -1003,7 +1055,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 216
-        y: 1752
+        y: 1728
         width: 216
         height: 272
       alignment: 9
@@ -1017,7 +1069,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 432
-        y: 1752
+        y: 1728
         width: 216
         height: 272
       alignment: 9
@@ -1031,7 +1083,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1480
+        y: 1456
         width: 216
         height: 272
       alignment: 0
@@ -1045,7 +1097,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 216
-        y: 1480
+        y: 1456
         width: 216
         height: 272
       alignment: 0
@@ -1059,11 +1111,459 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 432
-        y: 1480
+        y: 1456
         width: 216
         height: 272
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player SD_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2824
+        width: 96
+        height: 264
+      alignment: 9
+      pivot: {x: 0.54021466, y: 0.530992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player SA_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2552
+        width: 96
+        height: 264
+      alignment: 9
+      pivot: {x: 0.46043912, y: 0.53103083}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player WA_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2280
+        width: 96
+        height: 264
+      alignment: 9
+      pivot: {x: 0.5423539, y: 0.500848}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player WD_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2008
+        width: 96
+        height: 264
+      alignment: 9
+      pivot: {x: 0.46028626, y: 0.4994997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player SD_01
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 2832
+        width: 104
+        height: 256
+      alignment: 9
+      pivot: {x: 0.50117993, y: 0.5157976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player SD_02
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 2824
+        width: 112
+        height: 264
+      alignment: 9
+      pivot: {x: 0.46396366, y: 0.5310632}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player SA_01
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 2552
+        width: 112
+        height: 264
+      alignment: 9
+      pivot: {x: 0.5380083, y: 0.53177345}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player SA_02
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 2560
+        width: 96
+        height: 256
+      alignment: 9
+      pivot: {x: 0.4617268, y: 0.5175772}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player WA_01
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 2280
+        width: 96
+        height: 256
+      alignment: 9
+      pivot: {x: 0.54087526, y: 0.48482227}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player WA_02
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 2288
+        width: 104
+        height: 248
+      alignment: 9
+      pivot: {x: 0.5781605, y: 0.46736392}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player WD_01
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 2016
+        width: 104
+        height: 248
+      alignment: 9
+      pivot: {x: 0.42308325, y: 0.46736094}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player WD_002
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 2008
+        width: 96
+        height: 256
+      alignment: 9
+      pivot: {x: 0.46013498, y: 0.48355484}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_D_03
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 628
+        width: 288
+        height: 256
+      alignment: 9
+      pivot: {x: 0.23676088, y: 0.53154874}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_D_02
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 628
+        width: 280
+        height: 256
+      alignment: 9
+      pivot: {x: 0.30041394, y: 0.5312049}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_D_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 628
+        width: 144
+        height: 264
+      alignment: 9
+      pivot: {x: 0.7499773, y: 0.5149996}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_D_04
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 628
+        width: 192
+        height: 248
+      alignment: 9
+      pivot: {x: 0.8118623, y: 0.546954}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_D_05
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 628
+        width: 184
+        height: 248
+      alignment: 9
+      pivot: {x: 0.80545175, y: 0.5483497}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_A_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 356
+        width: 120
+        height: 264
+      alignment: 9
+      pivot: {x: 0.3602049, y: 0.5150002}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_A_02
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 364
+        width: 280
+        height: 248
+      alignment: 9
+      pivot: {x: 0.7286936, y: 0.5480178}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_A_03
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 364
+        width: 288
+        height: 248
+      alignment: 9
+      pivot: {x: 0.76338893, y: 0.54871124}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_A_04
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 364
+        width: 248
+        height: 240
+      alignment: 9
+      pivot: {x: 0.43530372, y: 0.56651103}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_A_05
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 364
+        width: 176
+        height: 240
+      alignment: 9
+      pivot: {x: 0.24987723, y: 0.56724155}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_W_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 128
+        height: 264
+      alignment: 9
+      pivot: {x: 0.34474593, y: 0.5009088}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_W_02
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 36
+        width: 152
+        height: 320
+      alignment: 9
+      pivot: {x: 0.6575181, y: 0.41203445}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_W_03
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 36
+        width: 184
+        height: 256
+      alignment: 9
+      pivot: {x: 0.71869475, y: 0.51728845}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_W_04
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 36
+        width: 160
+        height: 256
+      alignment: 9
+      pivot: {x: 0.6737999, y: 0.5141784}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_W_05
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 36
+        width: 160
+        height: 256
+      alignment: 9
+      pivot: {x: 0.6737217, y: 0.5173259}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_S_01
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 36
+        width: 128
+        height: 264
+      alignment: 9
+      pivot: {x: 0.65466547, y: 0.5306769}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_S_02
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 36
+        width: 160
+        height: 264
+      alignment: 9
+      pivot: {x: 0.7261879, y: 0.53067756}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_S_03
+      rect:
+        serializedVersion: 2
+        x: 1144
+        y: 36
+        width: 176
+        height: 264
+      alignment: 9
+      pivot: {x: 0.29677305, y: 0.5308862}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_S_04
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 36
+        width: 176
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2958617, y: 0.5312456}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_Attack_S_05
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 36
+        width: 184
+        height: 264
+      alignment: 9
+      pivot: {x: 0.28345922, y: 0.53081447}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

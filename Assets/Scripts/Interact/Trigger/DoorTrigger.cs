@@ -86,7 +86,7 @@ public class DoorTrigger : Trigger
 
     void SpawnBlackBox()
     {
-        Vector3 playerpos = p.transform.position;
+        Vector3 playerpos = Player.transform.position;
         BBClone = GameObject.Instantiate(BlackBox, playerpos, new Quaternion(0, 0, 0, 0)) as GameObject;
 
         //DontDestroyOnLoad() blackbox
@@ -102,7 +102,7 @@ public class DoorTrigger : Trigger
         SceneManager.LoadScene(scene);
 
         BBClone.transform.position = position;
-        p.transform.position = position;
+        Player.transform.position = position;
 
 
         StartCoroutine(Fade_Out());

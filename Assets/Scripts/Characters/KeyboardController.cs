@@ -5,12 +5,12 @@ using UnityEngine;
 public class KeyboardController : MonoBehaviour
 {
     Movement M;
-    InteractAttacker IA;
+    AttackInteracter IA;
 
     void Start()
     {
         M = GetComponent<Movement>();
-        IA = GetComponent<InteractAttacker>();
+        IA = transform.GetChild(0).GetComponent<AttackInteracter>();
     }
 
     void Update()
