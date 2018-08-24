@@ -16,24 +16,30 @@ public enum Direction
 
 public class Movement : MonoBehaviour {
 
-    public delegate void MovementChange();
-    public event MovementChange OnAnimationChange;
+    Player P;
+    Renderer R;
+
+    //[HideInInspector]
+    public bool Immobile;
+    public float Speed;
 
     public Direction _direction;
-    public bool _idle;
+    bool _idle;
 
-    public float Speed;
-    private Player P;
-    private Renderer R;
+    public delegate void MovementChange();
+    public event MovementChange OnDirectionChange;
 
     public Direction Direction
     {
         get { return _direction; }
         set
         {
-            _direction = value;
-            if (OnAnimationChange != null)
-                OnAnimationChange();
+            if (!Immobile)
+            {
+                _direction = value;
+                if (OnDirectionChange != null)
+                    OnDirectionChange();
+            }
         }
     }
 
@@ -42,9 +48,12 @@ public class Movement : MonoBehaviour {
         get { return _idle; }
         set
         {
-            _idle = value;
-            if (OnAnimationChange != null)
-                OnAnimationChange();
+            if (!Immobile)
+            {
+                _idle = value;
+                if (OnDirectionChange != null)
+                    OnDirectionChange();
+            }
         }
     }
 
@@ -54,6 +63,7 @@ public class Movement : MonoBehaviour {
         P = GetComponent<Player>();
         R = GetComponent<Renderer>();
 
+        Immobile = false;
         Idle = true;
         Direction = Direction.Right;
         SetSortingLayer();
@@ -62,8 +72,11 @@ public class Movement : MonoBehaviour {
     //Makes the player move
     public void Move()
     {
-        transform.position += DirectionToVector() * Speed * Time.fixedDeltaTime;
-        SetSortingLayer();
+        if (!Immobile)
+        {
+            transform.position += DirectionToVector() * Speed * Time.fixedDeltaTime;
+            SetSortingLayer();
+        }
     }
 
     //Makes the object move towards a location

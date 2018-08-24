@@ -10,23 +10,27 @@ public class AttackInteracter : MonoBehaviour {
 
     bool Attack2Ready;
     bool Attack3Ready;
-    bool Attacking1;
-    bool Attacking2;
-    bool Attacking3;
+
+    [HideInInspector]
+    public bool Attacking1;
+    [HideInInspector]
+    public bool Attacking2;
+
     List<BoxCollider> Colliders;
 
-	// Use this for initialization
-	void Start ()
+    public delegate void AttackInteracterChange();
+    public event AttackInteracterChange OnAttackChange;
+
+    // Use this for initialization
+    void Start ()
     {
         M = transform.parent.GetComponent<Movement>();
-        M.OnAnimationChange += SetInteractTrigger;
+        M.OnDirectionChange += SetInteractTrigger;
         Objects = new List<Interactable>();
 
         bool Attack2Ready = false;
-        bool Attack3Ready = false;
         bool Attacking1 = false;
         bool Attacking2 = false;
-        bool Attacking3 = false;
 
         Colliders = new List<BoxCollider>();
         Colliders.AddRange(transform.GetChild(0).GetComponentsInChildren<BoxCollider>());
@@ -63,22 +67,15 @@ public class AttackInteracter : MonoBehaviour {
 
     void Attack()
     {
-        if (!Attacking3)
+        if (!Attacking2)
         {
-            if (!Attacking2)
+            if (!Attacking1)
             {
-                if (!Attacking1)
-                {
-                    StartCoroutine(_attack());
-                }
-                else if (Attack2Ready)
-                {
-                    StartCoroutine(_attack2());
-                }
+                StartCoroutine(_attack());
             }
-            else if (Attack3Ready)
+            else if (Attack2Ready)
             {
-                StartCoroutine(_attack3());
+                StartCoroutine(_attack2());
             }
         }
     }
@@ -86,6 +83,10 @@ public class AttackInteracter : MonoBehaviour {
     IEnumerator _attack()
     {
         Attacking1 = true;
+        M.Immobile = true;
+        OnAttackChange();
+
+        yield return new WaitForSeconds(0.1f);
 
         //Cycle through all attack-related colliders, enabling and disabling them in order to emulate a slash
         for (int i = 0; i < Colliders.Count; i++)
@@ -96,10 +97,11 @@ public class AttackInteracter : MonoBehaviour {
                 Attack2Ready = true;
             }
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.025f);
             Colliders[i].enabled = false;
         }
 
+        M.Immobile = false;
         yield return new WaitForSeconds(0.3f);
         Attack2Ready = false;
 
@@ -109,6 +111,8 @@ public class AttackInteracter : MonoBehaviour {
     IEnumerator _attack2()
     {
         Attacking2 = true;
+        M.Immobile = true;
+        OnAttackChange();
 
         //Cycle through all attack-related colliders, enabling and disabling them in order to emulate a slash
         for (int i = Colliders.Count -1; i >= 0; i--)
@@ -123,26 +127,11 @@ public class AttackInteracter : MonoBehaviour {
             Colliders[i].enabled = false;
         }
 
-        yield return new WaitForSeconds(0.35f);
+        M.Immobile = false;
+        yield return new WaitForSeconds(0.15f);
         Attack3Ready = false;
 
         Attacking2 = false;
-    }
-
-    IEnumerator _attack3()
-    {
-        Attacking3 = true;
-
-        yield return new WaitForSeconds(0.1f);
-
-        Colliders[1].enabled = true;
-        Colliders[2].enabled = true;
-        yield return new WaitForSeconds(0.1f);
-        Colliders[1].enabled = false;
-        Colliders[2].enabled = false;
-
-        yield return new WaitForSeconds(0.3f);
-        Attacking3 = false;
     }
 
     void Interact(Interactable obj)
