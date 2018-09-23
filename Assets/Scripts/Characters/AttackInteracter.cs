@@ -101,11 +101,11 @@ public class AttackInteracter : MonoBehaviour {
             Colliders[i].enabled = false;
         }
 
-        M.Immobile = false;
+
         yield return new WaitForSeconds(0.3f);
         Attack2Ready = false;
-
         Attacking1 = false;
+        M.Immobile = false;
     }
 
     IEnumerator _attack2()
@@ -136,7 +136,8 @@ public class AttackInteracter : MonoBehaviour {
 
     void Interact(Interactable obj)
     {
-        print("Interact");
+        M.Idle = true;
+        obj.Interact();
     }
 
     //Rotates the interact-trigger, facing it in the direction the object is heading

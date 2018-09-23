@@ -6,5 +6,13 @@ public abstract class Action : MonoBehaviour
 {
     public bool Active = false;
 
-    public abstract void StartProcess();
+    public virtual void StartProcess()
+    {
+        print("Base action" + name);
+    }
+
+    public virtual void StartProcess(GameObject target)
+    {
+        print("Base action" + name);
+    }
 }

@@ -13,9 +13,9 @@ public class ObjectText : Interactable
 
     IEnumerator interaction()
     {
-        dialogue.StartProcess();
+        //dialogue.StartReading();
 
-        while (dialogue.Active)
+        while (dialogue.Reading)
         {
             yield return new WaitForEndOfFrame();
         }

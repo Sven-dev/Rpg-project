@@ -46,7 +46,7 @@ public class MenuHandler : MonoBehaviour
         if (Phase == 0)
         {
             //start dialogue
-            DialogueHandlerList[Phase].StartProcess();
+            //DialogueHandlerList[Phase].StartProcess();
         }
         if (Phase == 1)
         {

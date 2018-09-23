@@ -15,7 +15,7 @@ public class Npc : Interactable {
     private Animator anim;
 
     // Use this for initialization
-    void Start()
+    new void Start()
     {
         base.Start();
         anim = GetComponent<Animator>();
@@ -45,12 +45,11 @@ public class Npc : Interactable {
 
     IEnumerator interaction()
     {
-        //p.Controls_OFF();
-        TurnToPlayer(p);
+        TurnTo(Player);
 
         //Starts the first action in the list
         this.active = true;
-        ActionList[0].StartProcess();
+        ActionList[0].StartProcess(Player);
 
         while (active)
         {
@@ -60,12 +59,11 @@ public class Npc : Interactable {
             }
             yield return new WaitForEndOfFrame();
         }
-
-        //p.Controls_ON();
     }
 
-    //Makes the npc turn to the player when talked to
-    void TurnToPlayer(Player p)
+    //Makes the npc turn the opposite direction of the target,
+    //making it look like the object turned to the object
+    void TurnTo(GameObject target)
     {
         //string playerdir = p.GetDirection();
         /*
@@ -120,7 +118,7 @@ public class Npc : Interactable {
         if (currentIndex < ActionList.Count - 1)
         {
             currentIndex++;
-            ActionList[currentIndex].StartProcess();
+            ActionList[currentIndex].StartProcess(Player);
         }
         else
         {

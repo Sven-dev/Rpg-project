@@ -6,107 +6,140 @@ public class KeyboardController : MonoBehaviour
 {
     Movement M;
     AttackInteracter IA;
+    DialogueHandler DH;
 
     void Start()
     {
         M = GetComponent<Movement>();
         IA = transform.GetChild(0).GetComponent<AttackInteracter>();
+        DH = GetComponent<DialogueHandler>();
+        StartCoroutine(KeyCheck());
     }
 
-    void Update()
+    IEnumerator KeyCheck()
     {
-        #region Attack / Interact
-        if(Input.GetKeyDown(KeyCode.Space))
+        bool active = true;
+        while (active)
         {
-            IA.CheckForInteract();
-        }
-        #endregion
-        #region moving right
-        else if (Input.GetKey(KeyCode.D))
-        {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                M.Direction = Direction.UpRight;
+                if (DH.Reading)
+                {
+                    DH.AdvanceDialogue();
+                }
+                else
+                {
+                    #region Attack / Interact
+                    IA.CheckForInteract();
+                    #endregion
+                }
             }
-            else if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.D))
             {
-                M.Direction = Direction.DownRight;
-            }
-            else
-            {
-                M.Direction = Direction.Right;
-            }
+                if (DH.Reading)
+                {
+                    DH.UpdateSelectedChoice(1);
+                }
+                else
+                {
+                    #region moving right
+                    if (Input.GetKey(KeyCode.W))
+                    {
+                        M.Direction = Direction.UpRight;
+                    }
+                    else if (Input.GetKey(KeyCode.S))
+                    {
+                        M.Direction = Direction.DownRight;
+                    }
+                    else
+                    {
+                        M.Direction = Direction.Right;
+                    }
 
-            M.Idle = false;
-            M.Move();
-        }
-        #endregion
-        #region moving left
-        else if (Input.GetKey(KeyCode.A))
-        {
-            if (Input.GetKey(KeyCode.W))
-            {
-                M.Direction = Direction.UpLeft;
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                M.Direction = Direction.DownLeft;
-            }
-            else
-            {
-                M.Direction = Direction.Left;
-            }
-
-            M.Idle = false;
-            M.Move();
-        }
-        #endregion
-        #region moving up
-        else if (Input.GetKey(KeyCode.W))
-        {
-            if (Input.GetKey(KeyCode.D))
-            {
-                M.Direction = Direction.UpRight;
+                    M.Idle = false;
+                    M.Move();
+                    #endregion
+                }
             }
             else if (Input.GetKey(KeyCode.A))
             {
-                M.Direction = Direction.UpLeft;
+                if (DH.Reading)
+                {
+                    DH.UpdateSelectedChoice(-1);
+                }
+                else
+                {
+                    #region moving left
+                    if (Input.GetKey(KeyCode.W))
+                    {
+                        M.Direction = Direction.UpLeft;
+                    }
+                    else if (Input.GetKey(KeyCode.S))
+                    {
+                        M.Direction = Direction.DownLeft;
+                    }
+                    else
+                    {
+                        M.Direction = Direction.Left;
+                    }
+
+                    M.Idle = false;
+                    M.Move();
+                    #endregion
+                }
+
+            }
+            else if (Input.GetKey(KeyCode.W))
+            {
+                #region moving up
+                if (Input.GetKey(KeyCode.D))
+                {
+                    M.Direction = Direction.UpRight;
+                }
+                else if (Input.GetKey(KeyCode.A))
+                {
+                    M.Direction = Direction.UpLeft;
+                }
+                else
+                {
+                    M.Direction = Direction.Up;
+                }
+
+                M.Idle = false;
+                M.Move();
+                #endregion
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                #region moving down
+                if (Input.GetKey(KeyCode.D))
+                {
+                    M.Direction = Direction.DownRight;
+                }
+                else if (Input.GetKey(KeyCode.A))
+                {
+                    M.Direction = Direction.DownLeft;
+                }
+                else
+                {
+                    M.Direction = Direction.Down;
+                }
+
+                M.Idle = false;
+                M.Move();
+                #endregion
             }
             else
             {
-                M.Direction = Direction.Up;
+                #region idle
+                if (M.Idle == false)
+                {
+                    M.Idle = true;
+                }
+                #endregion
             }
 
-            M.Idle = false;
-            M.Move();
+            yield return null;
         }
-        #endregion
-        #region moving down
-        else if (Input.GetKey(KeyCode.S))
-        {
-            if (Input.GetKey(KeyCode.D))
-            {
-                M.Direction = Direction.DownRight;
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                M.Direction = Direction.DownLeft;
-            }
-            else
-            {
-                M.Direction = Direction.Down;
-            }
-
-            M.Idle = false;
-            M.Move();
-        }
-        #endregion
-        #region idle
-        else
-        {
-            if (M.Idle == false)
-            M.Idle = true;
-        }
-        #endregion
     }
 }

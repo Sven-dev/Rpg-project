@@ -2,172 +2,111 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DialogueHandler: Action
+public class DialogueHandler: MonoBehaviour
 {
     #region Fields
+    public bool Reading;
     public List<Dialogue> DialogueList;
+    private Movement Movement;
 
     private int Startindex;
-    private int Currentindex;
+    private int CurrentIndex;
     #endregion
 
     // Use this for initialization
     void Start()
     {
         Startindex = 0;
-        Currentindex = 0;
+        CurrentIndex = 0;
+
+        Movement = GetComponent<Movement>();
     }
-
-    #region KeyChecks
-    //Checks if the current dialogue is a log or a choice, and calls the correct CheckKey method
-    void CheckKeys()
-    {
-        if (Active)
-        {
-            Dialogue currentdialogue = DialogueList[Currentindex];
-
-            //If currentdialogue inherits from Choice
-            if (currentdialogue.GetType().IsSubclassOf(typeof(Choice)))
-            {
-                CheckKeys(currentdialogue as Choice);
-            }
-            else //If currentdialogue inherits from Log
-            {
-                CheckKeys(currentdialogue as Log);
-            }
-        }
-    }
-
-    //Checks the keyinputs of the current dialogue, if it is a log
-    void CheckKeys(Log currentdialogue)
-    {
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
-        {
-            //If dialogue has ended
-            if (currentdialogue.IsWriteDone())
-            {
-                NextDialogueLog(currentdialogue);
-            }
-            //If dialogue has not ended
-            else
-            {
-                currentdialogue.FinishWrite();
-            }
-        }
-        else
-        {
-            if (currentdialogue.IsWriteDone())
-            {
-                if (currentdialogue.Autonext)
-                {
-                    NextDialogueLog(currentdialogue);
-                }
-            }
-        }
-    }
-
-    //Checks the keyinputs of the current dialogue, if it is a choice
-    void CheckKeys(Choice currentdialogue)
-    {
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
-        {
-            if (currentdialogue.IsWriteDone())
-            {
-                NextDialogueChoice(currentdialogue);
-            }
-            else
-            {
-                currentdialogue.FinishWrite();
-            }
-        }
-
-        if (currentdialogue.IsWriteDone())
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                currentdialogue.UpdateSelectedIndex(-1);
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                currentdialogue.UpdateSelectedIndex(1);
-            }
-        }
-    }
-    #endregion
 
     #region Next Dialogue
-    //Checks if the dialogue ends, and if not, selects the next dialogue
-    void NextDialogueLog(Log currentdialogue)
+    //Checks if the dialogue is done writing. if so, go to the next dialogue, if not, finish writing
+    public void AdvanceDialogue()
     {
-        DestroyDialogueBox();
-
-        if (currentdialogue.EndDialogue)
+        Dialogue d = DialogueList[CurrentIndex];
+        if (d.IsWriteDone())
         {
-            EndDialogue(currentdialogue.EndResult);
+            DestroyDialogueBox();
+            if (d.GetType().IsSubclassOf(typeof(Choice)))
+            {
+                //Start the next dialogue, based on the choice the player made
+                Choice c = d as Choice;
+                CurrentIndex = c.GetNextIndex();
+                SpawnDialogueBox();
+                DialogueList[CurrentIndex].StartDialogue();
+            }
+            else if (d.GetType().IsSubclassOf(typeof(Log)))
+            {
+                //If enddialogue, end the conversation, else starts the next one
+                Log l = d as Log;
+                if (l.EndDialogue)
+                {
+                    EndDialogue();
+                }
+                else
+                {
+                    CurrentIndex++;
+                    SpawnDialogueBox();
+                    DialogueList[CurrentIndex].StartDialogue();
+                }
+            }
+            else
+            {
+                throw new System.Exception("Unknown dialogue type");
+            }
         }
         else
         {
-            Currentindex = currentdialogue.NextIndex;
-            SpawnDialogueBox();
-            DialogueList[Currentindex].StartDialogue();
+            d.FinishWrite();
         }
     }
 
-    //Destroyes the current dialoguebox, and spawns the right next dialoguebox
-    void NextDialogueChoice(Choice currentdialogue)
+    //Updates the cursor if the current dialogue is a choice & the text is done writing
+    public void UpdateSelectedChoice(int direction)
     {
-        DestroyDialogueBox();
-
-        Currentindex = currentdialogue.GetNextIndex();
-        SpawnDialogueBox();
-        DialogueList[Currentindex].StartDialogue();
+        Dialogue d = DialogueList[CurrentIndex];
+        if (d.IsWriteDone() && d.GetType().IsSubclassOf(typeof(Choice)))
+        {
+            Choice c = d as Choice;
+            c.UpdateSelectedIndex(direction);
+        }
     }
     #endregion
 
     #region Starting and ending
     //Starts the dialogue
-    public override void StartProcess()
+    public void StartReading()
     {
-        Currentindex = Startindex;
+        CurrentIndex = Startindex;
         SpawnDialogueBox();
-        DialogueList[Currentindex].StartDialogue();
-
-        Active = true;
+        DialogueList[CurrentIndex].StartDialogue();
         StartCoroutine(activate());
     }
-
     IEnumerator activate()
     {
+        Movement.Immobile = true;
+        Reading = true;
         yield return new WaitForEndOfFrame();
-        while (Active)
+        while (Reading)
         {
-            CheckKeys();
             yield return null;
         }
+
+        Movement.Immobile = false;
     }
 
-    //Ends the dialogue, resets the handler, and unlocks player controls
-    //OLD: Returns the result of the dialogue, in the form of an integer
-    //triggersystem should solve this, not dialoguehandlers
-    public void EndDialogue(int endresult)
-    {
-        ResetDialogue();
-
-        Active = false;
-
-        //TO DO: is supposed to return a positive or negative result of the dialogue
-        //return 0;
-    }
-
-    //Resets the dialoguehandler and all its dialogue
-    void ResetDialogue()
+    //Ends the dialogue, resets the handler & dialogue
+    public void EndDialogue()
     {
         foreach (Dialogue i in DialogueList)
         {
             i.ResetDialogue();
         }
 
-        Active = false;
+        Reading = false;
     }
     #endregion
 
@@ -175,13 +114,13 @@ public class DialogueHandler: Action
     //Spawns the dialogueBox
     void SpawnDialogueBox()
     {
-        DialogueList[Currentindex].SpawnDialogueBox();
+        DialogueList[CurrentIndex].SpawnDialogueBox();
     }
 
     //Destroys the dialogueBox
     void DestroyDialogueBox()
     {
-        DialogueList[Currentindex].DestroyDialogueBox();
+        DialogueList[CurrentIndex].DestroyDialogueBox();
     }
     #endregion
 }

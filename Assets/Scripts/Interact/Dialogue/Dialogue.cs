@@ -84,7 +84,7 @@ public abstract class Dialogue : MonoBehaviour {
     public virtual void ResetDialogue()
     {
         Active = false;
-        DialogueText.text = "";
+        //DialogueText.text = "";
         CurrentLetter = 0;
     }
     #endregion

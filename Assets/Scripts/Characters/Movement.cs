@@ -121,13 +121,16 @@ public class Movement : MonoBehaviour {
         return direction;
     }
 
-    //Sets the objects sorting layer to be the same as the objects y-coördinate, allowing walking behind other objects
+    //sets the render-order, relative to the other objects in the scene,
+    //making to look like the object can walk behind other objects
     void SetSortingLayer()
     {
         float objHeight = R.bounds.size.y * 0.8f;
         R.sortingOrder = (int)((transform.position.y - objHeight) * -10);
     }
 
+    //sets the render-order, relative to the other objects in the scene,
+    //making to look like the object can walk behind other objects
     public int GetSortingLayer()
     {
         float objHeight = R.bounds.size.y * 0.8f;

@@ -32,7 +32,6 @@ public class Animations : MonoBehaviour
         }
 
         A.Play(M.Direction.ToString() + "_Attack_" + AtkNr);
-        print(M.Direction.ToString() + "_Attack_" + AtkNr);
     }
 
     //Selects and plays a movement-animation (walking or idle)

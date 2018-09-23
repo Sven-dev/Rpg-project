@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Interactable : MonoBehaviour {
 
-    protected Player p;
+    protected GameObject Player;
 
     protected void Start()
     {
-        p = GameObject.FindWithTag("Player").GetComponent<Player>();
+        Player = GameObject.FindWithTag("Player");
     }
 
     public virtual void Interact()

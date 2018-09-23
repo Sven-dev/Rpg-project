@@ -10,7 +10,7 @@ public class Cutscene : Trigger {
     private int currentIndex;
 
 	// Use this for initialization
-	void Start()
+	new void Start()
     {
         base.Start();
         active = false;
@@ -21,7 +21,7 @@ public class Cutscene : Trigger {
     {        
         //Starts the first action in the list
         this.active = true;
-        ActionList[0].StartProcess();
+        ActionList[0].StartProcess(Player);
 
         while (active)
         {
