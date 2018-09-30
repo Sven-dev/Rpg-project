@@ -25,7 +25,7 @@ public class AttackInteracter : MonoBehaviour {
     void Start ()
     {
         M = transform.parent.GetComponent<Movement>();
-        M.OnDirectionChange += SetInteractTrigger;
+        M.OnMovementChange += SetInteractTrigger;
         Objects = new List<Interactable>();
 
         bool Attack2Ready = false;
@@ -38,13 +38,16 @@ public class AttackInteracter : MonoBehaviour {
 
     public void CheckForInteract()
     {
-        if (Objects.Count > 0)
+        if (!M.Immobile)
         {
-            Interact(Objects[0]);
-            return;
-        }
+            if (Objects.Count > 0)
+            {
+                Interact(Objects[0]);
+                return;
+            }
 
-        Attack();
+            Attack();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -136,7 +139,7 @@ public class AttackInteracter : MonoBehaviour {
 
     void Interact(Interactable obj)
     {
-        M.Idle = true;
+        M.Immobile = true;
         obj.Interact();
     }
 

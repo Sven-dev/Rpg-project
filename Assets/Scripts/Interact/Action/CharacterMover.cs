@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MoveOptions
+public enum MoveOption
 {
     Diagonal,
     X_then_Y,
@@ -13,116 +13,125 @@ public enum MoveOptions
 public class CharacterMover : Action
 {
     //Characterlist
-    public List<Movement> CharacterList;
-
-    public List<Vector3> MoveLocationList;
-    public List<MoveOptions> MoveOptionList;
-
-    private List<bool> ActiveList;
-
-	// Use this for initialization
-	void Start ()
-    {
-        ActiveList = new List<bool>();
-		foreach (Movement m in CharacterList)
-        {
-            ActiveList.Add(true);
-        }
-	}
+    public List<Movement> Characters;
+    public List<LocationData> Data;
 	
     public override void StartProcess()
     {
         Active = true;
-        StartCoroutine(MoveCharacters());
+        StartCoroutine(Process());
     }
 
-    IEnumerator MoveCharacters()
+    IEnumerator Process()
     {
-        while (Active)
+        for (int i = 0; i < Characters.Count; i++)
         {
-            for (int i = 0; i < CharacterList.Count; i++)
-            {
-                if (ActiveList[i])
-                {
-                    CheckMove(i);
-                }
-            }
+            StartCoroutine(Move(Characters[i], Data[i]));
+        }
 
-            EveryoneMoved();
-            yield return new WaitForEndOfFrame();
+        Active = true;
+        while (!Finished())
+        {
+            yield return null;
+        }
+
+        Active = false;
+        yield return null;
+        foreach (LocationData data in Data)
+        {
+            data.Reset();
         }
     }
 
-    void CheckMove(int index)
+    IEnumerator Move(Movement character, LocationData data)
     {
-        if (CharacterList[index].transform.position != MoveLocationList[index])
+        while (data.Active)
         {
-            if (MoveOptionList[index] == MoveOptions.Diagonal)
+            #region X_then_y
+            if (data.Option == MoveOption.X_then_Y)
             {
-                CharacterList[index].MoveTo(MoveLocationList[index]);
-            }
-
-            if (MoveOptionList[index] == MoveOptions.X_then_Y)
-            {
-                if (CharacterList[index].transform.position.x != MoveLocationList[index].x)
+                if (Mathf.Abs(data.Direction.x) > 0.1f)
                 {
-                    MoveX(index);
+                    character.VectorToDirection(new Vector2(data.Direction.x, 0));
+                    character.Idle = false;
+                    character.Move(data);
+                }
+                else if (Mathf.Abs(data.Direction.y) > 0.1f)
+                {
+                    character.VectorToDirection(new Vector2(0, data.Direction.y));
+                    character.Idle = false;
+                    character.Move(data);
                 }
                 else
                 {
-                    MoveY(index);
+                    data.Index++;
                 }
             }
-
-            if (MoveOptionList[index] == MoveOptions.Y_then_X)
+            #endregion
+            #region Y_then_X
+            else if (data.Option == MoveOption.Y_then_X)
             {
-                if (CharacterList[index].transform.position.y != MoveLocationList[index].y)
+                if (Mathf.Abs(data.Direction.y) > 0.1f)
                 {
-                    MoveY(index);
+                    character.VectorToDirection(new Vector2(0, data.Direction.y));
+                    character.Idle = false;
+                    character.Move(data);
+                }
+                else if (Mathf.Abs(data.Direction.x) > 0.1f)
+                {
+                    character.VectorToDirection(new Vector2(data.Direction.x, 0));
+                    character.Idle = false;
+                    character.Move(data);
                 }
                 else
                 {
-                    MoveX(index);
+                    data.Index++;
                 }
             }
-        }
-        else
-        {
-            ActiveList[index] = false;
-        }
-    }
-
-    void MoveX(int index)
-    {
-        CharacterList[index].MoveTo(
-            new Vector2(
-                MoveLocationList[index].x,
-                CharacterList[index].transform.position.y));
-    }
-
-    void MoveY(int index)
-    {
-        CharacterList[index].MoveTo(
-            new Vector2(
-                CharacterList[index].transform.position.x,
-                MoveLocationList[index].y));
-    }
-
-    void EveryoneMoved()
-    {
-        bool FinalState = true;
-
-        foreach (bool state in ActiveList)
-        {
-            if (state == true)
+            #endregion
+            #region Diagonal
+            else if (data.Option == MoveOption.Diagonal)
             {
-                FinalState = false;
+                if (Mathf.Abs(data.Direction.x) > 0.1f && Mathf.Abs(data.Direction.y) > 0.1f)
+                {
+                    character.VectorToDirection(data.Direction);
+                    character.Idle = false;
+                    character.Move(data);
+                }
+                else if (Mathf.Abs(data.Direction.x) > 0.1f)
+                {
+                    character.VectorToDirection(new Vector2(data.Direction.x, 0));
+                    character.Idle = false;
+                    character.Move(data);
+                }
+                else if (Mathf.Abs(data.Direction.y) > 0.1f)
+                {
+                    character.VectorToDirection(new Vector2(0, data.Direction.y));
+                    character.Idle = false;
+                    character.Move(data);
+                }
+                else
+                {
+                    data.Index++;
+                }
             }
+            #endregion
+
+            yield return null;
         }
 
-        if (FinalState == true)
+        character.Direction = data.EndDirection;
+        character.Idle = true;
+    }
+
+    bool Finished()
+    {
+        foreach (LocationData data in Data)
         {
-            Active = false;
-        }   
+            if (data.Active)
+                return false;
+        }
+
+        return true;
     }
 }

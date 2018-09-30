@@ -7,7 +7,6 @@ public class DialogueHandler: MonoBehaviour
     #region Fields
     public bool Reading;
     public List<Dialogue> DialogueList;
-    private Movement Movement;
 
     private int Startindex;
     private int CurrentIndex;
@@ -18,8 +17,6 @@ public class DialogueHandler: MonoBehaviour
     {
         Startindex = 0;
         CurrentIndex = 0;
-
-        Movement = GetComponent<Movement>();
     }
 
     #region Next Dialogue
@@ -87,15 +84,12 @@ public class DialogueHandler: MonoBehaviour
     }
     IEnumerator activate()
     {
-        Movement.Immobile = true;
         Reading = true;
         yield return new WaitForEndOfFrame();
         while (Reading)
         {
             yield return null;
         }
-
-        Movement.Immobile = false;
     }
 
     //Ends the dialogue, resets the handler & dialogue

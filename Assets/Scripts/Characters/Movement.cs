@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,20 +15,17 @@ public enum Direction
     DownRight
 }
 
-public class Movement : MonoBehaviour {
-
-    Player P;
+public class Movement : MonoBehaviour
+{
     Renderer R;
 
-    //[HideInInspector]
-    public bool Immobile;
     public float Speed;
+    Direction _direction;
+    public bool _idle;
+    public bool _immobile;
 
-    public Direction _direction;
-    bool _idle;
-
-    public delegate void MovementChange();
-    public event MovementChange OnDirectionChange;
+    public delegate void MovementChanged();
+    public event MovementChanged OnMovementChange;
 
     public Direction Direction
     {
@@ -36,9 +34,12 @@ public class Movement : MonoBehaviour {
         {
             if (!Immobile)
             {
-                _direction = value;
-                if (OnDirectionChange != null)
-                    OnDirectionChange();
+                if (_direction != value)
+                {
+                    _direction = value;
+                    if (OnMovementChange != null)
+                        OnMovementChange();
+                }
             }
         }
     }
@@ -51,16 +52,26 @@ public class Movement : MonoBehaviour {
             if (!Immobile)
             {
                 _idle = value;
-                if (OnDirectionChange != null)
-                    OnDirectionChange();
+                if (OnMovementChange != null)
+                    OnMovementChange();
             }
+        }
+    }
+
+    public bool Immobile
+    {
+        get { return _immobile; }
+        set
+        {
+            if (value == true)
+                Idle = true;
+            _immobile = value;
         }
     }
 
     // Use this for initialization
     void Start ()
     {
-        P = GetComponent<Player>();
         R = GetComponent<Renderer>();
 
         Immobile = false;
@@ -74,7 +85,17 @@ public class Movement : MonoBehaviour {
     {
         if (!Immobile)
         {
-            transform.position += DirectionToVector() * Speed * Time.fixedDeltaTime;
+            transform.position += DirectionToVector() * Speed * Time.deltaTime;
+            SetSortingLayer();
+        }
+    }
+
+    public void Move(LocationData data)
+    {
+        if (!Immobile)
+        {
+            transform.position += DirectionToVector() * Speed * Time.deltaTime;
+            data.Direction -= DirectionToVector() * Speed * Time.deltaTime;
             SetSortingLayer();
         }
     }
@@ -119,6 +140,94 @@ public class Movement : MonoBehaviour {
         }
 
         return direction;
+    }
+
+    //Makes the object turn the opposite direction of the target,
+    //making it look like the objects are turned to eachother
+    public void LookAt(Movement target)
+    {
+        switch (target.Direction)
+        {
+            case Direction.Up:
+                Direction = Direction.Down;
+                break;
+            case Direction.Down:
+                Direction = Direction.Up;
+                break;
+            case Direction.Left:
+                Direction = Direction.Right;
+                break;
+            case Direction.Right:
+                Direction = Direction.Left;
+                break;
+            case Direction.UpLeft:
+                Direction = Direction.DownRight;
+                break;
+            case Direction.UpRight:
+                Direction = Direction.DownLeft;
+                break;
+            case Direction.DownLeft:
+                Direction = Direction.UpRight;
+                break;
+            case Direction.DownRight:
+                Direction = Direction.UpLeft;
+                break;
+        }
+    }
+
+    //Converts the target vector into a direction
+    public void VectorToDirection(Vector2 target)
+    {
+        Vector2 xnormal = new Vector2(target.x, 0).normalized;
+        Vector2 ynormal = new Vector2(0, target.y).normalized;
+        Vector2 normal = xnormal + ynormal;
+
+        if (normal.x > 0)
+        {
+            if (normal.y > 0)
+            {
+                Direction =  Direction.UpRight;
+                return;
+            }
+
+            if (normal.y < 0)
+            {
+                Direction = Direction.DownRight;
+                return;
+            }
+
+            Direction = Direction.Right;
+            return;
+        }
+        if (normal.x < 0)
+        {
+            if (normal.y > 0)
+            {
+                Direction = Direction.UpLeft;
+                return;
+            }
+
+            if (normal.y < 0)
+            {
+                Direction = Direction.DownLeft;
+                return;
+            }
+
+            Direction = Direction.Left;
+            return;
+        }
+
+        if (normal.y > 0)
+        {
+            Direction = Direction.Up;
+            return;
+        }
+
+        if (normal.y < 0)
+        {
+            Direction = Direction.Down;
+            return;
+        }
     }
 
     //sets the render-order, relative to the other objects in the scene,

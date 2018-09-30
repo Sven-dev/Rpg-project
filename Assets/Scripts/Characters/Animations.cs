@@ -4,34 +4,15 @@ using UnityEngine;
 
 public class Animations : MonoBehaviour
 {
-    Movement M;
-    AttackInteracter AI;
-    Animator A; 
+    protected Movement M;
+    protected Animator A; 
 
-    private void Start()
+    protected void Start()
     {
         M = GetComponent<Movement>();
-        AI = transform.GetComponentInChildren<AttackInteracter>();
         A = GetComponent<Animator>();
 
-        M.OnDirectionChange += DirectionToClip;
-        AI.OnAttackChange += AttackToClip;
-    }
-
-    //Selects and plays an attack-animation
-    void AttackToClip()
-    {
-        int AtkNr;
-        if (AI.Attacking1)
-        {
-            AtkNr = 1;
-        }
-        else //if (AI.Attacking2)
-        {
-            AtkNr = 2;
-        }
-
-        A.Play(M.Direction.ToString() + "_Attack_" + AtkNr);
+        M.OnMovementChange += DirectionToClip;
     }
 
     //Selects and plays a movement-animation (walking or idle)

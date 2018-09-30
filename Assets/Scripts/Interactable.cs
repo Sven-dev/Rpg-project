@@ -14,5 +14,4 @@ public class Interactable : MonoBehaviour {
     {
         print("interacted");
     }
-
 }

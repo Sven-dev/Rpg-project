@@ -56,7 +56,8 @@ public class KeyboardController : MonoBehaviour
                         M.Direction = Direction.Right;
                     }
 
-                    M.Idle = false;
+                    if (M.Idle == true)
+                        M.Idle = false;
                     M.Move();
                     #endregion
                 }
@@ -83,7 +84,8 @@ public class KeyboardController : MonoBehaviour
                         M.Direction = Direction.Left;
                     }
 
-                    M.Idle = false;
+                    if (M.Idle == true)
+                        M.Idle = false;
                     M.Move();
                     #endregion
                 }
@@ -105,7 +107,8 @@ public class KeyboardController : MonoBehaviour
                     M.Direction = Direction.Up;
                 }
 
-                M.Idle = false;
+                if (M.Idle == true)
+                    M.Idle = false;
                 M.Move();
                 #endregion
             }
@@ -125,7 +128,8 @@ public class KeyboardController : MonoBehaviour
                     M.Direction = Direction.Down;
                 }
 
-                M.Idle = false;
+                if (M.Idle == true)
+                    M.Idle = false;
                 M.Move();
                 #endregion
             }
@@ -133,9 +137,7 @@ public class KeyboardController : MonoBehaviour
             {
                 #region idle
                 if (M.Idle == false)
-                {
                     M.Idle = true;
-                }
                 #endregion
             }
 

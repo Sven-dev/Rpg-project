@@ -8,6 +8,7 @@ public class Cutscene : Trigger {
     public bool DisableWhenFinished;
     private bool active;
     private int currentIndex;
+    private Movement PlayerMovement;
 
 	// Use this for initialization
 	new void Start()
@@ -15,13 +16,17 @@ public class Cutscene : Trigger {
         base.Start();
         active = false;
         currentIndex = 0;
-	}
+        PlayerMovement = Player.GetComponent<Movement>();
+    }
 	
+    //Stops the executer until all parts of the cutscene have been executed
     IEnumerator startqueue()
-    {        
+    {
+        PlayerMovement.Immobile = true;
+
         //Starts the first action in the list
-        this.active = true;
-        ActionList[0].StartProcess(Player);
+        active = true;
+        ActionList[currentIndex].StartProcess(Player);
 
         while (active)
         {
@@ -31,14 +36,16 @@ public class Cutscene : Trigger {
             }
             yield return new WaitForEndOfFrame();
         }
+
+        PlayerMovement.Immobile = false;
     }
 
     public override void ExecuteTrigger()
     {
-        //p.Controls_OFF();
         StartCoroutine(startqueue());
     }
 
+    //Starts the next action in the list. If there's no actions left, ends the cutscene
     void nextaction()
     {
         if (currentIndex < ActionList.Count - 1)
@@ -53,10 +60,8 @@ public class Cutscene : Trigger {
                 GetComponent<BoxCollider>().enabled = false;
             }
 
-            this.active = false;
-
-            Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
-            //p.Controls_ON();
+            currentIndex = 0;
+            active = false;
         }
     }
 }

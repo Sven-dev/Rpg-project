@@ -8,7 +8,7 @@ public class CharacterMoveTo : Action
     public List<Movement> CharacterList;
 
     public List<GameObject> MoveLocationList;
-    public List<MoveOptions> MoveOptionList;
+    public List<MoveOption> MoveOptionList;
     public List<float> EndDistanceList;
 
     private List<bool> ActiveList;
@@ -60,12 +60,12 @@ public class CharacterMoveTo : Action
 
         if (dist >= 1.5f)
         {
-            if (MoveOptionList[index] == MoveOptions.Diagonal)
+            if (MoveOptionList[index] == MoveOption.Diagonal)
             {
                 CharacterList[index].MoveTo(MoveLocationList[index].transform.position);
             }
 
-            if (MoveOptionList[index] == MoveOptions.X_then_Y)
+            if (MoveOptionList[index] == MoveOption.X_then_Y)
             {
                 if (CharacterList[index].transform.position.x != MoveLocationList[index].transform.position.x)
                 {
@@ -77,7 +77,7 @@ public class CharacterMoveTo : Action
                 }
             }
 
-            if (MoveOptionList[index] == MoveOptions.Y_then_X)
+            if (MoveOptionList[index] == MoveOption.Y_then_X)
             {
                 if (CharacterList[index].transform.position.y != MoveLocationList[index].transform.position.y)
                 {
