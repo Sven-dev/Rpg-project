@@ -46,7 +46,7 @@ public class PitFallTrigger : Trigger
         //b.enabled = true;
 
         //Enable controls
-        c.Target = Player.transform;
+        //c.Target = Player.transform;
 
         /*
         if (p.Balancing)
