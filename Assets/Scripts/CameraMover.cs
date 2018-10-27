@@ -2,48 +2,46 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class CameraMover : MonoBehaviour {
-
+public class CameraMover : MonoBehaviour
+{
     public Movement Target;
     public float Speed = 1f;
-    Camera Cam;
 
+    [Space]
     public bool bounds;
     public Vector2 minCameraPos;
     public Vector2 maxCameraPos;
 
-    public SpriteRenderer Blackout;
+    private SceneSwitcher SceneSwitcher;
+    private Camera Cam;
+    private SpriteRenderer Blackout;
 
     // Use this for initialization
     void Start()
     {
         Target = GameObject.FindWithTag("Player").GetComponent<Movement>();
-        DontDestroyOnLoad(Target);
-        DontDestroyOnLoad(gameObject);
-        Cam = GetComponent<Camera>();
+        SceneSwitcher = Target.GetComponent<SceneSwitcher>();
 
-        Blackout.color = new Color(1, 1, 1, 0);
-        Blackout.enabled = true;
+        Cam = GetComponent<Camera>();
+        Blackout = transform.GetChild(4).GetComponent<SpriteRenderer>();
+
+        StartCoroutine(_FadeIn());
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Cam.orthographicSize = (Screen.height / 100);
-        UpdateCameraPos();
-
+        UpdateCameraPosition();
         if (bounds)
         {
             ClampBounds();
         }
 
+        //the z-axis of the camera needs to not be 0;
         transform.Translate(new Vector3(0, 0, -100));
     }
 
-
-
-    // Update camera position
-    void UpdateCameraPos()
+    void UpdateCameraPosition()
     {
         if (Target != null)
         {
@@ -51,7 +49,7 @@ public class CameraMover : MonoBehaviour {
         }
     }
 
-    //function that ensures the camera stays within the bounds of the map
+    //Ensures the camera stays within the bounds of the map
     void ClampBounds()
     {
         transform.position = new Vector2(
@@ -60,16 +58,46 @@ public class CameraMover : MonoBehaviour {
             );
     }
 
+    #region Scene switching
     public void SwitchScene(string scene, Vector2 spawnposition)
     {
         StartCoroutine(_Switch(scene, spawnposition));
     }
 
+    //Switches to a different scene
     IEnumerator _Switch(string scene, Vector2 spawnposition)
     {
-        Target.Immobile = true;
-        float Alpha = Blackout.color.a; //should be 0
+        StartCoroutine(_FadeOut());
+        while (Blackout.color.a < 1)
+        {
+            yield return null;
+        }
 
+        SceneSwitcher.Switch(scene, spawnposition);
+    }
+
+    //Fades out the black screen
+    IEnumerator _FadeIn()
+    {
+        float Alpha = Blackout.color.a;
+        while (Alpha > 0)
+        {
+            Alpha -= 0.1f;
+            Blackout.color = new Color(1, 1, 1, Alpha);
+
+            yield return new WaitForSeconds(0.025f);
+        }
+
+        Blackout.color = new Color(1, 1, 1, 0);
+        Target.Immobile = false;
+    }
+
+    //Fades in the black screen
+    IEnumerator _FadeOut()
+    {
+        Target.Immobile = true;
+
+        float Alpha = Blackout.color.a;
         //Turn the screen black over time
         while (Alpha < 1)
         {
@@ -79,24 +107,7 @@ public class CameraMover : MonoBehaviour {
             yield return new WaitForSeconds(0.025f);
         }
 
-        Switch(scene, spawnposition);
-        yield return new WaitForSeconds(0.25f);
-
-        while (Alpha > 0)
-        {
-            Alpha -= 0.1f;
-            Blackout.color = new Color(1, 1, 1, Alpha);
-
-            yield return new WaitForSeconds(0.025f);
-        }
-
-        Target.Immobile = false;
+        Blackout.color = new Color(1, 1, 1, 1);
     }
-
-    //Switches active scenes, and sets object positions
-    void Switch(string scene, Vector2 spawn)
-    {
-        SceneManager.LoadScene(scene);
-        Target.transform.position = spawn;
-    }
+    #endregion
 }

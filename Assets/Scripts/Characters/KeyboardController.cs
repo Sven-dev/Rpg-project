@@ -10,6 +10,7 @@ public class KeyboardController : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         M = GetComponent<Movement>();
         IA = transform.GetChild(0).GetComponent<AttackInteracter>();
         DH = GetComponent<DialogueHandler>();

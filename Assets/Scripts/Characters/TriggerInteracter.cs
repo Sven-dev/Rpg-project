@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerInteracter : MonoBehaviour {
-
+public class TriggerInteracter : MonoBehaviour
+{
     private void OnTriggerEnter(Collider other)
     {
         Trigger T = other.GetComponent<Trigger>();
