@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class DoorTrigger : Trigger
 {
-    public Object Scene;
+    public string Scene;
     public Vector2 position;
     public CameraMover Camera;
 
@@ -22,6 +22,6 @@ public class DoorTrigger : Trigger
 
     public override void ExecuteTrigger()
     {
-        Camera.SwitchScene(Scene.name, position);
+        Camera.SwitchScene(Scene, position);
     }
 }
