@@ -6,15 +6,16 @@ public class CameraMover : MonoBehaviour
 {
     public Movement Target;
     public float Speed = 1f;
-
     [Space]
-    public bool bounds;
-    public Vector2 minCameraPos;
-    public Vector2 maxCameraPos;
+    public Transform Bounds;
+    private bool Bounded;
+    private Transform BottomLeft;
+    private Transform TopRight;
 
     private SceneSwitcher SceneSwitcher;
     private Camera Cam;
-    private SpriteRenderer Blackout;
+    public SpriteRenderer Blackout;
+    private bool Fading;
 
     // Use this for initialization
     void Start()
@@ -22,9 +23,15 @@ public class CameraMover : MonoBehaviour
         Target = GameObject.FindWithTag("Player").GetComponent<Movement>();
         SceneSwitcher = Target.GetComponent<SceneSwitcher>();
 
-        Cam = GetComponent<Camera>();
-        Blackout = transform.GetChild(4).GetComponent<SpriteRenderer>();
+        Bounded = false;
+        if (Bounds != null)
+        {
+            BottomLeft = Bounds.GetChild(0);
+            TopRight = Bounds.GetChild(1);
+            Bounded = true;
+        }
 
+        Cam = GetComponent<Camera>();
         StartCoroutine(_FadeIn());
     }
 
@@ -32,7 +39,8 @@ public class CameraMover : MonoBehaviour
     void Update()
     {
         UpdateCameraPosition();
-        if (bounds)
+
+        if (Bounded)
         {
             ClampBounds();
         }
@@ -53,8 +61,8 @@ public class CameraMover : MonoBehaviour
     void ClampBounds()
     {
         transform.position = new Vector2(
-            Mathf.Clamp(transform.position.x, minCameraPos.x, maxCameraPos.x),
-            Mathf.Clamp(transform.position.y, minCameraPos.y, maxCameraPos.y)
+            Mathf.Clamp(transform.position.x, BottomLeft.position.x, TopRight.position.x),
+            Mathf.Clamp(transform.position.y, BottomLeft.position.y, TopRight.position.y)
             );
     }
 
@@ -67,8 +75,9 @@ public class CameraMover : MonoBehaviour
     //Switches to a different scene
     IEnumerator _Switch(string scene, Vector2 spawnposition)
     {
+        Fading = true;
         StartCoroutine(_FadeOut());
-        while (Blackout.color.a < 1)
+        while (Fading)
         {
             yield return null;
         }
@@ -79,35 +88,49 @@ public class CameraMover : MonoBehaviour
     //Fades out the black screen
     IEnumerator _FadeIn()
     {
-        float Alpha = Blackout.color.a;
-        while (Alpha > 0)
+        if (Blackout != null)
         {
-            Alpha -= 0.1f;
-            Blackout.color = new Color(1, 1, 1, Alpha);
+            Blackout.color = new Color(
+                Blackout.color.r,
+                Blackout.color.g,
+                Blackout.color.b,
+                1);
+            while (Blackout.color.a > 0)
+            {
+                Blackout.color = new Color(
+                    Blackout.color.r,
+                    Blackout.color.g,
+                    Blackout.color.b,
+                    Blackout.color.a - 0.1f);
+                yield return new WaitForSeconds(0.025f);
+            }
 
-            yield return new WaitForSeconds(0.025f);
+            Target.Immobile = false;
         }
-
-        Blackout.color = new Color(1, 1, 1, 0);
-        Target.Immobile = false;
     }
 
     //Fades in the black screen
     IEnumerator _FadeOut()
     {
-        Target.Immobile = true;
-
-        float Alpha = Blackout.color.a;
-        //Turn the screen black over time
-        while (Alpha < 1)
+        if (Blackout != null)
         {
-            Alpha += 0.1f;
-            Blackout.color = new Color(1, 1, 1, Alpha);
-
-            yield return new WaitForSeconds(0.025f);
+            Target.Immobile = true;
+            Blackout.color = new Color(
+                Blackout.color.r,
+                Blackout.color.g,
+                Blackout.color.b,
+                0);
+            while (Blackout.color.a < 1)
+            {
+                Blackout.color = new Color(
+                    Blackout.color.r,
+                    Blackout.color.g,
+                    Blackout.color.b,
+                    Blackout.color.a + 0.1f);
+                yield return new WaitForSeconds(0.025f);
+            }
         }
-
-        Blackout.color = new Color(1, 1, 1, 1);
+            Fading = false;
     }
     #endregion
 }
