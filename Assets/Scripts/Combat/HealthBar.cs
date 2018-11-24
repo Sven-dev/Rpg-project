@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HealthBar : MonoBehaviour {
+public class HealthBar : MonoBehaviour
+{
+
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 	
 	}
 	

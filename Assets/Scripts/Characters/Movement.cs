@@ -85,7 +85,7 @@ public class Movement : MonoBehaviour
     {
         if (!Immobile)
         {
-            transform.position += DirectionToVector() * Speed * Time.deltaTime;
+            transform.position += DirectionToVector() * Speed * Time.fixedDeltaTime;
             SetSortingLayer();
         }
     }

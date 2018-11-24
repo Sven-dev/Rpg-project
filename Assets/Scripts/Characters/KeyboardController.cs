@@ -7,21 +7,23 @@ public class KeyboardController : MonoBehaviour
     Movement M;
     AttackInteracter IA;
     DialogueHandler DH;
+    public bool Active;
 
     void Start()
     {
+        Active = true;
         DontDestroyOnLoad(gameObject);
         M = GetComponent<Movement>();
         IA = transform.GetChild(0).GetComponent<AttackInteracter>();
         DH = GetComponent<DialogueHandler>();
-        StartCoroutine(KeyCheck());
     }
 
-    IEnumerator KeyCheck()
+    //Handles the movement (which is influenced by physics)
+    private void FixedUpdate()
     {
-        bool active = true;
-        while (active)
+        if (Active)
         {
+            
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (DH.Reading)
@@ -34,7 +36,7 @@ public class KeyboardController : MonoBehaviour
                     IA.CheckForInteract();
                     #endregion
                 }
-            }
+            }        
             else if (Input.GetKey(KeyCode.D))
             {
                 if (DH.Reading)
@@ -141,8 +143,6 @@ public class KeyboardController : MonoBehaviour
                     M.Idle = true;
                 #endregion
             }
-
-            yield return null;
         }
     }
 }

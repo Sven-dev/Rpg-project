@@ -16,7 +16,7 @@ public class AttackInteracter : MonoBehaviour {
     [HideInInspector]
     public bool Attacking2;
 
-    List<BoxCollider> Colliders;
+    List<BoxCollider2D> Colliders;
 
     public delegate void AttackInteracterChange();
     public event AttackInteracterChange OnAttackChange;
@@ -32,8 +32,8 @@ public class AttackInteracter : MonoBehaviour {
         bool Attacking1 = false;
         bool Attacking2 = false;
 
-        Colliders = new List<BoxCollider>();
-        Colliders.AddRange(transform.GetChild(0).GetComponentsInChildren<BoxCollider>());
+        Colliders = new List<BoxCollider2D>();
+        Colliders.AddRange(transform.GetChild(0).GetComponentsInChildren<BoxCollider2D>());
     }
 
     public void CheckForInteract()
@@ -50,18 +50,18 @@ public class AttackInteracter : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Interactable i = other.GetComponent<Interactable>();
+        Interactable i = collision.GetComponent<Interactable>();
         if (i != null)
         {
             Objects.Add(i);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Interactable i = other.GetComponent<Interactable>();
+        Interactable i = collision.GetComponent<Interactable>();
         if (i != null)
         {
             Objects.Remove(i);

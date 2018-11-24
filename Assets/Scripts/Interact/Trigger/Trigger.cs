@@ -10,8 +10,25 @@ public abstract class Trigger : MonoBehaviour
     {
         Player = GameObject.FindWithTag("Player");
     }
+
     //Base method for starting a trigger.
     public virtual void ExecuteTrigger() { }
 
     public virtual void ExitTrigger() { }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            ExecuteTrigger();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            ExitTrigger();
+        }
+    }
 }
