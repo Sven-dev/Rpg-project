@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 2dc4d4a4c810c0b4d8a446e039beba8f
+timeCreated: 1546183486
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: ChevyRay - Bird Seed
+  fontNames:
+  - ChevyRay - Bird Seed
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

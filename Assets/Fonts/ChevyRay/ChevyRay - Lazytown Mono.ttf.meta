@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 2dfc62454a94f9148bc62afbf32ffe2b
+timeCreated: 1546183486
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: ChevyRay - Lazytown Mono
+  fontNames:
+  - ChevyRay - Lazytown Mono
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
