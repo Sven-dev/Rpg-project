@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Interactable : MonoBehaviour {
-
+public abstract class Interactable : MonoBehaviour
+{
     protected GameObject Player;
 
-    protected void Start()
+    protected virtual void Start()
     {
         Player = GameObject.FindWithTag("Player");
     }
 
-    public virtual void Interact()
-    {
-        print("interacted");
-    }
+    public abstract void Interact();
 }

@@ -7,6 +7,7 @@ public class HealthManager : MonoBehaviour
     public HealthBar Healthbar;
 
     private int Health; //A number between 0 & 100
+    [Range(0, 100)]
     public int health; //temp
 
     public delegate void HealthChange(int health);
@@ -18,11 +19,11 @@ public class HealthManager : MonoBehaviour
         //needs to take health out of save file
         Health = 100;
         Healthbar.Link(this);
-        OnHealthChange(Health);
 	}
 	
 	//temp
-	void Update () {
+	void Update ()
+    {
 		if (health != Health)
         {
             Health = health;

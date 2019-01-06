@@ -6,7 +6,7 @@ public class KeyboardController : MonoBehaviour
 {
     Movement M;
     AttackInteracter IA;
-    DialogueHandler DH;
+    ConversationManager CM;
     public bool Active;
 
     void Start()
@@ -15,65 +15,71 @@ public class KeyboardController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         M = GetComponent<Movement>();
         IA = transform.GetChild(0).GetComponent<AttackInteracter>();
-        DH = GetComponent<DialogueHandler>();
+        CM = GetComponent<ConversationManager>();
     }
 
-    //Handles the movement (which is influenced by physics)
+    //Handles any non physics-related inputs (like menus)
+    private void Update()
+    {
+        if (Active)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (CM.Active)
+                {
+                    CM.FinishTalking();
+                }
+                else
+                {
+                    IA.CheckForInteract();
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                if (CM.Active)
+                {
+                    CM.MoveCursor(1);
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (CM.Active)
+                {
+                    CM.MoveCursor(-1);
+                }
+            }
+        }
+    }
+
+    //Handles any physics-related inputs (FixedUpdate runs at the same rate as the physics-engine)
     private void FixedUpdate()
     {
         if (Active)
         {
-            
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.D))
             {
-                if (DH.Reading)
+                #region moving right
+                if (Input.GetKey(KeyCode.W))
                 {
-                    DH.AdvanceDialogue();
+                    M.Direction = Direction.UpRight;
+                }
+                else if (Input.GetKey(KeyCode.S))
+                {
+                    M.Direction = Direction.DownRight;
                 }
                 else
                 {
-                    #region Attack / Interact
-                    IA.CheckForInteract();
-                    #endregion
+                    M.Direction = Direction.Right;
                 }
-            }        
-            else if (Input.GetKey(KeyCode.D))
-            {
-                if (DH.Reading)
-                {
-                    DH.UpdateSelectedChoice(1);
-                }
-                else
-                {
-                    #region moving right
-                    if (Input.GetKey(KeyCode.W))
-                    {
-                        M.Direction = Direction.UpRight;
-                    }
-                    else if (Input.GetKey(KeyCode.S))
-                    {
-                        M.Direction = Direction.DownRight;
-                    }
-                    else
-                    {
-                        M.Direction = Direction.Right;
-                    }
 
-                    if (M.Idle == true)
-                        M.Idle = false;
-                    M.Move();
-                    #endregion
-                }
+                if (M.Idle == true)
+                    M.Idle = false;
+                M.Move();
+                #endregion
             }
             else if (Input.GetKey(KeyCode.A))
             {
-                if (DH.Reading)
-                {
-                    DH.UpdateSelectedChoice(-1);
-                }
-                else
-                {
-                    #region moving left
+                #region moving left
                     if (Input.GetKey(KeyCode.W))
                     {
                         M.Direction = Direction.UpLeft;
@@ -91,8 +97,6 @@ public class KeyboardController : MonoBehaviour
                         M.Idle = false;
                     M.Move();
                     #endregion
-                }
-
             }
             else if (Input.GetKey(KeyCode.W))
             {
@@ -138,9 +142,11 @@ public class KeyboardController : MonoBehaviour
             }
             else
             {
-                #region idle
+                #region Idle
                 if (M.Idle == false)
+                {
                     M.Idle = true;
+                }
                 #endregion
             }
         }

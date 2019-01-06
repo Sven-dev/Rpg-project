@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using System;
 
-public class HealthBar : MonoBehaviour
+public class BossBar : HealthBar
 {
-    public List<Image> Bar;
+    private List<Transform> Bounds;
     [Space]
-    public Image HealthIndicator;
+    public Image ValueIndicator;
     public Image DamageIndicator;
     public Image HealIndicator;
-
-    private List<Transform> Bounds;
+    [Space]
     private int CurrentHealth;
     private bool Fading;
+    public List<Image> Bar;
 
     // Use this for initialization
     void Awake()
@@ -24,22 +24,18 @@ public class HealthBar : MonoBehaviour
         {
             Bounds.Add(bound);
         }
+
+        //should probably be somewhere else
+        CurrentHealth = 100;
 	}
 
-    public void Link(HealthManager manager)
+    protected override void SetUI(int health)
     {
-        manager.OnHealthChange += UpdateUI;
+        CurrentHealth = health;
     }
 
-    void UpdateUI(int health)
+    protected override IEnumerator _UpdateUI(int health)
     {
-        StartCoroutine(_UpdateUI(health));
-    }
-
-    IEnumerator _UpdateUI(int health)
-    {
-        //In case of rapid updated, disables fading of earlier updates (still needs stress-testing)
-        Fading = false;
         SetBarAlpha(1);
 
         //Heal
@@ -48,14 +44,14 @@ public class HealthBar : MonoBehaviour
             #region Heal
             //Sets the heal indicator to the right position
             HealIndicator.enabled = true;
-            HealIndicator.transform.position = Vector2.Lerp(Bounds[0].position, Bounds[1].position, health / 100f);
+            HealIndicator.transform.position = LinearPercentage(health);
 
             yield return new WaitForSeconds(0.5f);
             //Moves the damage indicator to the health indicator over time
-            while (HealIndicator.transform.position != HealthIndicator.transform.position)
+            while (HealIndicator.transform.position != ValueIndicator.transform.position)
             {
-                HealthIndicator.transform.position = Vector2.MoveTowards(
-                    HealthIndicator.transform.position,
+                ValueIndicator.transform.position = Vector2.MoveTowards(
+                    ValueIndicator.transform.position,
                     HealIndicator.transform.position,
                     Time.deltaTime * 5);
 
@@ -70,18 +66,18 @@ public class HealthBar : MonoBehaviour
         {
             #region Damage
             //Sets the health indicator to the right position
-            HealthIndicator.transform.position = Vector2.Lerp(Bounds[0].position, Bounds[1].position, health / 100f);
+            ValueIndicator.transform.position = LinearPercentage(health);
             DamageIndicator.enabled = true;
             //Sets the damage indicator to the right position
-            DamageIndicator.transform.position = Vector2.Lerp(Bounds[0].position, Bounds[1].position, CurrentHealth / 100f);
+            DamageIndicator.transform.position = LinearPercentage(CurrentHealth);
 
             yield return new WaitForSeconds(0.5f);
             //Moves the damage indicator to the health indicator over time
-            while(DamageIndicator.transform.position != HealthIndicator.transform.position)
+            while (DamageIndicator.transform.position != ValueIndicator.transform.position)
             {
                 DamageIndicator.transform.position = Vector2.MoveTowards(
                     DamageIndicator.transform.position,
-                    HealthIndicator.transform.position,
+                    ValueIndicator.transform.position,
                     Time.deltaTime * 5);
 
                 yield return new WaitForSeconds(Time.deltaTime * 2.5f);
@@ -92,11 +88,17 @@ public class HealthBar : MonoBehaviour
         }
 
         CurrentHealth = health;
-        StartCoroutine(_FadeOut());
+    }
+
+    //Calculates the linear fill of the bar
+    private Vector2 LinearPercentage(float percentage)
+    {
+        print(Vector2.Lerp(Bounds[0].position, Bounds[1].position, percentage / 100));
+        return Vector2.Lerp(Bounds[0].position, Bounds[1].position, percentage / 100);
     }
 
     //Fades out the bar after showing it a bit
-    IEnumerator _FadeOut()
+    protected virtual IEnumerator _FadeOut()
     {
         Fading = true;
         yield return new WaitForSeconds(0.5f);
