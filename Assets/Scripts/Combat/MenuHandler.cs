@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MenuHandler : MonoBehaviour
 {
     //Phase 0
-    public List<DialogueHandler> DialogueHandlerList;
+    public List<DialogueManager> DialogueHandlerList;
     public int Phase;
 
     //Phase 1

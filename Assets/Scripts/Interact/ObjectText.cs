@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ObjectText : Interactable
 {
-    public DialogueHandler dialogue;
+    public DialogueManager dialogue;
+    private Movement PlayerMovement;
 
     public override void Interact()
     {
@@ -13,6 +14,7 @@ public class ObjectText : Interactable
 
     IEnumerator interaction()
     {
+        /*
         //dialogue.StartReading();
 
         while (dialogue.Reading)
@@ -22,5 +24,7 @@ public class ObjectText : Interactable
 
         Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
         //p.Controls_ON();
+        */
+        yield return null;
     }
 }

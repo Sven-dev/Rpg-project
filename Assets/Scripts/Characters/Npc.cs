@@ -13,7 +13,7 @@ public class Npc : Interactable {
     private int currentIndex;
 
     // Use this for initialization
-    new void Start()
+    protected override void Start()
     {
         base.Start();
         PlayerMovement = Player.GetComponent<Movement>();
@@ -42,7 +42,7 @@ public class Npc : Interactable {
                 nextaction();
             }
 
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
 
         PlayerMovement.Immobile = false;
