@@ -9,52 +9,29 @@ public class PitFallTrigger : Trigger
 
     public override void ExecuteTrigger()
     {
-        //p.Controls_OFF();
-        StartCoroutine(FallDown());
+        StartCoroutine(_Fall(GlobalVariables.Player));
     }
 
-    IEnumerator FallDown()
+    IEnumerator _Fall(GameObject player)
     {
-        //Get player object
-        print("Player:" + Player.name);
-        Animator a = Player.GetComponent<Animator>();
-        CameraMover c = GameObject.FindWithTag("MainCamera").GetComponent<CameraMover>();
+        PlayerAnimator animator = player.GetComponent<PlayerAnimator>();
+        CameraMover camera = Camera.main.GetComponent<CameraMover>();
 
-        //Change sprite
-        c.Target = null;
-        //b.enabled = false;
-        Player.transform.position += new Vector3(0, -1f, 0);
-        a.Play("PitFall");
-
+        camera.Target = null;
+        player.transform.position += new Vector3(0, -1f, 0);
+        //a.Play("PitFall"); play the falling animation
         yield return null;
 
         //Fall down
-        while (Player.transform.localScale.x > 0)
+        while (player.transform.localScale.x > 0)
         {
-            Player.transform.localScale -= new Vector3(0.015f, 0.015f, 0);
-
-            yield return new WaitForFixedUpdate();
+            player.transform.localScale -= new Vector3(0.015f, 0.015f, 0);
+            yield return null;
         }
-
         yield return new WaitForSeconds(2f);
 
         //Respawn somewhere
-        Player.transform.localScale = new Vector3(1, 1, 1);
-        Player.transform.position = spawnLocation;
-
-        //Iframes??
-        //b.enabled = true;
-
-        //Enable controls
-        //c.Target = Player.transform;
-
-        /*
-        if (p.Balancing)
-        {
-            p.Balancing = false;
-        }
-        */
-
-        //p.Controls_ON();
+        player.transform.localScale = new Vector3(1, 1, 1);
+        player.transform.position = spawnLocation;
     }
 }

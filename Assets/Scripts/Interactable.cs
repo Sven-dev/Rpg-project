@@ -1,14 +1,50 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public abstract class Interactable : MonoBehaviour
+public class Interactable : MonoBehaviour
 {
-    protected GameObject Player;
+    public List<Action> ActionList;
 
-    protected virtual void Start()
+    private bool active;
+    private int currentIndex;
+
+    public virtual void Interact()
     {
-        Player = GameObject.FindWithTag("Player");
+        StartCoroutine(interaction());
     }
 
-    public abstract void Interact();
+    //Stops the interactor until all parts if the interaction have been executed
+    IEnumerator interaction()
+    {
+        GlobalVariables.PlayerMovement.Immobile = true;
+
+        //Starts the first action in the list
+        active = true;
+        ActionList[0].Play();
+
+        while (active)
+        {
+            if (ActionList[currentIndex].Active == false)
+            {
+                nextaction();
+            }
+
+            yield return null;
+        }
+
+        GlobalVariables.PlayerMovement.Immobile = false;
+    }
+
+    private void nextaction()
+    {
+        if (currentIndex < ActionList.Count - 1)
+        {
+            currentIndex++;
+            ActionList[currentIndex].Play();
+            return;
+        }
+
+        active = false;
+    }
 }

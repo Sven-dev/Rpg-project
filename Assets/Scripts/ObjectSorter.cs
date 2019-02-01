@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ObjectSorter : MonoBehaviour
 {
-    private SpriteRenderer renderer;
+    new private SpriteRenderer renderer;
 
     //number between 0 and 1, checks how far the distance check needs to be from the bottom of the sprite
     public float floorlevel;

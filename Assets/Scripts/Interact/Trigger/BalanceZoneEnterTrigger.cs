@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BalanceZoneEnterTrigger : Trigger {
-
+public class BalanceZoneEnterTrigger : Trigger
+{
     public override void ExecuteTrigger()
     {
         //p.Balancing = true;
