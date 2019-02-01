@@ -64,6 +64,8 @@ public class BossBar : HealthBar
         //Damage
         else if (health < CurrentHealth)
         {
+            StartCoroutine(_Iframes());
+
             #region Damage
             //Sets the health indicator to the right position
             ValueIndicator.transform.position = LinearPercentage(health);
@@ -93,7 +95,6 @@ public class BossBar : HealthBar
     //Calculates the linear fill of the bar
     private Vector2 LinearPercentage(float percentage)
     {
-        print(Vector2.Lerp(Bounds[0].position, Bounds[1].position, percentage / 100));
         return Vector2.Lerp(Bounds[0].position, Bounds[1].position, percentage / 100);
     }
 
@@ -117,6 +118,51 @@ public class BossBar : HealthBar
         foreach (Image i in Bar)
         {
             i.color += temp;
+        }
+    }
+
+    IEnumerator _Iframes()
+    {
+
+        SpriteRenderer renderer = GlobalVariables.PlayerRenderer;
+        int blinktimes = 0;
+
+        while (blinktimes < 10)
+        {
+            renderer.color = new Color(
+                renderer.color.r,
+                renderer.color.g,
+                renderer.color.b,
+                0);
+
+            yield return new WaitForSeconds(0.125f);
+            renderer.color = new Color(
+                renderer.color.r,
+                renderer.color.g,
+                renderer.color.b,
+                1);
+
+            yield return new WaitForSeconds(0.125f);
+            blinktimes++;
+        }
+
+        while (blinktimes < 18)
+        {
+            renderer.color = new Color(
+                renderer.color.r,
+                renderer.color.g,
+                renderer.color.b,
+                0);
+
+            yield return new WaitForSeconds(0.05f);
+            renderer.color = new Color(
+                renderer.color.r,
+                renderer.color.g,
+                renderer.color.b,
+                1);
+
+            yield return new WaitForSeconds(0.05f);
+            blinktimes++;
         }
     }
 }

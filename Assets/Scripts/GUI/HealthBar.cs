@@ -3,10 +3,9 @@ using UnityEngine;
 
 public abstract class HealthBar : MonoBehaviour
 {
-    public void Link(HealthManager manager)
+    private void Awake()
     {
-        manager.OnHealthChange += UpdateUI;
-        SetUI(manager.health);
+        GlobalVariables.PlayerHealth.OnHealthChange += UpdateUI;
     }
 
     private void UpdateUI(int health)

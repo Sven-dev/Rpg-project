@@ -5,21 +5,26 @@ using UnityEngine;
 public class Conversation : Action
 {
     public Dialogue[] Dialogue;
+    private ConversationManager Player;
 
-    public override void StartProcess(GameObject target)
+    private void Start()
     {
-        ConversationManager manager = target.GetComponent<ConversationManager>();
-        manager.Talk(this);
-        StartCoroutine(_Conversation());
+        Player = GlobalVariables.Player.GetComponent<ConversationManager>();
+    }
+
+    public override void Play()
+    {
+        Player.Talk(this);
+        StartCoroutine(_Playing());
     }
 
     //Waits until the conversation is over
-    IEnumerator _Conversation()
+    IEnumerator _Playing()
     {
         Active = true;
         while (Active)
         {
             yield return null;
         }
-    }  
+    }
 }

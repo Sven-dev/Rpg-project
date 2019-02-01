@@ -18,12 +18,13 @@ public class ConversationManager : MonoBehaviour
 
     private void Start()
     {
-        DialogueManager = Camera.main.GetComponentInChildren<DialogueManager>(true);
-        ChoiceManager = Camera.main.GetComponentInChildren<ChoiceManager>(true);
-        PortraitDialogueManager = Camera.main.GetComponentInChildren<PortraitDialogueManager>(true);
-        PortraitChoiceManager = Camera.main.GetComponentInChildren<PortraitChoiceManager>(true);
+        DialogueManager = GlobalVariables.MainCamera.GetComponentInChildren<DialogueManager>(true);
+        ChoiceManager = GlobalVariables.MainCamera.GetComponentInChildren<ChoiceManager>(true);
+        PortraitDialogueManager = GlobalVariables.MainCamera.GetComponentInChildren<PortraitDialogueManager>(true);
+        PortraitChoiceManager = GlobalVariables.MainCamera.GetComponentInChildren<PortraitChoiceManager>(true);
     }
 
+    //Initializes _Talk()
     public void Talk(Conversation conversation)
     {
         Conversation = conversation;

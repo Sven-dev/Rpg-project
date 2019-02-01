@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<SaveFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ActiveScene>Debug</ActiveScene>
+  <PlayerLocation>
+    <x>-1</x>
+    <y>31</y>
+  </PlayerLocation>
+  <PlayerDirection>Up</PlayerDirection>
+  <PlayerHealth>100</PlayerHealth>
+  <PlayerSword>false</PlayerSword>
+</SaveFile>
