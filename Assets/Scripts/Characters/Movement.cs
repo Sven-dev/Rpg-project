@@ -9,10 +9,7 @@ public enum Direction
     Down,
     Left,
     Right,
-    UpLeft,
-    UpRight,
-    DownLeft,
-    DownRight
+    Null
 }
 
 public class Movement : MonoBehaviour
@@ -20,9 +17,9 @@ public class Movement : MonoBehaviour
     Renderer R;
 
     public float Speed;
-    Direction _direction;
-    public bool _idle;
-    public bool _immobile;
+    private Direction _direction;
+    private bool _idle;
+    private bool _immobile;
 
     public delegate void MovementChanged();
     public event MovementChanged OnMovementChange;
@@ -32,13 +29,12 @@ public class Movement : MonoBehaviour
         get { return _direction; }
         set
         {
-            if (!Immobile)
+            if (!Immobile && _direction != value)
             {
-                if (_direction != value)
+                _direction = value;
+                if (OnMovementChange != null)
                 {
-                    _direction = value;
-                    if (OnMovementChange != null)
-                        OnMovementChange();
+                    OnMovementChange();
                 }
             }
         }
@@ -81,11 +77,11 @@ public class Movement : MonoBehaviour
     }
 
     //Makes the player move
-    public void Move()
+    public void Move(Direction direction)
     {
         if (!Immobile)
         {
-            transform.position += DirectionToVector() * Speed * Time.fixedDeltaTime;
+            transform.position += DirectionToVector(direction) * Speed * Time.fixedDeltaTime;
             SetSortingLayer();
         }
     }
@@ -125,25 +121,35 @@ public class Movement : MonoBehaviour
             case Direction.Right:
                 direction = Vector2.right;
                 break;
-            case Direction.UpLeft:
-                direction = Vector2.up + Vector2.left;
+        }
+
+        return direction;
+    }
+
+    //Converts the Enum direction to a Vector. Used for moving around
+    public Vector3 DirectionToVector(Direction facing)
+    {
+        Vector3 direction = Vector2.zero;
+        switch (facing)
+        {
+            case Direction.Up:
+                direction = Vector2.up;
                 break;
-            case Direction.UpRight:
-                direction = Vector2.up + Vector2.right;
+            case Direction.Down:
+                direction = Vector2.down;
                 break;
-            case Direction.DownLeft:
-                direction = Vector2.down + Vector2.left;
+            case Direction.Left:
+                direction = Vector2.left;
                 break;
-            case Direction.DownRight:
-                direction = Vector2.down + Vector2.right;
+            case Direction.Right:
+                direction = Vector2.right;
                 break;
         }
 
         return direction;
     }
 
-    //Makes the object turn the opposite direction of the target,
-    //making it look like the objects are turned to eachother
+    //Makes the object look at the target
     public void LookAt(Movement target)
     {
         switch (target.Direction)
@@ -160,18 +166,6 @@ public class Movement : MonoBehaviour
             case Direction.Right:
                 Direction = Direction.Left;
                 break;
-            case Direction.UpLeft:
-                Direction = Direction.DownRight;
-                break;
-            case Direction.UpRight:
-                Direction = Direction.DownLeft;
-                break;
-            case Direction.DownLeft:
-                Direction = Direction.UpRight;
-                break;
-            case Direction.DownRight:
-                Direction = Direction.UpLeft;
-                break;
         }
     }
 
@@ -184,45 +178,19 @@ public class Movement : MonoBehaviour
 
         if (normal.x > 0)
         {
-            if (normal.y > 0)
-            {
-                Direction =  Direction.UpRight;
-                return;
-            }
-
-            if (normal.y < 0)
-            {
-                Direction = Direction.DownRight;
-                return;
-            }
-
             Direction = Direction.Right;
             return;
         }
         if (normal.x < 0)
         {
-            if (normal.y > 0)
-            {
-                Direction = Direction.UpLeft;
-                return;
-            }
-
-            if (normal.y < 0)
-            {
-                Direction = Direction.DownLeft;
-                return;
-            }
-
             Direction = Direction.Left;
             return;
         }
-
         if (normal.y > 0)
         {
             Direction = Direction.Up;
             return;
         }
-
         if (normal.y < 0)
         {
             Direction = Direction.Down;
@@ -230,16 +198,15 @@ public class Movement : MonoBehaviour
         }
     }
 
-    //sets the render-order, relative to the other objects in the scene,
-    //making to look like the object can walk behind other objects
+    //Sets the render-order, relative to the other objects in the scene,
+    //making it look like the object walks behind other objects
     void SetSortingLayer()
     {
         float objHeight = R.bounds.size.y * 0.8f;
         R.sortingOrder = (int)((transform.position.y - objHeight) * -10);
     }
 
-    //sets the render-order, relative to the other objects in the scene,
-    //making to look like the object can walk behind other objects
+    //Gets the render-order
     public int GetSortingLayer()
     {
         float objHeight = R.bounds.size.y * 0.8f;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Animations : MonoBehaviour
+public class CustomAnimator : MonoBehaviour
 {
     protected Movement M;
     protected Animator A; 

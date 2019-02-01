@@ -68,6 +68,22 @@ TextureImporter:
     21300122: Character SpriteSheet_61
     21300124: Character SpriteSheet_62
     21300126: Character SpriteSheet_63
+    21300128: Character SpriteSheet_64
+    21300130: Character SpriteSheet_65
+    21300132: Character SpriteSheet_66
+    21300134: Character SpriteSheet_67
+    21300136: Character SpriteSheet_68
+    21300138: Character SpriteSheet_69
+    21300140: Character SpriteSheet_70
+    21300142: Character SpriteSheet_71
+    21300144: Character SpriteSheet_72
+    21300146: Character SpriteSheet_73
+    21300148: Character SpriteSheet_74
+    21300150: Character SpriteSheet_75
+    21300152: Character SpriteSheet_76
+    21300154: Character SpriteSheet_77
+    21300156: Character SpriteSheet_78
+    21300158: Character SpriteSheet_79
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -238,7 +254,7 @@ TextureImporter:
         width: 11
         height: 33
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.5483683, y: 0.50214916}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -280,7 +296,7 @@ TextureImporter:
         width: 13
         height: 33
       alignment: 9
-      pivot: {x: 0.5, y: 0.485}
+      pivot: {x: 0.49583083, y: 0.43977496}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,7 +310,7 @@ TextureImporter:
         width: 13
         height: 33
       alignment: 9
-      pivot: {x: 0.5, y: 0.485}
+      pivot: {x: 0.496055, y: 0.4399895}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -322,7 +338,7 @@ TextureImporter:
         width: 13
         height: 33
       alignment: 9
-      pivot: {x: 0.5, y: 0.485}
+      pivot: {x: 0.49923354, y: 0.43999505}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -336,7 +352,7 @@ TextureImporter:
         width: 13
         height: 33
       alignment: 9
-      pivot: {x: 0.5015388, y: 0.485}
+      pivot: {x: 0.50077236, y: 0.44128233}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1065,6 +1081,230 @@ TextureImporter:
         height: 33
       alignment: 9
       pivot: {x: 0.69177103, y: 0.4997947}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 819
+        width: 15
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_65
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 819
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_66
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 819
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_67
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 819
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_68
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 819
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_69
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 819
+        width: 15
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_70
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 819
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_71
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 819
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_72
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 819
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_73
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 819
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_74
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 819
+        width: 15
+        height: 36
+      alignment: 9
+      pivot: {x: 0.49852192, y: 0.48706734}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_75
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 819
+        width: 15
+        height: 36
+      alignment: 9
+      pivot: {x: 0.49704388, y: 0.4729004}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_76
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 819
+        width: 15
+        height: 36
+      alignment: 9
+      pivot: {x: 0.49704388, y: 0.47413296}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_77
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 819
+        width: 15
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48697916}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_78
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 819
+        width: 15
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47329202}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_79
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 819
+        width: 15
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47138467}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

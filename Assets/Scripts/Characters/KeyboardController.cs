@@ -9,10 +9,14 @@ public class KeyboardController : MonoBehaviour
     ConversationManager CM;
     public bool Active;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);        
+    }
+
     void Start()
     {
         Active = true;
-        DontDestroyOnLoad(gameObject);
         M = GetComponent<Movement>();
         IA = transform.GetChild(0).GetComponent<AttackInteracter>();
         CM = GetComponent<ConversationManager>();
@@ -56,98 +60,43 @@ public class KeyboardController : MonoBehaviour
     {
         if (Active)
         {
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             {
-                #region moving right
+                Direction facing = Direction.Null;
                 if (Input.GetKey(KeyCode.W))
                 {
-                    M.Direction = Direction.UpRight;
+                    facing = Direction.Up;
+                    M.Move(Direction.Up);
                 }
-                else if (Input.GetKey(KeyCode.S))
+                if (Input.GetKey(KeyCode.S))
                 {
-                    M.Direction = Direction.DownRight;
+                    facing = Direction.Down;
+                    M.Move(Direction.Down);
                 }
-                else
+                if (Input.GetKey(KeyCode.A))
                 {
-                    M.Direction = Direction.Right;
+                    facing = Direction.Left;
+                    M.Move(Direction.Left);
                 }
-
-                if (M.Idle == true)
-                    M.Idle = false;
-                M.Move();
-                #endregion
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                #region moving left
-                    if (Input.GetKey(KeyCode.W))
-                    {
-                        M.Direction = Direction.UpLeft;
-                    }
-                    else if (Input.GetKey(KeyCode.S))
-                    {
-                        M.Direction = Direction.DownLeft;
-                    }
-                    else
-                    {
-                        M.Direction = Direction.Left;
-                    }
-
-                    if (M.Idle == true)
-                        M.Idle = false;
-                    M.Move();
-                    #endregion
-            }
-            else if (Input.GetKey(KeyCode.W))
-            {
-                #region moving up
                 if (Input.GetKey(KeyCode.D))
                 {
-                    M.Direction = Direction.UpRight;
+                    facing = Direction.Right;
+                    M.Move(Direction.Right);
                 }
-                else if (Input.GetKey(KeyCode.A))
+
+                if (facing != Direction.Null)
                 {
-                    M.Direction = Direction.UpLeft;
-                }
-                else
-                {
-                    M.Direction = Direction.Up;
+                    M.Direction = facing;
                 }
 
                 if (M.Idle == true)
+                {
                     M.Idle = false;
-                M.Move();
-                #endregion
+                }
             }
-            else if (Input.GetKey(KeyCode.S))
+            else if (M.Idle == false)
             {
-                #region moving down
-                if (Input.GetKey(KeyCode.D))
-                {
-                    M.Direction = Direction.DownRight;
-                }
-                else if (Input.GetKey(KeyCode.A))
-                {
-                    M.Direction = Direction.DownLeft;
-                }
-                else
-                {
-                    M.Direction = Direction.Down;
-                }
-
-                if (M.Idle == true)
-                    M.Idle = false;
-                M.Move();
-                #endregion
-            }
-            else
-            {
-                #region Idle
-                if (M.Idle == false)
-                {
-                    M.Idle = true;
-                }
-                #endregion
+                M.Idle = true;
             }
         }
     }

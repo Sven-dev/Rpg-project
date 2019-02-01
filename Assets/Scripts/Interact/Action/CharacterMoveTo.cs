@@ -29,7 +29,7 @@ public class CharacterMoveTo : Action
         }
     }
 
-    public override void StartProcess()
+    public override void Play()
     {
         Active = true;
         StartCoroutine(MoveCharacters());

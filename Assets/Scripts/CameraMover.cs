@@ -2,44 +2,28 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+//Moves the camera with target, as long as target is within bounds
 public class CameraMover : MonoBehaviour
 {
-    public Movement Target;
+    public GameObject Target;
     public float Speed = 1f;
-    [Space]
-    public Transform Bounds;
-    private bool Bounded;
+
+    private bool Bounded = false;
     private Transform BottomLeft;
     private Transform TopRight;
-
-    private SceneSwitcher SceneSwitcher;
-    private Camera Cam;
-    public SpriteRenderer Blackout;
-    private bool Fading;
 
     // Use this for initialization
     void Start()
     {
-        Target = GameObject.FindWithTag("Player").GetComponent<Movement>();
-        SceneSwitcher = Target.GetComponent<SceneSwitcher>();
-
-        Bounded = false;
-        if (Bounds != null)
-        {
-            BottomLeft = Bounds.GetChild(0);
-            TopRight = Bounds.GetChild(1);
-            Bounded = true;
-        }
-
-        Cam = GetComponent<Camera>();
-        StartCoroutine(_FadeIn());
+        Target = GlobalVariables.Player;
+        SetBounds();
+        SceneManager.activeSceneChanged += SetBounds;
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateCameraPosition();
-
         if (Bounded)
         {
             ClampBounds();
@@ -66,71 +50,21 @@ public class CameraMover : MonoBehaviour
             );
     }
 
-    #region Scene switching
-    public void SwitchScene(string scene, Vector2 spawnposition)
+    //Finds the bound object, ands sets the clamped values
+    private void SetBounds()
     {
-        StartCoroutine(_Switch(scene, spawnposition));
-    }
-
-    //Switches to a different scene
-    IEnumerator _Switch(string scene, Vector2 spawnposition)
-    {
-        Fading = true;
-        StartCoroutine(_FadeOut());
-        while (Fading)
+        Bounded = false;
+        Transform boundbox = GameObject.FindWithTag("BoundBox").transform;
+        if (boundbox != null)
         {
-            yield return null;
-        }
-
-        SceneSwitcher.Switch(scene, spawnposition);
-    }
-
-    //Fades out the black screen
-    IEnumerator _FadeIn()
-    {
-        if (Blackout != null)
-        {
-            Blackout.color = new Color(
-                Blackout.color.r,
-                Blackout.color.g,
-                Blackout.color.b,
-                1);
-            while (Blackout.color.a > 0)
-            {
-                Blackout.color = new Color(
-                    Blackout.color.r,
-                    Blackout.color.g,
-                    Blackout.color.b,
-                    Blackout.color.a - 0.1f);
-                yield return new WaitForSeconds(0.025f);
-            }
-
-            Target.Immobile = false;
+            BottomLeft = boundbox.GetChild(0);
+            TopRight = boundbox.GetChild(1);
+            Bounded = true;
         }
     }
 
-    //Fades in the black screen
-    IEnumerator _FadeOut()
+    private void SetBounds(Scene current, Scene next)
     {
-        if (Blackout != null)
-        {
-            Target.Immobile = true;
-            Blackout.color = new Color(
-                Blackout.color.r,
-                Blackout.color.g,
-                Blackout.color.b,
-                0);
-            while (Blackout.color.a < 1)
-            {
-                Blackout.color = new Color(
-                    Blackout.color.r,
-                    Blackout.color.g,
-                    Blackout.color.b,
-                    Blackout.color.a + 0.1f);
-                yield return new WaitForSeconds(0.025f);
-            }
-        }
-            Fading = false;
+        SetBounds();
     }
-    #endregion
 }

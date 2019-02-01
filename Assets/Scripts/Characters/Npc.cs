@@ -2,61 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Npc : Interactable {
-
-    private Movement PlayerMovement;
-
-    Movement Movement;
-    public List<Action> ActionList;
-
-    private bool active;
-    private int currentIndex;
+public class Npc : Interactable
+{
+    private Movement NPCMovement;
 
     // Use this for initialization
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
-        PlayerMovement = Player.GetComponent<Movement>();
-        Movement = GetComponent<Movement>();
+        NPCMovement = GetComponent<Movement>();
     }
 
     public override void Interact()
     {
-        StartCoroutine(interaction());
-    }
-
-    //Stops the interactor until all parts if the interaction have been executed
-    IEnumerator interaction()
-    {
-        PlayerMovement.Immobile = true;
-        Movement.LookAt(PlayerMovement);
-
-        //Starts the first action in the list
-        active = true;
-        ActionList[0].StartProcess(Player);
-
-        while (active)
-        {
-            if (ActionList[currentIndex].Active == false)
-            {
-                nextaction();
-            }
-
-            yield return null;
-        }
-
-        PlayerMovement.Immobile = false;
-    }
-
-    void nextaction()
-    {
-        if (currentIndex < ActionList.Count - 1)
-        {
-            currentIndex++;
-            ActionList[currentIndex].StartProcess(Player);
-            return;
-        }
-
-        active = false;
+        NPCMovement.LookAt(GlobalVariables.PlayerMovement);
+        base.Interact();
     }
 }

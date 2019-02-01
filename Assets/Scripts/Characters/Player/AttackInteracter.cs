@@ -160,18 +160,6 @@ public class AttackInteracter : MonoBehaviour {
             case Direction.Right:
                 transform.localEulerAngles = new Vector3(0, 0, 0);
                 break;
-            case Direction.UpLeft:
-                transform.localEulerAngles = new Vector3(0, 0, 135);
-                break;
-            case Direction.UpRight:
-                transform.localEulerAngles = new Vector3(0, 0, 45);
-                break;
-            case Direction.DownLeft:
-                transform.localEulerAngles = new Vector3(0, 0, -135);
-                break;
-            case Direction.DownRight:
-                transform.localEulerAngles = new Vector3(0, 0, -45);
-                break;
         }
     }
 }

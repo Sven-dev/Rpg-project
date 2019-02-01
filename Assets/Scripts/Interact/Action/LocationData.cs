@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocationData : MonoBehaviour {
-
+public class LocationData : MonoBehaviour
+{
     private List<Vector2> DirectionsBackup;
 
     public List<Vector2> Directions;

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimations : Animations {
-
+public class PlayerAnimator : CustomAnimator
+{
     AttackInteracter AI;
 
 	// Use this for initialization

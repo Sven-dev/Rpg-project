@@ -16,7 +16,7 @@ public class CharacterMover : Action
     public List<Movement> Characters;
     public List<LocationData> Data;
 	
-    public override void StartProcess()
+    public override void Play()
     {
         Active = true;
         StartCoroutine(Process());
