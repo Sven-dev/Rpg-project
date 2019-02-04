@@ -5,7 +5,7 @@ public abstract class HealthBar : MonoBehaviour
 {
     private void Awake()
     {
-        GlobalVariables.PlayerHealth.OnHealthChange += UpdateUI;
+        Global.PlayerHealth.OnHealthChange += UpdateUI;
     }
 
     private void UpdateUI(int health)

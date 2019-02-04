@@ -17,7 +17,7 @@ public class Interactable : MonoBehaviour
     //Stops the interactor until all parts if the interaction have been executed
     IEnumerator interaction()
     {
-        GlobalVariables.PlayerMovement.Immobile = true;
+        Global.PlayerMovement.Immobile = true;
 
         //Starts the first action in the list
         active = true;
@@ -33,7 +33,7 @@ public class Interactable : MonoBehaviour
             yield return null;
         }
 
-        GlobalVariables.PlayerMovement.Immobile = false;
+        Global.PlayerMovement.Immobile = false;
     }
 
     private void nextaction()

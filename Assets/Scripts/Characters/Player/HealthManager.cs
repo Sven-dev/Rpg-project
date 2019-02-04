@@ -31,7 +31,7 @@ public class HealthManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-         Health = GlobalVariables.Save.PlayerHealth;       
+         Health = Global.Save.PlayerHealth;       
 	}
 
     public void TakeDamage(int damage)

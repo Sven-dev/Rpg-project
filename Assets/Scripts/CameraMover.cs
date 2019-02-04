@@ -15,7 +15,7 @@ public class CameraMover : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Target = GlobalVariables.Player;
+        Target = Global.Player;
         SetBounds();
         SceneManager.activeSceneChanged += SetBounds;
     }

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalVariables : MonoBehaviour
+public class Global : MonoBehaviour
 {
     public static SaveFile Save;
+    public static KeyBinds Keys;
 
     public static Camera MainCamera;
     public static SceneSwitcher SceneSwitcher;
@@ -22,6 +23,7 @@ public class GlobalVariables : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         LoadSave();
+        LoadKeys();
         MainCamera = Camera.main;
         SceneSwitcher = MainCamera.GetComponent<SceneSwitcher>();
 
@@ -45,12 +47,26 @@ public class GlobalVariables : MonoBehaviour
         }
     }
 
+    private void LoadKeys()
+    {
+        Keys = ClassToXmlFileIO.Load<KeyBinds>("Project_SOUL", "Keybindings");
+        if (Keys == null)
+        {
+            Keys = new KeyBinds();
+            ClassToXmlFileIO.Save("Project_SOUL", "Keybindings", Keys);
+        }
+    }
+
     //Saves the game when the application is closed
     private void OnApplicationQuit()
     {
         if (Save != null)
         {
             ClassToXmlFileIO.Save("Project_SOUL", "Save", Save);
+        }
+        if (Keys != null)
+        {
+            ClassToXmlFileIO.Save("Project_SOUL", "Keybindings", Keys);
         }
     }
 }

@@ -9,6 +9,6 @@ public class DoorTrigger : Trigger
 
     public override void ExecuteTrigger()
     {
-        GlobalVariables.SceneSwitcher.SwitchInOut(Scene, position);
+        Global.SceneSwitcher.SwitchInOut(Scene, position);
     }
 }

@@ -9,7 +9,7 @@ public class PitFallTrigger : Trigger
 
     public override void ExecuteTrigger()
     {
-        StartCoroutine(_Fall(GlobalVariables.Player));
+        StartCoroutine(_Fall(Global.Player));
     }
 
     IEnumerator _Fall(GameObject player)

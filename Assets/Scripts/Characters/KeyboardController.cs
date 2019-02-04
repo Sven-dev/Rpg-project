@@ -9,6 +9,8 @@ public class KeyboardController : MonoBehaviour
     ConversationManager CM;
     public bool Active;
 
+    private bool FirstFrame = true;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);        
@@ -16,6 +18,7 @@ public class KeyboardController : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(this);
         Active = true;
         M = GetComponent<Movement>();
         IA = transform.GetChild(0).GetComponent<AttackInteracter>();
@@ -27,7 +30,7 @@ public class KeyboardController : MonoBehaviour
     {
         if (Active)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(Global.Keys.Attack_Interact))
             {
                 if (CM.Active)
                 {
@@ -38,14 +41,14 @@ public class KeyboardController : MonoBehaviour
                     IA.CheckForInteract();
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(Global.Keys.Right))
             {
                 if (CM.Active)
                 {
                     CM.MoveCursor(1);
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKeyDown(Global.Keys.Left))
             {
                 if (CM.Active)
                 {
@@ -58,27 +61,28 @@ public class KeyboardController : MonoBehaviour
     //Handles any physics-related inputs (FixedUpdate runs at the same rate as the physics-engine)
     private void FixedUpdate()
     {
+
         if (Active)
         {
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+            if (Input.GetKey(Global.Keys.Up) || Input.GetKey(Global.Keys.Left) || Input.GetKey(Global.Keys.Down) || Input.GetKey(Global.Keys.Right))
             {
                 Direction facing = Direction.Null;
-                if (Input.GetKey(KeyCode.W))
+                if (Input.GetKey(Global.Keys.Up))
                 {
                     facing = Direction.Up;
                     M.Move(Direction.Up);
                 }
-                if (Input.GetKey(KeyCode.S))
+                if (Input.GetKey(Global.Keys.Down))
                 {
                     facing = Direction.Down;
                     M.Move(Direction.Down);
                 }
-                if (Input.GetKey(KeyCode.A))
+                if (Input.GetKey(Global.Keys.Left))
                 {
                     facing = Direction.Left;
                     M.Move(Direction.Left);
                 }
-                if (Input.GetKey(KeyCode.D))
+                if (Input.GetKey(Global.Keys.Right))
                 {
                     facing = Direction.Right;
                     M.Move(Direction.Right);

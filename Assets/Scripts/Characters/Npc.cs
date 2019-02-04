@@ -14,7 +14,7 @@ public class Npc : Interactable
 
     public override void Interact()
     {
-        NPCMovement.LookAt(GlobalVariables.PlayerMovement);
+        NPCMovement.LookAt(Global.PlayerMovement);
         base.Interact();
     }
 }

@@ -9,7 +9,7 @@ public class Conversation : Action
 
     private void Start()
     {
-        Player = GlobalVariables.Player.GetComponent<ConversationManager>();
+        Player = Global.Player.GetComponent<ConversationManager>();
     }
 
     public override void Play()

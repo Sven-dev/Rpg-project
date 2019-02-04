@@ -124,7 +124,7 @@ public class BossBar : HealthBar
     IEnumerator _Iframes()
     {
 
-        SpriteRenderer renderer = GlobalVariables.PlayerRenderer;
+        SpriteRenderer renderer = Global.PlayerRenderer;
         int blinktimes = 0;
 
         while (blinktimes < 10)

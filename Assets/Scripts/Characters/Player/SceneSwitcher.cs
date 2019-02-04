@@ -14,10 +14,10 @@ public class SceneSwitcher : MonoBehaviour
     public void Switch(string scene, Vector2 spawn)
     {
         SceneManager.LoadScene(scene);
-        GlobalVariables.Player.transform.position = spawn;
+        Global.Player.transform.position = spawn;
 
-        GlobalVariables.Save.ActiveScene = scene;
-        GlobalVariables.Save.PlayerLocation = spawn;
+        Global.Save.ActiveScene = scene;
+        Global.Save.PlayerLocation = spawn;
     }
 
     public void SwitchInOut(string scene, Vector2 spawnposition)
@@ -28,7 +28,7 @@ public class SceneSwitcher : MonoBehaviour
     //Switches between 2 scenes by fading out and in
     IEnumerator _SwitchInOut(string scene, Vector2 spawnposition)
     {
-        GlobalVariables.PlayerMovement.Immobile = true;
+        Global.PlayerMovement.Immobile = true;
         StartCoroutine(_FadeOut());
         while(FadingOut)
         {
@@ -43,7 +43,7 @@ public class SceneSwitcher : MonoBehaviour
             yield return null;
         }
 
-        GlobalVariables.PlayerMovement.Immobile = false;
+        Global.PlayerMovement.Immobile = false;
     }
 
     //Switches between 2 scenes, but only fades in
@@ -54,7 +54,7 @@ public class SceneSwitcher : MonoBehaviour
 
     IEnumerator _SwitchIn(string scene, Vector2 spawnposition)
     {
-        GlobalVariables.PlayerMovement.Immobile = true;
+        Global.PlayerMovement.Immobile = true;
         Switch(scene, spawnposition);
 
         StartCoroutine(_FadeIn());
@@ -63,7 +63,7 @@ public class SceneSwitcher : MonoBehaviour
             yield return null;
         }
 
-        GlobalVariables.PlayerMovement.Immobile = false;
+        Global.PlayerMovement.Immobile = false;
     }
 
     //Switches between 2 scenes, but only fades out
@@ -74,7 +74,7 @@ public class SceneSwitcher : MonoBehaviour
 
     IEnumerator _SwitchOut(string scene, Vector2 spawnposition)
     {
-        GlobalVariables.PlayerMovement.Immobile = true;
+        Global.PlayerMovement.Immobile = true;
         StartCoroutine(_FadeOut());
         while (FadingOut)
         {
@@ -82,7 +82,7 @@ public class SceneSwitcher : MonoBehaviour
         }
 
         Switch(scene, spawnposition);
-        GlobalVariables.PlayerMovement.Immobile = false;
+        Global.PlayerMovement.Immobile = false;
     }
 
     //Fades the game to black

@@ -2,8 +2,8 @@
 {
     public override int Value
     {
-        get { return GlobalVariables.Save.PlayerHealth; }
+        get { return Global.Save.PlayerHealth; }
 
-        set { GlobalVariables.Save.PlayerHealth = value; }
+        set { Global.Save.PlayerHealth = value; }
     }
 }
