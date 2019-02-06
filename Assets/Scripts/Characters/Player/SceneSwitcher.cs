@@ -9,83 +9,142 @@ public class SceneSwitcher : MonoBehaviour
     public SpriteRenderer Fadeout;
     private bool FadingIn;
     private bool FadingOut;
+    private bool Loading;
 
-    //Switches active scenes, and sets the object's position
-    public void Switch(string scene, Vector2 spawn)
+    //Switches between 2 rooms by disabling the original room, and enabling the new one
+    public void SwitchRoom(GameObject room, Vector2 spawn, bool fadeout, bool fadein)
     {
-        SceneManager.LoadScene(scene);
-        Global.Player.transform.position = spawn;
+        StartCoroutine(_SwitchRoom(room, spawn, fadeout, fadein));
+    }
 
-        Global.Save.ActiveScene = scene;
+    IEnumerator _SwitchRoom(GameObject room, Vector2 spawn, bool fadeout, bool fadein)
+    {
+        //Freeze player
+        Global.PlayerMovement.Immobile = true;
+
+        //If fadeout is true, fade out
+        if (fadeout)
+        {
+            StartCoroutine(_FadeOut());
+            while (FadingOut)
+            {
+                yield return null;
+            }
+        }
+
+        Switch(room, spawn);
+
+        //If fadein is true, fade in
+        if (fadein)
+        {
+            StartCoroutine(_FadeIn());
+            while (FadingIn)
+            {
+                yield return null;
+            }
+        }
+
+        //Unfreeze player
+        Global.PlayerMovement.Immobile = false;
+    }
+
+    public void Switch(GameObject room, Vector2 spawn)
+    {
+        //Enable correct room
+        Global.ActiveRoom.SetActive(false);
+        Global.ActiveRoom = room;
+        Global.Save.ActiveRoom = ConvertRoom(room);
+        Global.CameraMover.SetBounds();
+        Global.ActiveRoom.SetActive(true);
+
+        //Set player location
+        Global.Player.transform.position = spawn;
         Global.Save.PlayerLocation = spawn;
     }
 
-    public void SwitchInOut(string scene, Vector2 spawnposition)
+    //Switches between 2 scenes
+    public void SwitchScene(string scene, int room, Vector2 spawn, bool fadeout, bool fadein)
     {
-        StartCoroutine(_SwitchInOut(scene, spawnposition));
+        StartCoroutine(_SwitchScene(scene, room, spawn, fadeout, fadein));
     }
 
-    //Switches between 2 scenes by fading out and in
-    IEnumerator _SwitchInOut(string scene, Vector2 spawnposition)
+    IEnumerator _SwitchScene(string scene, int room, Vector2 spawn, bool fadeout, bool fadein)
     {
+        //Freeze player
         Global.PlayerMovement.Immobile = true;
-        StartCoroutine(_FadeOut());
-        while(FadingOut)
+
+        //If fadeout is true, fade out
+        if (fadeout)
+        {
+            StartCoroutine(_FadeOut());
+            while (FadingOut)
+            {
+                yield return null;
+            }
+        }
+
+        //Switch scenes
+        StartCoroutine(_Switch(scene, room, spawn));
+        while(Loading)
         {
             yield return null;
         }
 
-        Switch(scene, spawnposition);
-
-        StartCoroutine(_FadeIn());
-        while(FadingIn)
+        //If fadein is true, fade in
+        if (fadein)
         {
-            yield return null;
+            StartCoroutine(_FadeIn());
+            while (FadingIn)
+            {
+                yield return null;
+            }
         }
 
+        //Unfreeze player
         Global.PlayerMovement.Immobile = false;
     }
 
-    //Switches between 2 scenes, but only fades in
-    public void SwitchIn(string scene, Vector2 spawnposition)
+    IEnumerator _Switch(string scene, int room, Vector2 spawn)
     {
-        StartCoroutine(_SwitchIn(scene, spawnposition));
-    }
+        Loading = true;
 
-    IEnumerator _SwitchIn(string scene, Vector2 spawnposition)
-    {
-        Global.PlayerMovement.Immobile = true;
-        Switch(scene, spawnposition);
-
-        StartCoroutine(_FadeIn());
-        while (FadingIn)
+        //Switch scene
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        while (!asyncLoad.isDone)
         {
             yield return null;
         }
 
-        Global.PlayerMovement.Immobile = false;
+        SceneManager.SetActiveScene(SceneManager.GetActiveScene());
+        Global.Save.ActiveScene = scene;
+
+        //Enable correct room
+        Global.ActiveRoom = ConvertRoom(room);
+        Global.Save.ActiveRoom = room;
+        Global.CameraMover.SetBounds();
+        Global.ActiveRoom.SetActive(true);
+
+        //Set player spawn
+        Global.Player.transform.position = spawn;
+        Global.Save.PlayerLocation = spawn;
+
+        Loading = false;
     }
 
-    //Switches between 2 scenes, but only fades out
-    public void SwitchOut(string scene, Vector2 spawnposition)
+    //Converts the room from gameobject to hierarchy-location
+    private int ConvertRoom(GameObject room)
     {
-        StartCoroutine(_SwitchOut(scene, spawnposition));
+        return room.transform.GetSiblingIndex();
     }
 
-    IEnumerator _SwitchOut(string scene, Vector2 spawnposition)
+    //Converts the room from hierarchy-location to gameobject
+    private GameObject ConvertRoom(int index)
     {
-        Global.PlayerMovement.Immobile = true;
-        StartCoroutine(_FadeOut());
-        while (FadingOut)
-        {
-            yield return null;
-        }
-
-        Switch(scene, spawnposition);
-        Global.PlayerMovement.Immobile = false;
+        GameObject[] root = SceneManager.GetActiveScene().GetRootGameObjects();
+        return root[0].transform.GetChild(index).gameObject;
     }
 
-    //Fades the game to black
+    //Fades the game out
     IEnumerator _FadeOut()
     {
         FadingOut = true;
@@ -110,7 +169,7 @@ public class SceneSwitcher : MonoBehaviour
         FadingOut = false;
     }
 
-    //Fades from black back to the game
+    //Fades the game in
     IEnumerator _FadeIn()
     {
         FadingIn = true;

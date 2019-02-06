@@ -7,7 +7,7 @@ public class PitFallTrigger : Trigger
 {
     public Vector2 spawnLocation;
 
-    public override void ExecuteTrigger()
+    protected override void ExecuteTrigger()
     {
         StartCoroutine(_Fall(Global.Player));
     }

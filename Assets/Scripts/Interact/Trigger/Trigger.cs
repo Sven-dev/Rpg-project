@@ -5,9 +5,9 @@ using System.Collections;
 public abstract class Trigger : MonoBehaviour
 {
     //Base method for starting a trigger
-    public virtual void ExecuteTrigger() { }
+    protected virtual void ExecuteTrigger() { }
 
-    public virtual void ExitTrigger() { }
+    protected virtual void ExitTrigger() { }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

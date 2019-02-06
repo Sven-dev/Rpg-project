@@ -17,7 +17,7 @@ public class Cutscene : Trigger
         CurrentIndex = 0;
     }
 
-    public override void ExecuteTrigger()
+    protected override void ExecuteTrigger()
     {
         StartCoroutine(startqueue());
     }

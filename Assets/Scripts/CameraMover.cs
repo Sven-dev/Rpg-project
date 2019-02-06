@@ -16,7 +16,6 @@ public class CameraMover : MonoBehaviour
     void Start()
     {
         Target = Global.Player;
-        SetBounds();
         SceneManager.activeSceneChanged += SetBounds;
     }
 
@@ -51,10 +50,10 @@ public class CameraMover : MonoBehaviour
     }
 
     //Finds the bound object, ands sets the clamped values
-    private void SetBounds()
+    public void SetBounds()
     {
         Bounded = false;
-        Transform boundbox = GameObject.FindWithTag("BoundBox").transform;
+        Transform boundbox = Global.ActiveRoom.transform.GetChild(0);
         if (boundbox != null)
         {
             BottomLeft = boundbox.GetChild(0);

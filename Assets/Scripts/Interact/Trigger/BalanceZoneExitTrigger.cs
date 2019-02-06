@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BalanceZoneExitTrigger : Trigger
 {
-    public override void ExitTrigger()
+    protected override void ExitTrigger()
     {
         //p.Balancing = false;
     }
