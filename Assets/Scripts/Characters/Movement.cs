@@ -81,25 +81,16 @@ public class Movement : MonoBehaviour
     {
         if (!Immobile)
         {
-            transform.position += DirectionToVector(direction) * Speed * Time.fixedDeltaTime;
-            SetSortingLayer();
-        }
-    }
-
-    public void Move(LocationData data)
-    {
-        if (!Immobile)
-        {
-            transform.position += DirectionToVector() * Speed * Time.deltaTime;
-            data.Direction -= DirectionToVector() * Speed * Time.deltaTime;
+            transform.Translate(DirectionToVector(direction) * Speed * Time.fixedDeltaTime);
             SetSortingLayer();
         }
     }
 
     //Makes the object move towards a location
-    public void MoveTo(Vector2 target)
+    public void Move(Vector2 direction)
     {
-        transform.position = Vector2.MoveTowards(transform.position, target, Speed * Time.fixedDeltaTime);
+        transform.Translate(direction * Speed * Time.fixedDeltaTime);
+        VectorToDirection(direction);
         SetSortingLayer();
     }
 
@@ -172,29 +163,43 @@ public class Movement : MonoBehaviour
     //Converts the target vector into a direction
     public void VectorToDirection(Vector2 target)
     {
-        Vector2 xnormal = new Vector2(target.x, 0).normalized;
-        Vector2 ynormal = new Vector2(0, target.y).normalized;
-        Vector2 normal = xnormal + ynormal;
-
-        if (normal.x > 0)
+        if (target.y == 1)
+        {
+            if (target.x == 1)
+            {
+                Direction = Direction.Right;
+            }
+            else if (target.x == -1)
+            {
+                Direction = Direction.Left;
+            }
+            else
+            {
+                Direction = Direction.Up;
+            }
+        }
+        else if (target.y == -1)
+        {
+            if (target.x == 1)
+            {
+                Direction = Direction.Right;
+            }
+            else if (target.x == -1)
+            {
+                Direction = Direction.Left;
+            }
+            else
+            {
+                Direction = Direction.Down;
+            }
+        }
+        else if (target.x == 1)
         {
             Direction = Direction.Right;
-            return;
         }
-        if (normal.x < 0)
+        else if (target.x == -1)
         {
             Direction = Direction.Left;
-            return;
-        }
-        if (normal.y > 0)
-        {
-            Direction = Direction.Up;
-            return;
-        }
-        if (normal.y < 0)
-        {
-            Direction = Direction.Down;
-            return;
         }
     }
 

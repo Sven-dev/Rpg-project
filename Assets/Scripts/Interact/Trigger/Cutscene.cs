@@ -8,7 +8,6 @@ public class Cutscene : Trigger
     public bool DisableWhenFinished;
     private bool Active;
     private int CurrentIndex;
-    private Movement PlayerMovement;
 
     // Use this for initialization
     private void Start()
@@ -25,7 +24,7 @@ public class Cutscene : Trigger
     //Stops the executer until all parts of the cutscene have been executed
     IEnumerator startqueue()
     {
-        PlayerMovement.Immobile = true;
+        Global.PlayerMovement.Immobile = true;
 
         //Starts the first action in the list
         Active = true;
@@ -40,7 +39,7 @@ public class Cutscene : Trigger
             yield return new WaitForEndOfFrame();
         }
 
-        PlayerMovement.Immobile = false;
+        Global.PlayerMovement.Immobile = false;
     }
 
     //Starts the next action in the list. If there's no actions left, ends the cutscene

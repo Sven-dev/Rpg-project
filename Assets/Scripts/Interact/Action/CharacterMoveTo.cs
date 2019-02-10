@@ -62,7 +62,7 @@ public class CharacterMoveTo : Action
         {
             if (MoveOptionList[index] == MoveOption.Diagonal)
             {
-                CharacterList[index].MoveTo(MoveLocationList[index].transform.position);
+                CharacterList[index].Move(MoveLocationList[index].transform.position);
             }
 
             if (MoveOptionList[index] == MoveOption.X_then_Y)
@@ -97,7 +97,7 @@ public class CharacterMoveTo : Action
 
     void MoveX(int index)
     {
-        CharacterList[index].MoveTo(
+        CharacterList[index].Move(
             new Vector2(
                 MoveLocationList[index].transform.position.x,
                 CharacterList[index].transform.position.y));
@@ -105,7 +105,7 @@ public class CharacterMoveTo : Action
 
     void MoveY(int index)
     {
-        CharacterList[index].MoveTo(
+        CharacterList[index].Move(
             new Vector2(
                 CharacterList[index].transform.position.x,
                 MoveLocationList[index].transform.position.y));

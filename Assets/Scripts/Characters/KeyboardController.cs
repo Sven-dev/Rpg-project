@@ -88,14 +88,14 @@ public class KeyboardController : MonoBehaviour
                     M.Move(Direction.Right);
                 }
 
-                if (facing != Direction.Null)
-                {
-                    M.Direction = facing;
-                }
-
                 if (M.Idle == true)
                 {
                     M.Idle = false;
+                }
+
+                if (facing != Direction.Null && facing != M.Direction)
+                {
+                    M.Direction = facing;
                 }
             }
             else if (M.Idle == false)
