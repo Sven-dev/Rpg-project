@@ -9,7 +9,7 @@ using UnityEditor;
 public class PathingGizmo : MonoBehaviour
 {
     public Movement Character;
-    private List<Waypoint> Waypoints;
+    private List<Transform> Waypoints;
     private Color PathingColor;
 
     private void Start()
@@ -23,13 +23,9 @@ public class PathingGizmo : MonoBehaviour
 
     private void UpdateGizmos()
     {
-        if (Waypoints == null)
+        if (Waypoints == null || Waypoints.Count != transform.childCount)
         {
-            Waypoints = transform.GetComponentsInChildren<Waypoint>().ToList();
-        }
-        else if (Waypoints.Count != transform.childCount)
-        {
-            Waypoints = transform.GetComponentsInChildren<Waypoint>().ToList();
+            Waypoints = transform.Cast<Transform>().ToList();
         }
     }
 
@@ -46,7 +42,7 @@ public class PathingGizmo : MonoBehaviour
             return true;
         }
 
-        foreach (Waypoint waypoint in Waypoints)
+        foreach (Transform waypoint in Waypoints)
         {
             if (Selection.activeGameObject == waypoint.gameObject)
             {
@@ -64,68 +60,16 @@ public class PathingGizmo : MonoBehaviour
             Gizmos.color = PathingColor;
             if (Character != null)
             {
-                if (Waypoints[0].Pattern == MoveOption.X_then_Y)
+                Gizmos.DrawLine(Character.transform.position, Waypoints[0].transform.position);
+                for (int i = 0; i < Waypoints.Count - 1; i++)
                 {
-                    DrawXY(Character.transform.position, Waypoints[0].transform.position);
+                    Gizmos.DrawCube(Waypoints[i].transform.position, Vector3.one / 10);
+                    Gizmos.DrawLine(Waypoints[i].transform.position, Waypoints[i + 1].transform.position);
                 }
-                else if (Waypoints[0].Pattern == MoveOption.Y_then_X)
-                {
-                    DrawYX(Character.transform.position, Waypoints[0].transform.position);
-                }
-                else if (Waypoints[0].Pattern == MoveOption.Diagonal)
-                {
-                    DrawDiagonal(Character.transform.position, Waypoints[0].transform.position);
-                }
-                else if (Waypoints[0].Pattern == MoveOption.Straight)
-                {
-                    DrawStraight(Character.transform.position, Waypoints[0].transform.position);
-                }
-            }
 
-            for (int i = 0; i < Waypoints.Count - 1; i++)
-            {
-                Gizmos.DrawCube(Waypoints[i].transform.position, Vector3.one / 10);
-                if (Waypoints[i + 1].Pattern == MoveOption.X_then_Y)
-                {
-                    DrawXY(Waypoints[i].transform.position, Waypoints[i + 1].transform.position);
-                }
-                else if (Waypoints[i + 1].Pattern == MoveOption.Y_then_X)
-                {
-                    DrawYX(Waypoints[i].transform.position, Waypoints[i + 1].transform.position);
-                }
-                else if (Waypoints[i + 1].Pattern == MoveOption.Diagonal)
-                {
-                    DrawDiagonal(Waypoints[i].transform.position, Waypoints[i + 1].transform.position);
-                }
-                else if (Waypoints[i + 1].Pattern == MoveOption.Straight)
-                {
-                    DrawStraight(Waypoints[i].transform.position, Waypoints[i + 1].transform.position);
-                }
+                Gizmos.DrawCube(Waypoints[Waypoints.Count - 1].transform.position, Vector3.one / 10);
             }
-
-            Gizmos.DrawCube(Waypoints[Waypoints.Count - 1].transform.position, Vector3.one / 10);
         }
-    }
-
-    private void DrawXY(Vector2 position, Vector2 target)
-    {
-        Vector2 corner = new Vector2(target.x, position.y);
-        Gizmos.DrawLine(position, corner);
-        Gizmos.DrawLine(corner, target);
-        Gizmos.DrawCube(corner, Vector3.one / 20);
-    }
-
-    private void DrawYX(Vector2 position, Vector2 target)
-    {
-        Vector2 corner = new Vector2(position.x, target.y);
-        Gizmos.DrawLine(position, corner);
-        Gizmos.DrawLine(corner, target);
-        Gizmos.DrawCube(corner, Vector3.one / 20);
-    }
-
-    private void DrawDiagonal(Vector2 position, Vector2 target)
-    {
-
     }
 
     private void DrawStraight(Vector2 position, Vector2 target)

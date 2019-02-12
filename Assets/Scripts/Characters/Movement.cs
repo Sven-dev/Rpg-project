@@ -163,13 +163,45 @@ public class Movement : MonoBehaviour
     //Converts the target vector into a direction
     public void VectorToDirection(Vector2 target)
     {
-        if (target.y == 1)
+        float xtest = Mathf.Abs(target.x);
+        float ytest = Mathf.Abs(target.y);
+
+        /*
+        if (xtest > ytest)
         {
-            if (target.x == 1)
+            if (target.y > 0)
+            {
+                Direction = Direction.
+            }
+            else if (target.y < 0)
+            {
+
+            }
+        }
+        else if (xtest < ytest)
+        {
+            if (target.x > 0)
+            {
+
+            }
+            else if (target.x < 0)
+            {
+
+            }
+        }
+        else
+        {
+
+        }
+        */
+
+        if (target.y > 0)
+        {
+            if (target.x > 0.25f && target.x < 0.75f)
             {
                 Direction = Direction.Right;
             }
-            else if (target.x == -1)
+            else if (target.x < -0.33f && target.x > -0.75f)
             {
                 Direction = Direction.Left;
             }
@@ -178,13 +210,13 @@ public class Movement : MonoBehaviour
                 Direction = Direction.Up;
             }
         }
-        else if (target.y == -1)
+        else if (target.y < 0)
         {
-            if (target.x == 1)
+            if (target.x > 0.25f && target.x < 0.75f)
             {
                 Direction = Direction.Right;
             }
-            else if (target.x == -1)
+            else if (target.x < -0.25f && target.x > -0.75f)
             {
                 Direction = Direction.Left;
             }
@@ -193,11 +225,11 @@ public class Movement : MonoBehaviour
                 Direction = Direction.Down;
             }
         }
-        else if (target.x == 1)
+        else if (target.x > 0)
         {
-            Direction = Direction.Right;
+            Direction = Direction.Right;         
         }
-        else if (target.x == -1)
+        else if (target.x < 0)
         {
             Direction = Direction.Left;
         }
