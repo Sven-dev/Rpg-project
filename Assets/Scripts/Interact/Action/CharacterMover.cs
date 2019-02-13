@@ -60,7 +60,6 @@ public class CharacterMover : Action
     {
         Vector2 direction = target.transform.position - character.transform.position;
         character.Move(direction.normalized);
-        print(direction.normalized);
         if (Vector2.Distance(character.transform.position, target.transform.position) < 0.01f)
         {
             character.transform.position = target.transform.position;

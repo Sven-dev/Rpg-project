@@ -239,14 +239,7 @@ public class Movement : MonoBehaviour
     //making it look like the object walks behind other objects
     void SetSortingLayer()
     {
-        float objHeight = R.bounds.size.y * 0.8f;
-        R.sortingOrder = (int)((transform.position.y - objHeight) * -10);
-    }
-
-    //Gets the render-order
-    public int GetSortingLayer()
-    {
-        float objHeight = R.bounds.size.y * 0.8f;
-        return (int)((transform.position.y - objHeight) * -10);
+        float objHeight = transform.position.y - R.bounds.size.y / 2f;
+        R.sortingOrder = (int)(objHeight * -100);
     }
 }

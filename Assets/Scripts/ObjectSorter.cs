@@ -3,16 +3,12 @@ using System.Collections;
 
 public class ObjectSorter : MonoBehaviour
 {
-    new private SpriteRenderer renderer;
-
-    //number between 0 and 1, checks how far the distance check needs to be from the bottom of the sprite
-    public float floorlevel;
+    new private SpriteRenderer R;
 
     // Use this for initialization
     void Start ()
     {
-        renderer = GetComponent<SpriteRenderer>();
-        if (floorlevel == 0) floorlevel = 0.75f;
+        R = GetComponent<SpriteRenderer>();
         SetSortingLayer();
 	}
 
@@ -20,8 +16,8 @@ public class ObjectSorter : MonoBehaviour
     void SetSortingLayer()
     {
         //adds an amount to the sorting layer relative to the gameobject height
-        float objHeight = renderer.bounds.size.y * floorlevel;
-        renderer.sortingOrder = (int)((transform.position.y - objHeight) * -10);
-        
+        float objHeight = transform.position.y - R.bounds.size.y / 2.1f;
+        R.sortingOrder = (int)(objHeight * -100);
+        Debug.DrawLine(transform.position, new Vector3(transform.position.x, objHeight, 0), Color.white, 10);
     }
 }
