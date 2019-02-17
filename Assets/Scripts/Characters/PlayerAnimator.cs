@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class PlayerAnimator : CustomAnimator
 {
-    AttackInteracter AI;
+    AttackInteracter AttackInteracter;
 
 	// Use this for initialization
 	new void Start ()
     {
         base.Start();
-        AI = transform.GetComponentInChildren<AttackInteracter>();
-        AI.OnAttackChange += AttackToClip;
+        //AttackInteracter = transform.GetComponentInChildren<AttackInteracter>();
+        //AttackInteracter.OnAttackChange += AttackToClip;
     }
 
     //Selects and plays an attack-animation
     void AttackToClip()
     {
         int AtkNr;
-        if (AI.Attacking1)
+        if (AttackInteracter.Attacking1)
         {
             AtkNr = 1;
         }

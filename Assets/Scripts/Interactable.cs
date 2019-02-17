@@ -4,18 +4,28 @@ using System.Collections.Generic;
 
 public class Interactable : MonoBehaviour
 {
+    [HideInInspector]
+    public bool Selected;
     public List<Action> ActionList;
 
     private bool active;
     private int currentIndex;
+    private SpriteRenderer SelectionMarker;
 
-    public virtual void Interact()
+    private void Awake()
     {
-        StartCoroutine(interaction());
+        SelectionMarker = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        SelectionMarker.enabled = false;
     }
 
-    //Stops the interactor until all parts if the interaction have been executed
-    IEnumerator interaction()
+    //Interacts with the object
+    public virtual void Interact()
+    {
+        StartCoroutine(_interact());
+    }
+
+    //Stops the player until all parts if the interaction have been executed
+    private IEnumerator _interact()
     {
         Global.PlayerMovement.Immobile = true;
 
@@ -46,5 +56,29 @@ public class Interactable : MonoBehaviour
         }
 
         active = false;
+    }
+
+    //Selects the object
+    public void Select()
+    {
+        Selected = true;
+        StartCoroutine(_Select());
+    }
+
+    public void Deselect()
+    {
+        Selected = false;
+    }
+
+    //Enables the marker as long as the object is selected
+    private IEnumerator _Select()
+    {
+        SelectionMarker.enabled = true;
+        while (Selected)
+        {
+            yield return null;
+        }
+
+        SelectionMarker.enabled = false;
     }
 }

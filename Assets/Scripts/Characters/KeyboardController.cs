@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class KeyboardController : MonoBehaviour
 {
-    Movement M;
-    AttackInteracter IA;
-    ConversationManager CM;
-    public bool Active;
+    private Movement Movement;
+    private ConversationManager ConversationManager;
+    private Attacker Attacker;
+    private Interacter Interacter;
 
+    public bool Active;
     private bool FirstFrame = true;
 
     private void Awake()
@@ -20,40 +21,55 @@ public class KeyboardController : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         Active = true;
-        M = GetComponent<Movement>();
-        IA = transform.GetChild(0).GetComponent<AttackInteracter>();
-        CM = GetComponent<ConversationManager>();
+        Movement = GetComponent<Movement>();
+        ConversationManager = GetComponent<ConversationManager>();
+        Interacter = transform.GetChild(0).GetComponent<Interacter>();
+        Attacker = transform.GetChild(1).GetComponent<Attacker>();
     }
 
     //Handles any non physics-related inputs (like menus)
     private void Update()
     {
-        if (Active)
+        //if the main input was pressed
+        if (Input.GetKeyDown(Global.Keys.Attack_Interact))
         {
-            if (Input.GetKeyDown(Global.Keys.Attack_Interact))
+            //If the player was having a conversation
+            if (ConversationManager.Active)
             {
-                if (CM.Active)
-                {
-                    CM.FinishTalking();
-                }
-                else
-                {
-                    IA.CheckForInteract();
-                }
+                //Advance the dialogue
+                ConversationManager.FinishTalking();
             }
-            else if (Input.GetKeyDown(Global.Keys.Right))
+            //If the player is looking at an interactable object
+            else if (Interacter.Interactable())
             {
-                if (CM.Active)
-                {
-                    CM.MoveCursor(1);
-                }
+                //Interact with it
+                Interacter.Interact();
+            }
+            else
+            {
+                //Wind up an attack
+                Attacker.WindUp();
+            }
+        }
+        //If the main input was released
+        else if (Input.GetKeyUp(Global.Keys.Attack_Interact))
+        {
+            //If the player was winding up an attack
+            if (Attacker.WindingUp)
+            {
+                Attacker.LetGo();
+            }
+        }
+
+        if (ConversationManager.Active)
+        {
+            if (Input.GetKeyDown(Global.Keys.Right))
+            {
+                ConversationManager.MoveCursor(1);
             }
             else if (Input.GetKeyDown(Global.Keys.Left))
             {
-                if (CM.Active)
-                {
-                    CM.MoveCursor(-1);
-                }
+                ConversationManager.MoveCursor(-1);
             }
         }
     }
@@ -61,47 +77,54 @@ public class KeyboardController : MonoBehaviour
     //Handles any physics-related inputs (FixedUpdate runs at the same rate as the physics-engine)
     private void FixedUpdate()
     {
-
-        if (Active)
+        //If any of the directional inputs is pressed
+        if (Input.GetKey(Global.Keys.Up) || Input.GetKey(Global.Keys.Left) || Input.GetKey(Global.Keys.Down) || Input.GetKey(Global.Keys.Right))
         {
-            if (Input.GetKey(Global.Keys.Up) || Input.GetKey(Global.Keys.Left) || Input.GetKey(Global.Keys.Down) || Input.GetKey(Global.Keys.Right))
+            Direction facing = Direction.Null;
+
+            //If up, move up
+            if (Input.GetKey(Global.Keys.Up))
             {
-                Direction facing = Direction.Null;
-                if (Input.GetKey(Global.Keys.Up))
-                {
-                    facing = Direction.Up;
-                    M.Move(Direction.Up);
-                }
-                if (Input.GetKey(Global.Keys.Down))
-                {
-                    facing = Direction.Down;
-                    M.Move(Direction.Down);
-                }
-                if (Input.GetKey(Global.Keys.Left))
-                {
-                    facing = Direction.Left;
-                    M.Move(Direction.Left);
-                }
-                if (Input.GetKey(Global.Keys.Right))
-                {
-                    facing = Direction.Right;
-                    M.Move(Direction.Right);
-                }
-
-                if (M.Idle == true)
-                {
-                    M.Idle = false;
-                }
-
-                if (facing != Direction.Null && facing != M.Direction)
-                {
-                    M.Direction = facing;
-                }
+                facing = Direction.Up;
+                Movement.Move(Direction.Up);
             }
-            else if (M.Idle == false)
+
+            //If down, move down
+            if (Input.GetKey(Global.Keys.Down))
             {
-                M.Idle = true;
+                facing = Direction.Down;
+                Movement.Move(Direction.Down);
+            }
+
+            //If left, move left
+            if (Input.GetKey(Global.Keys.Left))
+            {
+                facing = Direction.Left;
+                Movement.Move(Direction.Left);
+            }
+
+            //If right, move right
+            if (Input.GetKey(Global.Keys.Right))
+            {
+                facing = Direction.Right;
+                Movement.Move(Direction.Right);
+            }
+
+            //If the player was idle, don't be
+            if (Movement.Idle == true)
+            {
+                Movement.Idle = false;
+            }
+
+            //if the player was facing a different direction, set it
+            if (facing != Direction.Null && facing != Movement.Direction)
+            {
+                Movement.Direction = facing;
             }
         }
+        else if (Movement.Idle == false)
+        {
+            Movement.Idle = true;
+        }     
     }
 }

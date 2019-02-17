@@ -166,35 +166,6 @@ public class Movement : MonoBehaviour
         float xtest = Mathf.Abs(target.x);
         float ytest = Mathf.Abs(target.y);
 
-        /*
-        if (xtest > ytest)
-        {
-            if (target.y > 0)
-            {
-                Direction = Direction.
-            }
-            else if (target.y < 0)
-            {
-
-            }
-        }
-        else if (xtest < ytest)
-        {
-            if (target.x > 0)
-            {
-
-            }
-            else if (target.x < 0)
-            {
-
-            }
-        }
-        else
-        {
-
-        }
-        */
-
         if (target.y > 0)
         {
             if (target.x > 0.25f && target.x < 0.75f)

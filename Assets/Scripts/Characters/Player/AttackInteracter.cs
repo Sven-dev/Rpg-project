@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class AttackInteracter : MonoBehaviour {
+public class AttackInteracter : MonoBehaviour
+{
+    public bool Attacking;
 
     Movement M;
     List<Interactable> Objects;
+
 
     bool Attack2Ready;
     bool Attack3Ready;
@@ -25,7 +28,7 @@ public class AttackInteracter : MonoBehaviour {
     void Start ()
     {
         M = transform.parent.GetComponent<Movement>();
-        M.OnMovementChange += SetInteractTrigger;
+        //M.OnMovementChange += SetInteractTrigger;
         Objects = new List<Interactable>();
 
         bool Attack2Ready = false;
@@ -42,29 +45,11 @@ public class AttackInteracter : MonoBehaviour {
         {
             if (Objects.Count > 0)
             {
-                Interact(Objects[0]);
+                //Interact(Objects[0]);
                 return;
             }
 
             Attack();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Interactable i = collision.GetComponent<Interactable>();
-        if (i != null)
-        {
-            Objects.Add(i);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Interactable i = collision.GetComponent<Interactable>();
-        if (i != null)
-        {
-            Objects.Remove(i);
         }
     }
 
@@ -74,16 +59,31 @@ public class AttackInteracter : MonoBehaviour {
         {
             if (!Attacking1)
             {
-                StartCoroutine(_attack());
+                StartCoroutine(_Attack());
             }
             else if (Attack2Ready)
             {
-                StartCoroutine(_attack2());
+                //StartCoroutine(_attack2());
             }
         }
     }
 
-    IEnumerator _attack()
+    /*
+    //Winds up the attack animation
+    IEnumerator WindUp()
+    {
+        //While the attack button is pressed, charge the attack
+        while()
+        {
+
+        }
+        //If the attack button is let go of before the attack is charged
+        //return to the walking animation
+        //Attack
+    }
+    */
+
+    IEnumerator _Attack()
     {
         Attacking1 = true;
         M.Immobile = true;
@@ -109,57 +109,5 @@ public class AttackInteracter : MonoBehaviour {
         Attack2Ready = false;
         Attacking1 = false;
         M.Immobile = false;
-    }
-
-    IEnumerator _attack2()
-    {
-        Attacking2 = true;
-        M.Immobile = true;
-        OnAttackChange();
-
-        //Cycle through all attack-related colliders, enabling and disabling them in order to emulate a slash
-        for (int i = Colliders.Count -1; i >= 0; i--)
-        {
-            Colliders[i].enabled = true;
-            if (i == 0)
-            {
-                Attack3Ready = true;
-            }
-
-            yield return new WaitForSeconds(0.05f);
-            Colliders[i].enabled = false;
-        }
-
-        M.Immobile = false;
-        yield return new WaitForSeconds(0.15f);
-        Attack3Ready = false;
-
-        Attacking2 = false;
-    }
-
-    void Interact(Interactable obj)
-    {
-        M.Immobile = true;
-        obj.Interact();
-    }
-
-    //Rotates the interact-trigger, facing it in the direction the object is heading
-    public void SetInteractTrigger()
-    {
-        switch(M.Direction)
-        {
-            case Direction.Up:
-                transform.localEulerAngles = new Vector3(0, 0, 90);
-                break;
-            case Direction.Down:
-                transform.localEulerAngles = new Vector3(0, 0, -90);
-                break;
-            case Direction.Left:
-                transform.localEulerAngles = new Vector3(0, 0, 180);
-                break;
-            case Direction.Right:
-                transform.localEulerAngles = new Vector3(0, 0, 0);
-                break;
-        }
     }
 }
