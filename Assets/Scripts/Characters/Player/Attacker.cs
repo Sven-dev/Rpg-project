@@ -72,7 +72,20 @@ public class Attacker : MonoBehaviour
     //Rotates the object so it faces the way the player is looking
     private void Rotate()
     {
-        transform.LookAt(Vector2.up);
-        //Global.PlayerMovement.Direction
+        switch (Global.PlayerMovement.Direction)
+        {
+            case Direction.Up:
+                transform.rotation = Quaternion.Euler(0, 0, 180);
+                break;
+            case Direction.Down:
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                break;
+            case Direction.Left:
+                transform.rotation = Quaternion.Euler(0, 0, 270);
+                break;
+            case Direction.Right:
+                transform.rotation = Quaternion.Euler(0, 0, 90);
+                break;
+        }
     }
 }

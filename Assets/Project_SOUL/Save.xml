@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <SaveFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ActiveScene>Debug</ActiveScene>
-  <ActiveRoom>0</ActiveRoom>
+  <ActiveRoom>1</ActiveRoom>
   <PlayerLocation>
-    <x>1.76000023</x>
-    <y>0.253</y>
+    <x>3.04</x>
+    <y>0</y>
   </PlayerLocation>
   <PlayerDirection>Up</PlayerDirection>
   <PlayerHealth>100</PlayerHealth>
