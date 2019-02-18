@@ -6,10 +6,11 @@ public class Attacker : MonoBehaviour
 {
     public bool WindingUp;
     public int WindUpFrames;
+    private Movement Movement;
 
     private void Start()
     {
-        Global.PlayerMovement.OnMovementChange += Rotate;
+        Movement = transform.parent.GetComponent<Movement>();
     }
 
     //Cancels the wind-up
@@ -27,6 +28,9 @@ public class Attacker : MonoBehaviour
 
     private IEnumerator _WindUp()
     {
+        //Make the player move slower
+        Movement.Speed = Movement.Speed / 2;
+
         //While the attack is winding up
         int frames = 0;
         bool WoundUp = false;
@@ -50,6 +54,9 @@ public class Attacker : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
 
+        //Set the player speed to normal
+        Movement.Speed = Movement.Speed * 2;
+
         //If the attack is ready, attack
         if (WoundUp)
         {
@@ -66,26 +73,8 @@ public class Attacker : MonoBehaviour
     private IEnumerator _Attack()
     {
         print("Attack");
-        yield return null;
-    }
-
-    //Rotates the object so it faces the way the player is looking
-    private void Rotate()
-    {
-        switch (Global.PlayerMovement.Direction)
-        {
-            case Direction.Up:
-                transform.rotation = Quaternion.Euler(0, 0, 180);
-                break;
-            case Direction.Down:
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                break;
-            case Direction.Left:
-                transform.rotation = Quaternion.Euler(0, 0, 270);
-                break;
-            case Direction.Right:
-                transform.rotation = Quaternion.Euler(0, 0, 90);
-                break;
-        }
+        Movement.Immobile = true;
+        yield return new WaitForSeconds(0.75f);
+        Movement.Immobile = false;
     }
 }

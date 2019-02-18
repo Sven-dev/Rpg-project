@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class CustomAnimator : MonoBehaviour
 {
-    protected Movement M;
-    protected Animator A; 
+    protected Movement Movement;
+    protected Animator Animator; 
 
     protected void Start()
     {
-        M = GetComponent<Movement>();
-        A = GetComponent<Animator>();
+        Movement = GetComponent<Movement>();
+        Animator = GetComponent<Animator>();
 
-        M.OnMovementChange += DirectionToClip;
+        Movement.OnMovementChange += DirectionToClip;
     }
 
     //Selects and plays a movement-animation (walking or idle)
-    void DirectionToClip()
+    void DirectionToClip(Direction d)
     {
-        if (M.Idle)
+        if (Movement.Idle)
         {
-            A.Play(M.Direction.ToString() + "_Idle");
+            Animator.Play(d.ToString() + "_Idle");
         }
         else
         {
-            A.Play(M.Direction.ToString() + "_Walk");
+            Animator.Play(d.ToString() + "_Walk");
         }
     }
 }

@@ -27,6 +27,6 @@ public class PlayerAnimator : CustomAnimator
             AtkNr = 2;
         }
 
-        A.Play(M.Direction.ToString() + "_Attack_" + AtkNr);
+        Animator.Play(Movement.Direction.ToString() + "_Attack_" + AtkNr);
     }
 }
