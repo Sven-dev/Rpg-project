@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     private bool _idle;
     private bool _immobile;
 
-    public delegate void MovementChanged(Direction d);
+    public delegate void MovementChanged(Direction d, bool idle);
     public event MovementChanged OnMovementChange;
 
     public Direction Direction
@@ -34,7 +34,7 @@ public class Movement : MonoBehaviour
                 _direction = value;
                 if (OnMovementChange != null)
                 {
-                    OnMovementChange(value);
+                    OnMovementChange(value, Idle);
                 }
             }
         }
@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
             {
                 _idle = value;
                 if (OnMovementChange != null)
-                    OnMovementChange(Direction);
+                    OnMovementChange(Direction, value);
             }
         }
     }

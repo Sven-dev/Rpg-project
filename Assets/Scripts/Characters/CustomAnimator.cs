@@ -12,19 +12,19 @@ public class CustomAnimator : MonoBehaviour
         Movement = GetComponent<Movement>();
         Animator = GetComponent<Animator>();
 
-        Movement.OnMovementChange += DirectionToClip;
+        Movement.OnMovementChange += WalkAnimation;
     }
 
     //Selects and plays a movement-animation (walking or idle)
-    void DirectionToClip(Direction d)
+    protected virtual void WalkAnimation(Direction direction, bool idle)
     {
         if (Movement.Idle)
         {
-            Animator.Play(d.ToString() + "_Idle");
+            Animator.Play(direction.ToString() + "_Idle");
         }
         else
         {
-            Animator.Play(d.ToString() + "_Walk");
+            Animator.Play(direction.ToString() + "_Walk");
         }
     }
 }

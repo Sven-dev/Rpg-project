@@ -4,29 +4,54 @@ using UnityEngine;
 
 public class PlayerAnimator : CustomAnimator
 {
-    AttackInteracter AttackInteracter;
+    private bool WindingUp;
 
 	// Use this for initialization
 	new void Start ()
     {
         base.Start();
-        //AttackInteracter = transform.GetComponentInChildren<AttackInteracter>();
-        //AttackInteracter.OnAttackChange += AttackToClip;
+        WindingUp = false;
+
+        Attacker Attacker = transform.GetChild(1).GetComponent<Attacker>();
+        Attacker.OnAttackWindUp += SetWindUpState;
+        Attacker.OnAttackLaunch += AttackAnimation;
     }
 
-    //Selects and plays an attack-animation
-    void AttackToClip()
+    //Make the player walk or stand still
+    protected override void WalkAnimation(Direction direction, bool idle)
     {
-        int AtkNr;
-        if (AttackInteracter.Attacking1)
+        if (WindingUp)
         {
-            AtkNr = 1;
+            WindUpAnimation(direction, idle);
         }
-        else //if (AI.Attacking2)
+        else
         {
-            AtkNr = 2;
+            base.WalkAnimation(direction, idle);
         }
+    }
 
-        Animator.Play(Movement.Direction.ToString() + "_Attack_" + AtkNr);
+    //Sets the windup state
+    private void SetWindUpState(bool value)
+    {
+        WindingUp = value;
+    }
+
+    //Make the player walk or stand still while charging their attack
+    private void WindUpAnimation(Direction direction, bool idle)
+    {
+        if (idle)
+        {
+            Animator.Play("Charge_" + direction.ToString() + "_Idle");
+        }
+        else
+        {
+            Animator.Play("Charge_" + direction.ToString() + "_Walk");
+        }
+    }
+
+    //Plays the attack animation
+    private void AttackAnimation(Direction direction)
+    {
+        Animator.Play("Attack_" + direction.ToString());
     }
 }

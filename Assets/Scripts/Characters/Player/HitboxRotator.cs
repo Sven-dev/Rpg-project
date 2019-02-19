@@ -12,7 +12,7 @@ public class HitboxRotator : MonoBehaviour
 	}
 
     //Rotates the object so it faces the way the player is looking
-    private void Rotate(Direction d)
+    private void Rotate(Direction d, bool idle)
     {
         switch (Global.PlayerMovement.Direction)
         {
