@@ -45,7 +45,6 @@ public class PlayerAnimator : CustomAnimator
         }
 
         animationType += direction.ToString();
-        print(animationType);
         Animator.Play(animationType);
     }
     //Plays the attack animation

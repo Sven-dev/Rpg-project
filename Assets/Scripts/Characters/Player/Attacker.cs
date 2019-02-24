@@ -9,9 +9,6 @@ public class Attacker : MonoBehaviour
     public int WindUpFrames;
     private Movement Movement;
 
-    public delegate void AttackWindUp(bool state);
-    public event AttackWindUp OnAttackWindUp;
-
     public delegate void AttackLaunch(Direction direction);
     public event AttackLaunch OnAttackLaunch;
 
@@ -38,14 +35,9 @@ public class Attacker : MonoBehaviour
         //Make the player move slower
         Movement.Speed = Movement.Speed / 2;
 
-        //Start playing wind-up animations
-        OnAttackWindUp(true);
-
         //While the attack is winding up
         int frames = 0;
         bool WoundUp = false;
-
-
 
         while (WindingUp)
         {
@@ -69,9 +61,6 @@ public class Attacker : MonoBehaviour
 
         //Set the player speed to normal
         Movement.Speed = Movement.Speed * 2;
-
-        //Stop playing windup animations
-        OnAttackWindUp(false);
 
         //If the attack is ready, attack
         if (WoundUp)
