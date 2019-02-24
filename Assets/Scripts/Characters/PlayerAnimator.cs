@@ -4,51 +4,50 @@ using UnityEngine;
 
 public class PlayerAnimator : CustomAnimator
 {
-    private bool WindingUp;
+    private Attacker Attacker;
 
 	// Use this for initialization
 	new void Start ()
     {
         base.Start();
-        WindingUp = false;
 
-        Attacker Attacker = transform.GetChild(1).GetComponent<Attacker>();
-        Attacker.OnAttackWindUp += SetWindUpState;
+        Attacker = transform.GetChild(1).GetComponent<Attacker>();
         Attacker.OnAttackLaunch += AttackAnimation;
     }
 
     //Make the player walk or stand still
     protected override void WalkAnimation(Direction direction, bool idle)
     {
-        if (WindingUp)
-        {
-            WindUpAnimation(direction, idle);
-        }
-        else
+        string animationType = "";
+        //If the player doesn't have a sword
+        if (!Attacker.HasSword)
         {
             base.WalkAnimation(direction, idle);
+            return;
         }
-    }
-
-    //Sets the windup state
-    private void SetWindUpState(bool value)
-    {
-        WindingUp = value;
-    }
-
-    //Make the player walk or stand still while charging their attack
-    private void WindUpAnimation(Direction direction, bool idle)
-    {
-        if (idle)
+        //If the player is charging an attack
+        else if (Attacker.WindingUp)
         {
-            Animator.Play("Charge_" + direction.ToString() + "_Idle");
+            animationType += "Charge_";
         }
         else
         {
-            Animator.Play("Charge_" + direction.ToString() + "_Walk");
+            animationType += "Armed_";
         }
-    }
 
+        if (idle)
+        {
+            animationType += "Idle_";
+        }
+        else
+        {
+            animationType += "Walk_";
+        }
+
+        animationType += direction.ToString();
+        print(animationType);
+        Animator.Play(animationType);
+    }
     //Plays the attack animation
     private void AttackAnimation(Direction direction)
     {

@@ -125,8 +125,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -353,48 +354,6 @@ TextureImporter:
         height: 33
       alignment: 9
       pivot: {x: 0.50077236, y: 0.44128233}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Character SpriteSheet_14
-      rect:
-        serializedVersion: 2
-        x: 166
-        y: 967
-        width: 14
-        height: 33
-      alignment: 9
-      pivot: {x: 0.46128082, y: 0.4848522}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Character SpriteSheet_22
-      rect:
-        serializedVersion: 2
-        x: 268
-        y: 968
-        width: 13
-        height: 32
-      alignment: 9
-      pivot: {x: 0.49816424, y: 0.46866798}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Character SpriteSheet_23
-      rect:
-        serializedVersion: 2
-        x: 281
-        y: 967
-        width: 13
-        height: 33
-      alignment: 9
-      pivot: {x: 0.5771226, y: 0.4848078}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1179,6 +1138,48 @@ TextureImporter:
         height: 36
       alignment: 9
       pivot: {x: 0.5, y: 0.47138467}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 967
+        width: 31
+        height: 33
+      alignment: 9
+      pivot: {x: 0.8570601, y: 0.49774355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 967
+        width: 32
+        height: 33
+      alignment: 9
+      pivot: {x: 0.8409481, y: 0.4971184}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 967
+        width: 32
+        height: 33
+      alignment: 9
+      pivot: {x: 0.84453726, y: 0.4963564}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

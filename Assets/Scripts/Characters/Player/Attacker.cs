@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
+    public bool HasSword;
     public bool WindingUp;
     public int WindUpFrames;
     private Movement Movement;

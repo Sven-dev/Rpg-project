@@ -14,6 +14,7 @@ public class RoomDoor : Trigger
 
     protected override void ExecuteTrigger()
     {
+        print("door: " + name);
         Global.SceneSwitcher.SwitchRoom(Room, Spawn.position, true, true);
     }
 }
