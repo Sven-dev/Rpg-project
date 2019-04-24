@@ -12,44 +12,47 @@ public class PlayerAnimator : CustomAnimator
         base.Start();
 
         Attacker = transform.GetChild(1).GetComponent<Attacker>();
-        Attacker.OnAttackLaunch += AttackAnimation;
+        Attacker.OnAttackLaunch += Attack;
     }
 
     //Make the player walk or stand still
     protected override void WalkAnimation(Direction direction, bool idle)
     {
-        string animationType = "";
+        string animation = "";
         //If the player doesn't have a sword
         if (!Attacker.HasSword)
         {
             base.WalkAnimation(direction, idle);
             return;
         }
-        //If the player is charging an attack
-        else if (Attacker.WindingUp)
+
+        if (Attacker.HasSword)
         {
-            animationType += "Charge_";
-        }
-        else
-        {
-            animationType += "Armed_";
+            animation += "Armed_";
         }
 
         if (idle)
         {
-            animationType += "Idle_";
+            animation += "Idle_";
         }
         else
         {
-            animationType += "Walk_";
+            animation += "Walk_";
         }
 
-        animationType += direction.ToString();
-        Animator.Play(animationType);
+        animation += direction.ToString();
+        Animator.Play(animation);
     }
     //Plays the attack animation
-    private void AttackAnimation(Direction direction)
+    private void Attack(Direction direction)
+    {
+        StartCoroutine(_Attack(direction));
+    }
+
+    IEnumerator _Attack(Direction direction)
     {
         Animator.Play("Attack_" + direction.ToString());
+        yield return new WaitForSeconds(0.75f);
+        Animator.Play("Armed_Idle_" + direction);
     }
 }

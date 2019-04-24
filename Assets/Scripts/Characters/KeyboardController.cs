@@ -30,46 +30,41 @@ public class KeyboardController : MonoBehaviour
     //Handles any non physics-related inputs (like menus)
     private void Update()
     {
-        //if the main input was pressed
-        if (Input.GetKeyDown(Global.Keys.Attack_Interact))
-        {
-            //If the player was having a conversation
-            if (ConversationManager.Active)
-            {
-                //Advance the dialogue
-                ConversationManager.FinishTalking();
-            }
-            //If the player is looking at an interactable object
-            else if (Interacter.Interactable())
-            {
-                //Interact with it
-                Interacter.Interact();
-            }
-            else
-            {
-                //Wind up an attack
-                Attacker.WindUp();
-            }
-        }
-        //If the main input was released
-        else if (Input.GetKeyUp(Global.Keys.Attack_Interact))
-        {
-            //If the player was winding up an attack
-            if (Attacker.WindingUp)
-            {
-                Attacker.LetGo();
-            }
-        }
-
+        //Dialogue controls
         if (ConversationManager.Active)
         {
+            //Move the selected index right
             if (Input.GetKeyDown(Global.Keys.Right))
             {
                 ConversationManager.MoveCursor(1);
             }
+            //Move the selected index left
             else if (Input.GetKeyDown(Global.Keys.Left))
             {
                 ConversationManager.MoveCursor(-1);
+            }
+
+            //Advance the dialogue
+            if (Input.GetKeyDown(Global.Keys.Attack_Interact))
+            {
+                ConversationManager.FinishTalking();
+            }
+        }
+        else
+        {
+            //Check if the interact/attack button is held down
+            if (!Movement.Immobile && !Attacker.Attacking && Input.GetKey(Global.Keys.Attack_Interact))
+            {
+                //If the player is looking at an interactable object
+                if (Interacter.Interactable())
+                {
+                    Interacter.Interact();
+                }
+                //If the player has a sword
+                else if (Attacker.HasSword)
+                {
+                    Attacker.Attack();
+                }
             }
         }
     }
@@ -77,54 +72,57 @@ public class KeyboardController : MonoBehaviour
     //Handles any physics-related inputs (FixedUpdate runs at the same rate as the physics-engine)
     private void FixedUpdate()
     {
-        //If any of the directional inputs is pressed
-        if (Input.GetKey(Global.Keys.Up) || Input.GetKey(Global.Keys.Left) || Input.GetKey(Global.Keys.Down) || Input.GetKey(Global.Keys.Right))
+        if (!Attacker.Attacking)
         {
-            Direction facing = Direction.Null;
-
-            //If up, move up
-            if (Input.GetKey(Global.Keys.Up))
+            //If any of the directional inputs is pressed
+            if (Input.GetKey(Global.Keys.Up) || Input.GetKey(Global.Keys.Left) || Input.GetKey(Global.Keys.Down) || Input.GetKey(Global.Keys.Right))
             {
-                facing = Direction.Up;
-                Movement.Move(Direction.Up);
-            }
+                Direction facing = Direction.Null;
 
-            //If down, move down
-            if (Input.GetKey(Global.Keys.Down))
-            {
-                facing = Direction.Down;
-                Movement.Move(Direction.Down);
-            }
+                //If up, move up
+                if (Input.GetKey(Global.Keys.Up))
+                {
+                    facing = Direction.Up;
+                    Movement.Move(Direction.Up);
+                }
 
-            //If left, move left
-            if (Input.GetKey(Global.Keys.Left))
-            {
-                facing = Direction.Left;
-                Movement.Move(Direction.Left);
-            }
+                //If down, move down
+                if (Input.GetKey(Global.Keys.Down))
+                {
+                    facing = Direction.Down;
+                    Movement.Move(Direction.Down);
+                }
 
-            //If right, move right
-            if (Input.GetKey(Global.Keys.Right))
-            {
-                facing = Direction.Right;
-                Movement.Move(Direction.Right);
-            }
+                //If left, move left
+                if (Input.GetKey(Global.Keys.Left))
+                {
+                    facing = Direction.Left;
+                    Movement.Move(Direction.Left);
+                }
 
-            //If the player was idle, don't be
-            if (Movement.Idle == true)
-            {
-                Movement.Idle = false;
-            }
+                //If right, move right
+                if (Input.GetKey(Global.Keys.Right))
+                {
+                    facing = Direction.Right;
+                    Movement.Move(Direction.Right);
+                }
 
-            //if the player was facing a different direction, set it
-            if (facing != Direction.Null && facing != Movement.Direction)
-            {
-                Movement.Direction = facing;
+                //If the player was idle, don't be
+                if (Movement.Idle == true)
+                {
+                    Movement.Idle = false;
+                }
+
+                //if the player was facing a different direction, set it
+                if (facing != Direction.Null && facing != Movement.Direction)
+                {
+                    Movement.Direction = facing;
+                }
             }
-        }
-        else if (Movement.Idle == false)
-        {
-            Movement.Idle = true;
-        }     
+            else if (Movement.Idle == false)
+            {
+                Movement.Idle = true;
+            }
+        }    
     }
 }

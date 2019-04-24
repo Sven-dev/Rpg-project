@@ -62,6 +62,7 @@ public class ConversationManager : MonoBehaviour
             }
         }
 
+        yield return null;
         Conversation.Active = false;
     }
 
