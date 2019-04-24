@@ -21,8 +21,8 @@ public class Interacter : MonoBehaviour
     //Checks if there's an object in front of the player they can interact with
     public bool Interactable()
     {
-        //If the player is in control & has anything interactable in front of them
-        if (!Movement.Immobile && Selected != null)
+        //If the player has anything interactable in front of them
+        if (Selected != null)
         {
             return true;
         }
