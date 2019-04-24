@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
     public bool Selected;
     public List<Action> ActionList;
 
-    private bool active;
+    private bool Active;
     private int currentIndex;
     private SpriteRenderer SelectionMarker;
 
@@ -30,10 +30,10 @@ public class Interactable : MonoBehaviour
         Global.PlayerMovement.Immobile = true;
 
         //Starts the first action in the list
-        active = true;
+        Active = true;
         ActionList[0].Play();
 
-        while (active)
+        while (Active)
         {
             if (ActionList[currentIndex].Active == false)
             {
@@ -43,6 +43,7 @@ public class Interactable : MonoBehaviour
             yield return null;
         }
 
+        yield return new WaitForSeconds(0.125f);
         Global.PlayerMovement.Immobile = false;
     }
 
@@ -55,7 +56,7 @@ public class Interactable : MonoBehaviour
             return;
         }
 
-        active = false;
+        Active = false;
     }
 
     //Selects the object
