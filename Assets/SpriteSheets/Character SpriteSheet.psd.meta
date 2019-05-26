@@ -1002,6 +1002,48 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 863
+        width: 13
+        height: 32
+      alignment: 9
+      pivot: {x: 0.42548516, y: 0.48864746}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 863
+        width: 15
+        height: 31
+      alignment: 9
+      pivot: {x: 0.36546046, y: 0.5039043}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Character SpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 863
+        width: 26
+        height: 32
+      alignment: 9
+      pivot: {x: 0.21199271, y: 0.48647308}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
