@@ -1007,7 +1007,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 861
+        y: 862
         width: 14
         height: 31
       alignment: 9
@@ -1062,7 +1062,7 @@ TextureImporter:
       name: Character SpriteSheet_38
       rect:
         serializedVersion: 2
-        x: 224
+        x: 154
         y: 862
         width: 17
         height: 32
@@ -1077,7 +1077,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 14
-        y: 861
+        y: 862
         width: 16
         height: 31
       alignment: 9
@@ -1090,7 +1090,7 @@ TextureImporter:
       name: Character SpriteSheet_43
       rect:
         serializedVersion: 2
-        x: 241
+        x: 171
         y: 862
         width: 13
         height: 31
@@ -1101,38 +1101,10 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Character SpriteSheet_48
-      rect:
-        serializedVersion: 2
-        x: 131
-        y: 858
-        width: 36
-        height: 35
-      alignment: 9
-      pivot: {x: 0.06965341, y: 0.5858119}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Character SpriteSheet_49
-      rect:
-        serializedVersion: 2
-        x: 167
-        y: 862
-        width: 34
-        height: 31
-      alignment: 9
-      pivot: {x: 0.07419182, y: 0.5638251}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: Character SpriteSheet_51
       rect:
         serializedVersion: 2
-        x: 201
+        x: 131
         y: 862
         width: 23
         height: 33
@@ -1147,7 +1119,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 813
+        y: 806
         width: 15
         height: 37
       alignment: 9
@@ -1161,7 +1133,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 15
-        y: 816
+        y: 809
         width: 19
         height: 34
       alignment: 9
@@ -1174,12 +1146,12 @@ TextureImporter:
       name: Character SpriteSheet_54
       rect:
         serializedVersion: 2
-        x: 30
-        y: 818
-        width: 24
-        height: 33
+        x: 34
+        y: 811
+        width: 28
+        height: 36
       alignment: 9
-      pivot: {x: 0.35453954, y: 0.5595074}
+      pivot: {x: 0.23585632, y: 0.5150655}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1188,12 +1160,12 @@ TextureImporter:
       name: Character SpriteSheet_55
       rect:
         serializedVersion: 2
-        x: 54
-        y: 811
-        width: 34
-        height: 40
+        x: 62
+        y: 812
+        width: 43
+        height: 41
       alignment: 9
-      pivot: {x: 0.8696374, y: 0.6625519}
+      pivot: {x: 0.50102323, y: 0.4253972}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1202,12 +1174,12 @@ TextureImporter:
       name: Character SpriteSheet_56
       rect:
         serializedVersion: 2
-        x: 88
-        y: 811
-        width: 43
+        x: 105
+        y: 808
+        width: 39
         height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.85903776, y: 0.5364502}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
