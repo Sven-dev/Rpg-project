@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 //Draws a path between all waypoints and the associated character
 [ExecuteInEditMode]
@@ -32,6 +34,7 @@ public class PathingGizmo : MonoBehaviour
     //Returns true if this object, its parent or any of its waypoints are selected
     private bool Selected()
     {
+        #if UNITY_EDITOR
         if (Selection.activeGameObject == gameObject)
         {
             return true;
@@ -48,8 +51,8 @@ public class PathingGizmo : MonoBehaviour
             {
                 return true;
             }
-        }
-
+        }       
+        #endif
         return false;
     }
 

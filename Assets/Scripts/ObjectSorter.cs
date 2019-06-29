@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ObjectSorter : MonoBehaviour
 {
-    new private SpriteRenderer R;
+    private SpriteRenderer R;
 
     // Use this for initialization
     void Start ()

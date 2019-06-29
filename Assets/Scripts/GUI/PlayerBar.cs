@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class PlayerBar : HealthBar
+public class PlayerBar : MonoBehaviour
 {
     public float Min;
     public float Max;
@@ -16,6 +16,7 @@ public class PlayerBar : HealthBar
     private int CurrentHealth;
     //private bool Fading;
 
+        /*
     protected override void SetUI(int health)
     {
         ValueIndicator.fillAmount = RadialPercentage(health);
@@ -75,6 +76,7 @@ public class PlayerBar : HealthBar
         CurrentHealth = health;
         print("end health: " + CurrentHealth);
     }
+    */
 
     //Calculates the radial fill of the bar
     private float RadialPercentage(float percentage)

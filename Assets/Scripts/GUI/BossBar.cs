@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class BossBar : HealthBar
+public class BossBar : MonoBehaviour
 {
     private List<Transform> Bounds;
     [Space]
@@ -29,11 +29,14 @@ public class BossBar : HealthBar
         CurrentHealth = 100;
 	}
 
+    /*
     protected override void SetUI(int health)
     {
         CurrentHealth = health;
     }
+    */
 
+        /*
     protected override IEnumerator _UpdateUI(int health)
     {
         SetBarAlpha(1);
@@ -91,6 +94,7 @@ public class BossBar : HealthBar
 
         CurrentHealth = health;
     }
+    */
 
     //Calculates the linear fill of the bar
     private Vector2 LinearPercentage(float percentage)

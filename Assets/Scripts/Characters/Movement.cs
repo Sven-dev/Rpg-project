@@ -5,24 +5,28 @@ using UnityEngine;
 
 public enum Direction
 {
-    Up,
+    Right,
     Down,
     Left,
-    Right,
+    Up,
     Null
 }
 
 public class Movement : MonoBehaviour
 {
-    Renderer R;
+    private Renderer R;
 
+    //[HideInInspector]
+    public bool Immobile;
     public float Speed;
     private Direction _direction;
     private bool _idle;
-    private bool _immobile;
 
-    public delegate void MovementChanged(Direction d, bool idle);
-    public event MovementChanged OnMovementChange;
+    public delegate void DirectionChanged(Direction direction);
+    public event DirectionChanged OnDirectionChange;
+
+    public delegate void IdleChanged(bool idle);
+    public event IdleChanged OnIdleChange;
 
     public Direction Direction
     {
@@ -32,10 +36,8 @@ public class Movement : MonoBehaviour
             if (!Immobile && _direction != value)
             {
                 _direction = value;
-                if (OnMovementChange != null)
-                {
-                    OnMovementChange(value, Idle);
-                }
+                if (OnDirectionChange != null)
+                    OnDirectionChange(value);
             }
         }
     }
@@ -45,23 +47,12 @@ public class Movement : MonoBehaviour
         get { return _idle; }
         set
         {
-            if (!Immobile)
+            if (!Immobile && _idle != value)
             {
                 _idle = value;
-                if (OnMovementChange != null)
-                    OnMovementChange(Direction, value);
+                if (OnIdleChange != null)
+                    OnIdleChange(value);
             }
-        }
-    }
-
-    public bool Immobile
-    {
-        get { return _immobile; }
-        set
-        {
-            if (value == true)
-                Idle = true;
-            _immobile = value;
         }
     }
 
@@ -79,11 +70,8 @@ public class Movement : MonoBehaviour
     //Makes the player move
     public void Move(Direction direction)
     {
-        if (!Immobile)
-        {
-            transform.Translate(DirectionToVector(direction) * Speed * Time.fixedDeltaTime);
-            SetSortingLayer();
-        }
+        transform.Translate(DirectionToVector(direction) * Speed * Time.fixedDeltaTime);
+        SetSortingLayer();
     }
 
     //Makes the object move towards a location
@@ -163,9 +151,6 @@ public class Movement : MonoBehaviour
     //Converts the target vector into a direction
     public void VectorToDirection(Vector2 target)
     {
-        float xtest = Mathf.Abs(target.x);
-        float ytest = Mathf.Abs(target.y);
-
         if (target.y > 0)
         {
             if (target.x > 0.25f && target.x < 0.75f)

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <SaveFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ActiveScene>Debug</ActiveScene>
+  <ActiveScene>1</ActiveScene>
   <ActiveRoom>0</ActiveRoom>
   <PlayerLocation>
-    <x>1.91999984</x>
-    <y>0.244</y>
+    <x>0</x>
+    <y>0</y>
   </PlayerLocation>
   <PlayerDirection>Up</PlayerDirection>
   <PlayerHealth>100</PlayerHealth>
-  <PlayerSword>false</PlayerSword>
+  <SwordEnabled>false</SwordEnabled>
+  <DashEnabled>false</DashEnabled>
+  <ShieldEnabled>false</ShieldEnabled>
+  <TimeEnabled>false</TimeEnabled>
 </SaveFile>

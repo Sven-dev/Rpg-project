@@ -8,11 +8,11 @@ public class HitboxRotator : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        transform.parent.GetComponent<Movement>().OnMovementChange += Rotate;
+        transform.parent.GetComponent<Movement>().OnDirectionChange += Rotate;
 	}
 
     //Rotates the object so it faces the way the player is looking
-    private void Rotate(Direction d, bool idle)
+    private void Rotate(Direction d)
     {
         switch (Global.PlayerMovement.Direction)
         {

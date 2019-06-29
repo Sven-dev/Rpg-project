@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SceneDoor : Trigger
 {
-    public string Scene;
+    public int Scene;
     public int RoomIndex;
     public Vector2 Spawn;
 

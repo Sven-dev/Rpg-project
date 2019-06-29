@@ -4,38 +4,30 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    private int _health; //A number between 0 & 100
-    public int Health
+    public bool temp;
+
+    [Range(0, 100)]
+    public int Health; //A number between 0 & 100
+
+    public delegate void ValueChange(int value);
+    public event ValueChange OnValueChange;
+
+    private void Update()
     {
-        get { return _health; }
-        set
+        if (temp == true)
         {
-            _health = value;
-            if (_health <= 0)
-            {
-                print("Game over");
-            }
-            else
-            {
-                if (OnHealthChange != null)
-                {
-                    OnHealthChange(Health);
-                }
-            }
+            OnValueChange(Health);
+            temp = false;
         }
     }
 
-    public delegate void HealthChange(int health);
-    public event HealthChange OnHealthChange;
-
-    // Use this for initialization
-    void Start()
+    public void ChangeHealth(int value)
     {
-         Health = Global.Save.PlayerHealth;       
-	}
+        Health += value;
 
-    public void TakeDamage(int damage)
-    {
-        Health -= damage;
+        if (OnValueChange != null)
+        {
+            OnValueChange(Health);
+        }
     }
 }

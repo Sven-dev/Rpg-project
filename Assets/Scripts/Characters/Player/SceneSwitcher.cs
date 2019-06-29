@@ -63,12 +63,12 @@ public class SceneSwitcher : MonoBehaviour
     }
 
     //Switches between 2 scenes
-    public void SwitchScene(string scene, int room, Vector2 spawn, bool fadeout, bool fadein)
+    public void SwitchScene(int scene, int room, Vector2 spawn, bool fadeout, bool fadein)
     {
         StartCoroutine(_SwitchScene(scene, room, spawn, fadeout, fadein));
     }
 
-    IEnumerator _SwitchScene(string scene, int room, Vector2 spawn, bool fadeout, bool fadein)
+    IEnumerator _SwitchScene(int scene, int room, Vector2 spawn, bool fadeout, bool fadein)
     {
         //Freeze player
         Global.PlayerMovement.Immobile = true;
@@ -104,7 +104,7 @@ public class SceneSwitcher : MonoBehaviour
         Global.PlayerMovement.Immobile = false;
     }
 
-    IEnumerator _Switch(string scene, int room, Vector2 spawn)
+    IEnumerator _Switch(int scene, int room, Vector2 spawn)
     {
         Loading = true;
 
@@ -141,7 +141,21 @@ public class SceneSwitcher : MonoBehaviour
     private GameObject ConvertRoom(int index)
     {
         GameObject[] root = SceneManager.GetActiveScene().GetRootGameObjects();
-        return root[0].transform.GetChild(index).gameObject;
+
+        print("- Active scene: " + SceneManager.GetActiveScene().name);
+        print("- Active room: " + index);
+
+        int i = 0;
+        foreach (GameObject g in root)
+        {
+            print("- [" + i + "] " + g.name);
+            i++;
+        }
+        print("- Root: " + root[0].name);
+
+        return root[1].transform.
+            GetChild(index).
+            gameObject;
     }
 
     //Fades the game out

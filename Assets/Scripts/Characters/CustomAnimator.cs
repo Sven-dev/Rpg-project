@@ -10,19 +10,17 @@ public class CustomAnimator : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
         Movement Movement = GetComponent<Movement>();
-        Movement.OnMovementChange += WalkAnimation;
+        Movement.OnDirectionChange += SetDirection;
+        Movement.OnIdleChange += SetIdle;
     }
 
-    //Selects and plays a movement-animation (walking or idle)
-    protected virtual void WalkAnimation(Direction direction, bool idle)
+     protected virtual void SetDirection(Direction direction)
     {
-        if (idle)
-        {
-            Animator.Play("Idle_" + direction.ToString());
-        }
-        else
-        {
-            Animator.Play("Walk_" + direction.ToString());
-        }
+        Animator.SetInteger("Direction", (int)direction);
+    }   
+    
+    protected virtual void SetIdle(bool idle)
+    {
+        Animator.SetBool("Idle", idle);
     }
 }

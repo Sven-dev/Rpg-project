@@ -72,7 +72,7 @@ public class KeyboardController : MonoBehaviour
     //Handles any physics-related inputs (FixedUpdate runs at the same rate as the physics-engine)
     private void FixedUpdate()
     {
-        if (!Attacker.Attacking)
+        if (!Movement.Immobile)
         {
             //If any of the directional inputs is pressed
             if (Input.GetKey(Global.Keys.Up) || Input.GetKey(Global.Keys.Left) || Input.GetKey(Global.Keys.Down) || Input.GetKey(Global.Keys.Right))
@@ -83,28 +83,40 @@ public class KeyboardController : MonoBehaviour
                 if (Input.GetKey(Global.Keys.Up))
                 {
                     facing = Direction.Up;
-                    Movement.Move(Direction.Up);
+                    if (!Attacker.Attacking)
+                    {
+                        Movement.Move(Direction.Up);
+                    }
                 }
 
                 //If down, move down
                 if (Input.GetKey(Global.Keys.Down))
                 {
                     facing = Direction.Down;
-                    Movement.Move(Direction.Down);
+                    if (!Attacker.Attacking)
+                    {
+                        Movement.Move(Direction.Down);
+                    }
                 }
 
                 //If left, move left
                 if (Input.GetKey(Global.Keys.Left))
                 {
                     facing = Direction.Left;
-                    Movement.Move(Direction.Left);
+                    if (!Attacker.Attacking)
+                    {
+                        Movement.Move(Direction.Left);
+                    }
                 }
 
                 //If right, move right
                 if (Input.GetKey(Global.Keys.Right))
                 {
                     facing = Direction.Right;
-                    Movement.Move(Direction.Right);
+                    if (!Attacker.Attacking)
+                    {
+                        Movement.Move(Direction.Right);
+                    }
                 }
 
                 //If the player was idle, don't be

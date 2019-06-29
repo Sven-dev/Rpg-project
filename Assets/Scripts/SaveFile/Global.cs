@@ -40,10 +40,20 @@ public class Global : MonoBehaviour
         PlayerAnimator = Player.GetComponent<PlayerAnimator>();
         PlayerRenderer = Player.GetComponent<SpriteRenderer>();
 
+        //Link player to HUD
+        LinkHUD();
+
         //Assign scene switching
         SceneSwitcher = MainCamera.GetComponent<SceneSwitcher>();
         SceneSwitcher.SwitchScene(Save.ActiveScene, Save.ActiveRoom, Save.PlayerLocation, false, true);
 	}
+
+    //Links the player to the HUD
+    private void LinkHUD()
+    {
+        StatBar Healthbar = transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<StatBar>();
+        PlayerHealth.OnValueChange += Healthbar.UpdateUI;
+    }
 
     //Saves the game when the application is closed
     private void OnApplicationQuit()
