@@ -141,21 +141,7 @@ public class SceneSwitcher : MonoBehaviour
     private GameObject ConvertRoom(int index)
     {
         GameObject[] root = SceneManager.GetActiveScene().GetRootGameObjects();
-
-        print("- Active scene: " + SceneManager.GetActiveScene().name);
-        print("- Active room: " + index);
-
-        int i = 0;
-        foreach (GameObject g in root)
-        {
-            print("- [" + i + "] " + g.name);
-            i++;
-        }
-        print("- Root: " + root[0].name);
-
-        return root[1].transform.
-            GetChild(index).
-            gameObject;
+        return root[1].transform.GetChild(index).gameObject;
     }
 
     //Fades the game out

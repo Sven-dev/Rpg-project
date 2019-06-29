@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 public class RoomDoor : Trigger
 {
     public GameObject Room;
-    private Transform Spawn;
+    public RoomDoor Destination;
+    [HideInInspector]
+    public Transform Spawn;
 
     private void Start()
     {
@@ -14,7 +16,6 @@ public class RoomDoor : Trigger
 
     protected override void ExecuteTrigger()
     {
-        print("door: " + name);
-        Global.SceneSwitcher.SwitchRoom(Room, Spawn.position, true, true);
+        Global.SceneSwitcher.SwitchRoom(Room, Destination.Spawn.position, true, true);
     }
 }

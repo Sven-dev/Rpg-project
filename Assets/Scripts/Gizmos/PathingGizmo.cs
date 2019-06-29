@@ -51,7 +51,8 @@ public class PathingGizmo : MonoBehaviour
             {
                 return true;
             }
-        }       
+        }
+             
         #endif
         return false;
     }
