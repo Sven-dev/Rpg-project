@@ -16,8 +16,7 @@ public class Movement : MonoBehaviour
 {
     private Renderer R;
 
-    //[HideInInspector]
-    public bool Immobile;
+    private bool _immobile;
     public float Speed;
     private Direction _direction;
     private bool _idle;
@@ -50,6 +49,21 @@ public class Movement : MonoBehaviour
             if (!Immobile && _idle != value)
             {
                 _idle = value;
+                if (OnIdleChange != null)
+                    OnIdleChange(value);
+            }
+        }
+    }
+
+    public bool Immobile
+    {
+        get { return _immobile; }
+        set
+        {
+            _immobile = value;
+            if (Immobile)
+            {
+                _idle = true;
                 if (OnIdleChange != null)
                     OnIdleChange(value);
             }
