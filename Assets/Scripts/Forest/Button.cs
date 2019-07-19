@@ -41,8 +41,6 @@ public class Button : Interactable {
                 ControllerScript.CheckLogic();
             }
         }
-
-        //GameObject.FindWithTag("Player").GetComponent<Player>().Controls_ON();
     }
 
     public void TurnOff()

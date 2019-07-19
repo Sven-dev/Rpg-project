@@ -44,21 +44,14 @@ public class DoorController : Controller
 
         foreach (TrialDoor Door in LastButton.DoorList)
         {
-            Door.State = false;
+            Door.Opened = false;
             AllDoors.Add(Door);
         }
 
         foreach (TrialDoor Door in CurrentButton.DoorList)
         {
-            Door.State = true;
+            Door.Opened = true;
             AllDoors.Add(Door);
-        }
-
-        List<TrialDoor> distinct = AllDoors.Distinct().ToList();
-
-        foreach (TrialDoor Door in distinct)
-        {
-            Door.UpdateSprite();
         }
 
         LastButton.TurnOff();
@@ -100,7 +93,7 @@ public class DoorController : Controller
     {
         foreach(TrialDoor Door in CurrentButton.DoorList)
         {
-            if (Door.State != true)
+            if (Door.Opened != true)
             {
                 Door.Open();
             }

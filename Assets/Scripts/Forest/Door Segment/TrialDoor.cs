@@ -3,62 +3,52 @@ using System.Collections;
 
 public class TrialDoor : MonoBehaviour
 {
-    public bool State;
+    public bool toggle;
+    public bool Opened;
+    private bool State
+    {
+        get { return Opened; }
+        set
+        {
+            Opened = value;
+            Doorway.enabled = !value;
+            Animator.SetBool("State", value);
+        }
+    }
 
-    public AnimationClip Open_anim;
-    public AnimationClip Close_anim;
-
-    public Sprite HeadOn;
-    public Sprite HeadOff;
-
-    private SpriteRenderer head;
-    public BoxCollider doorCollider;
-    private Animator anim;
+    private BoxCollider2D Doorway;
+    private Animator Animator;
 
     // Use this for initialization
     void Start()
     {
-        head = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
-        doorCollider = GetComponent<BoxCollider>();
-        anim = GetComponent<Animator>();
+        Doorway = GetComponent<BoxCollider2D>();
+        Animator = GetComponent<Animator>();
+        Animator.SetBool("State", Opened);
+    }
+
+    private void Update()
+    {
+        if (toggle)
+        {
+            Toggle();
+            toggle = false;
+        }
     }
 
     //Opens or closes the door
     public void Toggle()
     {
         State = !State;
-        UpdateSprite();
     }
 
     public void Open()
     {
         State = true;
-        UpdateSprite();
     }
 
     public void Close()
     {
         State = false;
-        UpdateSprite();
-    }
-
-    //Updates the sprite and collision of the Door
-    public void UpdateSprite()
-    {
-        Debug.Log("Updating");
-        if (State == true)
-        {
-            anim.Play(Open_anim.name);
-            head.sprite = HeadOn;
-
-            doorCollider.enabled = false;
-        }
-        else
-        {
-            anim.Play(Close_anim.name);
-            head.sprite = HeadOff;
-
-            doorCollider.enabled = true;
-        }
     }
 }
