@@ -5,7 +5,6 @@ using UnityEngine;
 public class Global : MonoBehaviour
 {
     public static SaveFile Save;
-    public static KeyBinds Keys;
 
     public static Camera MainCamera;
     public static CameraMover CameraMover;
@@ -26,13 +25,12 @@ public class Global : MonoBehaviour
     {
         //Load saved data
         DontDestroyOnLoad(gameObject);
-        LoadKeys();
         LoadData();
 
         //Assign camera
         MainCamera = Camera.main;
-        CameraMover = MainCamera.GetComponent<CameraMover>();     
-          
+        CameraMover = MainCamera.GetComponent<CameraMover>();
+
         //Assign player
         Player = Instantiate(PlayerPrefab);
         PlayerMovement = Player.GetComponent<Movement>();
@@ -59,7 +57,6 @@ public class Global : MonoBehaviour
     private void OnApplicationQuit()
     {
         SaveData();
-        SaveKeys();
     }
 
     //Loads the game progress. Creates a new save if it can't find an existing one
@@ -79,26 +76,6 @@ public class Global : MonoBehaviour
         if (Save != null)
         {
             ClassToXmlFileIO.Save("Project_SOUL", "Save", Save);
-        }
-    }
-
-    //Loads the keybinds. Creates a new file if none exists
-    private void LoadKeys()
-    {
-        Keys = ClassToXmlFileIO.Load<KeyBinds>("Project_SOUL", "Keybindings");
-        if (Keys == null)
-        {
-            Keys = new KeyBinds();
-            ClassToXmlFileIO.Save("Project_SOUL", "Keybindings", Keys);
-        }
-    }
-
-    //Saves the keybindings
-    public static void SaveKeys()
-    {
-        if (Keys != null)
-        {
-            ClassToXmlFileIO.Save("Project_SOUL", "Keybindings", Keys);
         }
     }
 }

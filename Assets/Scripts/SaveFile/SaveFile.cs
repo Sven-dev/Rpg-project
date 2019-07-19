@@ -2,7 +2,7 @@
 
 public class SaveFile
 {
-    public int ActiveScene = 1;
+    public int ActiveScene = 2;
     public int ActiveRoom = 0;
     public Vector2 PlayerLocation = Vector2.zero;
     public Direction PlayerDirection = Direction.Up;
