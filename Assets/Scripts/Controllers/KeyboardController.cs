@@ -34,18 +34,18 @@ public class KeyboardController : MonoBehaviour
         if (ConversationManager.Active)
         {
             //Move the selected index right
-            if (Input.GetKeyDown(Global.Keys.Right))
+            if (Input.GetKeyDown(Prefs.Keys.Right))
             {
                 ConversationManager.MoveCursor(1);
             }
             //Move the selected index left
-            else if (Input.GetKeyDown(Global.Keys.Left))
+            else if (Input.GetKeyDown(Prefs.Keys.Left))
             {
                 ConversationManager.MoveCursor(-1);
             }
 
             //Advance the dialogue
-            if (Input.GetKeyDown(Global.Keys.Attack_Interact))
+            if (Input.GetKeyDown(Prefs.Keys.Attack_Interact))
             {
                 ConversationManager.FinishTalking();
             }
@@ -53,7 +53,7 @@ public class KeyboardController : MonoBehaviour
         else
         {
             //Check if the interact/attack button is held down
-            if (!Movement.Immobile && !Attacker.Attacking && Input.GetKey(Global.Keys.Attack_Interact))
+            if (!Movement.Immobile && !Attacker.Attacking && Input.GetKeyDown(Prefs.Keys.Attack_Interact))
             {
                 //If the player is looking at an interactable object
                 if (Interacter.Interactable())
@@ -75,12 +75,12 @@ public class KeyboardController : MonoBehaviour
         if (!Movement.Immobile)
         {
             //If any of the directional inputs is pressed
-            if (Input.GetKey(Global.Keys.Up) || Input.GetKey(Global.Keys.Left) || Input.GetKey(Global.Keys.Down) || Input.GetKey(Global.Keys.Right))
+            if (Input.GetKey(Prefs.Keys.Up) || Input.GetKey(Prefs.Keys.Left) || Input.GetKey(Prefs.Keys.Down) || Input.GetKey(Prefs.Keys.Right))
             {
                 Direction facing = Direction.Null;
 
                 //If up, move up
-                if (Input.GetKey(Global.Keys.Up))
+                if (Input.GetKey(Prefs.Keys.Up))
                 {
                     facing = Direction.Up;
                     if (!Attacker.Attacking)
@@ -90,7 +90,7 @@ public class KeyboardController : MonoBehaviour
                 }
 
                 //If down, move down
-                if (Input.GetKey(Global.Keys.Down))
+                if (Input.GetKey(Prefs.Keys.Down))
                 {
                     facing = Direction.Down;
                     if (!Attacker.Attacking)
@@ -100,7 +100,7 @@ public class KeyboardController : MonoBehaviour
                 }
 
                 //If left, move left
-                if (Input.GetKey(Global.Keys.Left))
+                if (Input.GetKey(Prefs.Keys.Left))
                 {
                     facing = Direction.Left;
                     if (!Attacker.Attacking)
@@ -110,7 +110,7 @@ public class KeyboardController : MonoBehaviour
                 }
 
                 //If right, move right
-                if (Input.GetKey(Global.Keys.Right))
+                if (Input.GetKey(Prefs.Keys.Right))
                 {
                     facing = Direction.Right;
                     if (!Attacker.Attacking)

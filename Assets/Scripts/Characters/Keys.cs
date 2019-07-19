@@ -1,4 +1,4 @@
-﻿public class KeyBinds
+﻿public class Keys
 {
     public string Up = "w";
     public string Left = "a";

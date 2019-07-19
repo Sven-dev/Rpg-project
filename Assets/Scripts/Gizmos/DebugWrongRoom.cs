@@ -12,7 +12,7 @@ public class DebugWrongRoom : MonoBehaviour {
         {
             if (GameObject.FindWithTag("Player") == null)
             {
-                SceneManager.LoadScene("GamePreload");
+                SceneManager.LoadScene(0);
             }
         }
 	}

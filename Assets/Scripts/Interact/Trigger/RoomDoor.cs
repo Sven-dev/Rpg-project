@@ -16,6 +16,9 @@ public class RoomDoor : Trigger
 
     protected override void ExecuteTrigger()
     {
-        Global.SceneSwitcher.SwitchRoom(Room, Destination.Spawn.position, true, true);
+        if (Destination != null)
+        {
+            Global.SceneSwitcher.SwitchRoom(Room, Destination.Spawn.position, true, true);
+        }
     }
 }

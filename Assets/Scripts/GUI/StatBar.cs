@@ -16,6 +16,5 @@ public class StatBar : MonoBehaviour
     public void UpdateUI(int value)
     {
         Bar.fillAmount = value / 100f;
-        print(Bar.fillAmount);
     }
 }

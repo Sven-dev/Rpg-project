@@ -18,7 +18,6 @@ public class CameraMover : MonoBehaviour
     void Start()
     {
         Target = Global.Player;
-        SceneManager.activeSceneChanged += SetBounds;
         SetCornerDistance();
     }
 
@@ -96,10 +95,5 @@ public class CameraMover : MonoBehaviour
             TopRightClamp = boundbox.GetChild(1);
             Bounded = true;
         }
-    }
-
-    private void SetBounds(Scene current, Scene next)
-    {
-        SetBounds();
     }
 }

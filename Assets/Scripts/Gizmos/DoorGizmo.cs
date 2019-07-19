@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if  UNITY_EDITOR
 using UnityEditor;
+#endif
 
 //shows the door hitbox
 [ExecuteInEditMode]
 public class DoorGizmo : MonoBehaviour
 {
     private BoxCollider2D Boxcollider;
-    private CircleCollider2D Circlecollider;
     private Color DoorCollor;
     private RoomDoor Door;
 
@@ -18,7 +19,6 @@ public class DoorGizmo : MonoBehaviour
         if (Application.isEditor)
         {
             Boxcollider = GetComponent<BoxCollider2D>();
-            Circlecollider = GetComponent<CircleCollider2D>();
 
             DoorCollor = new Color(0, 1, 0, 0.5f);
             Door = GetComponent<RoomDoor>();
@@ -49,11 +49,6 @@ public class DoorGizmo : MonoBehaviour
             position = new Vector2(transform.position.x, transform.position.y) + Boxcollider.offset;
             Gizmos.DrawCube(position, Boxcollider.size);
         }
-        else if (Circlecollider != null)
-        {
-            position = new Vector2(transform.position.x, transform.position.y) + Circlecollider.offset;
-            Gizmos.DrawSphere(position, Circlecollider.radius);
-        }
 
         if (Selected())
         {
@@ -66,7 +61,12 @@ public class DoorGizmo : MonoBehaviour
             //Draw a line between the two doors
             if (Door.Destination != null)
             {
-                Gizmos.DrawLine(position, Door.Destination.transform.position);
+                DoorGizmo dest = Door.Destination.GetComponent<DoorGizmo>();
+                if (dest.Boxcollider != null)
+                {
+                    Vector3 offset = dest.Boxcollider.offset;
+                    Gizmos.DrawLine(position, Door.Destination.transform.position + offset);
+                }
             }
         }
     }
