@@ -10,8 +10,8 @@ public class CustomAnimator : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
         Movement Movement = GetComponent<Movement>();
-        Movement.OnDirectionChange += SetDirection;
-        Movement.OnIdleChange += SetIdle;
+        //Movement.OnDirectionChange += SetDirection;
+        //Movement.OnIdleChange += SetIdle;
     }
 
      protected virtual void SetDirection(Direction direction)

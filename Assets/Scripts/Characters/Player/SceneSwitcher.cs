@@ -143,12 +143,12 @@ public class SceneSwitcher : MonoBehaviour
         GameObject[] root = SceneManager.GetActiveScene().GetRootGameObjects();
 
         //Has to be 1 for editor, 2 for builds
-        if (root[2].name != "Rooms")
+        if (root[1].name != "Rooms")
         {
             throw new System.Exception("Rooms could not be found! (has the order of gameobjects changed?)");
         }
 
-        return root[2].transform.GetChild(index).gameObject;
+        return root[1].transform.GetChild(index).gameObject;
     }
 
     //Fades the game out

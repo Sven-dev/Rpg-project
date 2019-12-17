@@ -27,6 +27,8 @@ public class Movement : MonoBehaviour
     public delegate void IdleChanged(bool idle);
     public event IdleChanged OnIdleChange;
 
+    public Animator anim;
+
     public Direction Direction
     {
         get { return _direction; }
@@ -84,7 +86,10 @@ public class Movement : MonoBehaviour
     //Makes the player move
     public void Move(Direction direction)
     {
-        transform.Translate(DirectionToVector(direction) * Speed * Time.fixedDeltaTime);
+        Vector3 temp = DirectionToVector(direction);
+        transform.Translate(temp * Speed * Time.fixedDeltaTime);
+        anim.SetFloat("Horizontal", temp.x);
+        anim.SetFloat("Vertical", temp.y);
         SetSortingLayer();
     }
 
