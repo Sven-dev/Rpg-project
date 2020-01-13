@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float Speed;
     public int Damage;
 
     private Renderer Renderer;
@@ -15,11 +16,18 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        transform.Translate(Vector2.left * Speed * Time.deltaTime);
         SetSortingLayer();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        HealthManager h = collision.GetComponent<HealthManager>();
+        if (h != null)
+        {
+            h.ChangeHealth(Damage);
+        }
+
         Destroy(gameObject);
     }
 

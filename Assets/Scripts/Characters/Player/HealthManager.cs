@@ -19,16 +19,7 @@ public class HealthManager : MonoBehaviour
         Collider = GetComponent<Collider2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Bullet bullet = collision.transform.GetComponent<Bullet>();
-        if (bullet != null)
-        {
-            ChangeHealth(bullet.Damage);
-        }        
-    }
-
-    private void ChangeHealth(int value)
+    public void ChangeHealth(int value)
     {
         Health += value;
         Iframes();
@@ -48,20 +39,9 @@ public class HealthManager : MonoBehaviour
     {
         Collider.enabled = false;
 
-        //Blink slowly
-        float timer = 3;
-        while(timer > 0)
-        {
-            Renderer.enabled = !Renderer.enabled;
-            timer -= 0.2f;
-            yield return new WaitForSeconds(0.2f);
-        }
-
-        Renderer.enabled = true;
-
-        //Blink faster
-        timer = 1.5f;
-        while(timer > 0)
+        //Blink
+        float timer = 1.5f;
+        while (timer > 0)
         {
             Renderer.enabled = !Renderer.enabled;
             timer -= 0.1f;
@@ -69,8 +49,7 @@ public class HealthManager : MonoBehaviour
         }
 
         Renderer.enabled = true;
-
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         Collider.enabled = true;
     }
 }

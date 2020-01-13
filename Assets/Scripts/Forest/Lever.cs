@@ -6,56 +6,59 @@ public class Lever : Interactable
     public Sprite On;
     public Sprite Off;
 
-    public bool State;
-
-    public GameObject Controller;
-    private Controller ControllerScript;
-
+    private bool State;
     private SpriteRenderer sr;
 
-	// Use this for initialization
+    public delegate void StateChange(bool state);
+    public StateChange OnStateChange;
+
+	/// <summary>
+    /// Gets the reference to the spriterenderer
+    /// </summary>
 	void Start()
     {
-        ControllerScript = Controller.GetComponent<Controller>();
-        sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
-
-        UpdateSprite();
+        sr = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        Toggle(true);
     }
 
-
-    IEnumerator State_ON()
+    /// <summary>
+    /// turns the lever on or off
+    /// </summary>
+    private void Toggle()
     {
-        while (State == true)
-        {
-            ControllerScript.CheckLogic();
-            yield return null;
-        }
-    }
-
-    //Turns the Lever OFF or ON
-    void ToggleState()
-    {
+        // Update variables
         State = !State;
-    }
+        OnStateChange(State);
 
-    //Updates the sprite of the lever
-    void UpdateSprite()
-    {
+        // Update sprite
         if (State == true)
-        {
             sr.sprite = On;
-            StartCoroutine(State_ON());
-        }
         else
-        {
             sr.sprite = Off;
-        }
     }
 
-    //Methods for objects to interact with the lever
+    /// <summary>
+    /// Turns the lever on or off
+    /// </summary>
+    /// <param name="state">the state the lever gets set to</param>
+    private void Toggle(bool state)
+    {
+        // Update variables
+        State = state;
+        OnStateChange(State);
+
+        // Update sprite
+        if (State == true)
+            sr.sprite = On;
+        else
+            sr.sprite = Off;
+    }
+
+    /// <summary>
+    /// Methods for objects to interact with the lever
+    /// </summary>
     public override void Interact()
     {
-        ToggleState();
-        UpdateSprite();
+        Toggle();
     }
 }

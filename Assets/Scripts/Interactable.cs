@@ -15,7 +15,7 @@ public class Interactable : MonoBehaviour
     private void Awake()
     {
         SelectionMarker = transform.GetChild(0).GetComponent<SpriteRenderer>();
-        SelectionMarker.enabled = false;
+        //SelectionMarker.enabled = false;
     }
 
     //Interacts with the object

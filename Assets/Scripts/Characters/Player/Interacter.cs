@@ -40,7 +40,7 @@ public class Interacter : MonoBehaviour
             if (Selected == null)
             {
                 Selected = i;
-                Selected.Select();
+                //Selected.Select();
             }
             else
             {
@@ -52,9 +52,9 @@ public class Interacter : MonoBehaviour
                 if (currentdistance > newdistance)
                 {
                     //Select the new object
-                    Selected.Deselect();
+                    //Selected.Deselect();
                     Selected = i;
-                    Selected.Select();
+                    //Selected.Select();
                 }
             }
         }

@@ -5,11 +5,11 @@ using UnityEngine;
 
 public enum Direction
 {
-    Right,
-    Down,
-    Left,
-    Up,
-    Null
+    Right = 100,
+    Down = 33,
+    Left = 66,
+    Up = 0,
+    Null = -1
 }
 
 public class Movement : MonoBehaviour
