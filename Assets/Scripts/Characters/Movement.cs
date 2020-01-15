@@ -12,23 +12,19 @@ public enum Direction
     Null = -1
 }
 
+/// <summary>
+/// Handles movement for a character.
+/// </summary>
 public class Movement : MonoBehaviour
-{
-    private Renderer R;
-
-    private bool _immobile;
+{   
+    /// <summary>
+    /// The speed at which the character walks.
+    /// </summary>
     public float Speed;
-    private Direction _direction;
-    private bool _idle;
 
-    public delegate void DirectionChanged(Direction direction);
-    public event DirectionChanged OnDirectionChange;
-
-    public delegate void IdleChanged(bool idle);
-    public event IdleChanged OnIdleChange;
-
-    public Animator anim;
-
+    /// <summary>
+    /// The direction the character is facing.
+    /// </summary>
     public Direction Direction
     {
         get { return _direction; }
@@ -42,7 +38,11 @@ public class Movement : MonoBehaviour
             }
         }
     }
-
+    private Direction _direction = Direction.Right;
+    
+    /// <summary>
+    /// Wether the character is currently walking.
+    /// </summary>
     public bool Idle
     {
         get { return _idle; }
@@ -56,7 +56,11 @@ public class Movement : MonoBehaviour
             }
         }
     }
+    private bool _idle = true;
 
+    /// <summary>
+    /// Wether the character is allowed to walk or not.
+    /// </summary>
     public bool Immobile
     {
         get { return _immobile; }
@@ -71,60 +75,47 @@ public class Movement : MonoBehaviour
             }
         }
     }
+    private bool _immobile = false;
 
-    // Use this for initialization
+    public delegate void DirectionChanged(Direction direction);
+    public event DirectionChanged OnDirectionChange;
+
+    public delegate void IdleChanged(bool idle);
+    public event IdleChanged OnIdleChange;
+
+    private Renderer Renderer;
+    private Animator Animator;
+
+    /// <summary>
+    /// Gets the renderer and animator, and sets the sorting layer.
+    /// </summary>
     void Start ()
     {
-        R = GetComponent<Renderer>();
+        Renderer = GetComponent<Renderer>();
+        Animator = GetComponent<Animator>();
 
-        Immobile = false;
-        Idle = true;
-        Direction = Direction.Right;
         SetSortingLayer();
     }
 
     //Makes the player move
+    /// <summary>
+    /// Move the character.
+    /// </summary>
+    /// <param name="direction">The direction the character is moving in</param>
     public void Move(Direction direction)
     {
         Vector3 temp = DirectionToVector(direction);
         transform.Translate(temp * Speed * Time.fixedDeltaTime);
-        anim.SetFloat("Horizontal", temp.x);
-        anim.SetFloat("Vertical", temp.y);
+        Animator.SetFloat("Horizontal", temp.x);
+        Animator.SetFloat("Vertical", temp.y);
         SetSortingLayer();
     }
 
-    //Makes the object move towards a location
-    public void Move(Vector2 direction)
-    {
-        transform.Translate(direction * Speed * Time.fixedDeltaTime);
-        VectorToDirection(direction);
-        SetSortingLayer();
-    }
-
-    //Converts the Enum direction to a Vector. Used for moving around
-    public Vector3 DirectionToVector()
-    {
-        Vector3 direction = Vector2.zero;
-        switch(Direction)
-        {
-            case Direction.Up:
-                direction = Vector2.up;
-                break;
-            case Direction.Down:
-                direction = Vector2.down;
-                break;
-            case Direction.Left:
-                direction = Vector2.left;
-                break;
-            case Direction.Right:
-                direction = Vector2.right;
-                break;
-        }
-
-        return direction;
-    }
-
-    //Converts the Enum direction to a Vector. Used for moving around
+    /// <summary>
+    /// Converts the Enum direction to a Vector. Used for moving around.
+    /// </summary>
+    /// <param name="facing">The direction the character is facing</param>
+    /// <returns></returns>
     public Vector3 DirectionToVector(Direction facing)
     {
         Vector3 direction = Vector2.zero;
@@ -147,74 +138,13 @@ public class Movement : MonoBehaviour
         return direction;
     }
 
-    //Makes the object look at the target
-    public void LookAt(Movement target)
-    {
-        switch (target.Direction)
-        {
-            case Direction.Up:
-                Direction = Direction.Down;
-                break;
-            case Direction.Down:
-                Direction = Direction.Up;
-                break;
-            case Direction.Left:
-                Direction = Direction.Right;
-                break;
-            case Direction.Right:
-                Direction = Direction.Left;
-                break;
-        }
-    }
-
-    //Converts the target vector into a direction
-    public void VectorToDirection(Vector2 target)
-    {
-        if (target.y > 0)
-        {
-            if (target.x > 0.25f && target.x < 0.75f)
-            {
-                Direction = Direction.Right;
-            }
-            else if (target.x < -0.33f && target.x > -0.75f)
-            {
-                Direction = Direction.Left;
-            }
-            else
-            {
-                Direction = Direction.Up;
-            }
-        }
-        else if (target.y < 0)
-        {
-            if (target.x > 0.25f && target.x < 0.75f)
-            {
-                Direction = Direction.Right;
-            }
-            else if (target.x < -0.25f && target.x > -0.75f)
-            {
-                Direction = Direction.Left;
-            }
-            else
-            {
-                Direction = Direction.Down;
-            }
-        }
-        else if (target.x > 0)
-        {
-            Direction = Direction.Right;         
-        }
-        else if (target.x < 0)
-        {
-            Direction = Direction.Left;
-        }
-    }
-
-    //Sets the render-order, relative to the other objects in the scene,
-    //making it look like the object walks behind other objects
+    /// <summary>
+    /// Sets the render-order, relative to the other objects in the scene,
+    /// making it look like the object walks behind other objects.
+    /// </summary>
     void SetSortingLayer()
     {
-        float objHeight = transform.position.y - R.bounds.size.y / 2f;
-        R.sortingOrder = (int)(objHeight * -100);
+        float objHeight = transform.position.y - Renderer.bounds.size.y / 2f;
+        Renderer.sortingOrder = (int)(objHeight * -100);
     }
 }

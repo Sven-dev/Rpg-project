@@ -14,7 +14,27 @@ public class Npc : Interactable
 
     public override void Interact()
     {
-        NPCMovement.LookAt(Global.PlayerMovement);
+        LookAt(Global.PlayerMovement);
         base.Interact();
+    }
+
+    //Makes the object look at the target
+    public void LookAt(Movement target)
+    {
+        switch (target.Direction)
+        {
+            case Direction.Up:
+                target.Direction = Direction.Down;
+                break;
+            case Direction.Down:
+                target.Direction = Direction.Up;
+                break;
+            case Direction.Left:
+                target.Direction = Direction.Right;
+                break;
+            case Direction.Right:
+                target.Direction = Direction.Left;
+                break;
+        }
     }
 }

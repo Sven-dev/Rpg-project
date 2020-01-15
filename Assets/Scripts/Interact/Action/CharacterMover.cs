@@ -59,7 +59,7 @@ public class CharacterMover : Action
     private void MoveTowardsTarget(Movement character, Transform target)
     {
         Vector2 direction = target.transform.position - character.transform.position;
-        character.Move(direction.normalized);
+        //character.Move(direction.normalized);
         if (Vector2.Distance(character.transform.position, target.transform.position) < 0.01f)
         {
             character.transform.position = target.transform.position;
