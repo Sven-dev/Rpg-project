@@ -5,15 +5,12 @@ using UnityEngine;
 /// <summary>
 /// Spawns a line of bullets that moves from right to left, with one bullet missing.
 /// </summary>
-public class BulletSpawner : MonoBehaviour
+public class BulletSpawner2 : MonoBehaviour
 {
     public Lever Lever;
-
+    public List<Transform> Rotators;
     [Space]
-    public float Cooldown;
-    public List<Transform> SpawnPoints;
-    [Space]
-    public Bullet BulletPrefab;
+    public float Speed;
 
     private bool State = false;
 
@@ -31,33 +28,16 @@ public class BulletSpawner : MonoBehaviour
     /// <returns></returns>
     protected virtual IEnumerator Loop()
     {
-        float timer = 0;
         while (State)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
+            int direction = 1;
+            for (int i = 0; i < Rotators.Count; i++)
             {
-                Spawn(BulletPrefab);
-                timer = Cooldown;
+                Rotators[i].Rotate(Vector3.forward * direction * Speed * Time.deltaTime);
+                direction *= -1;
             }
 
             yield return null;
-        }
-    }
-
-    /// <summary>
-    /// Spawn a row of bullets, with one missing
-    /// </summary>
-    /// <param name="bullet">The prefab of the bullet</param>
-    private void Spawn(Bullet bullet)
-    {
-        int rnd = Random.Range(0, SpawnPoints.Count);
-        for (int i = 0; i < SpawnPoints.Count; i++)
-        {
-            if (i != rnd)
-            {
-                Instantiate(bullet, SpawnPoints[i].position, Quaternion.identity);
-            }
         }
     }
 
